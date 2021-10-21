@@ -1,13 +1,19 @@
 import React from 'react';
 import AnswerButton from './components/AnswerButton/AnswerButton';
+import TimerButton from './components/TimerButton/TimerButton';
 
 function App() {
   return (
     <div>
-      <AnswerButton />
-      <AnswerButton />
-      <AnswerButton />
-      <AnswerButton />
+      <div>
+        <AnswerButton />
+        <AnswerButton />
+        <AnswerButton />
+        <AnswerButton />
+      </div>
+      <div>
+        <TimerButton />
+      </div>
     </div>
   );
 }
