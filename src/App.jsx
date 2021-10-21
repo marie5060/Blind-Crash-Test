@@ -1,5 +1,15 @@
+import React from 'react';
+import AnswerButton from './components/AnswerButton/AnswerButton';
+
 function App() {
-  return <h1>Hello there!</h1>;
+  return (
+    <div>
+      <AnswerButton />
+      <AnswerButton />
+      <AnswerButton />
+      <AnswerButton />
+    </div>
+  );
 }
 
 export default App;
