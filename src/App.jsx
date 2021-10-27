@@ -1,11 +1,16 @@
 import React from 'react';
-import AppelApi from './components/AppelApi';
+import AppelApi from './components/Quizz/AppelApi';
+import Header from './components/Header/Header';
+import Content from './components/Content/Content';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <div>
-      <h1>Hello there!</h1>
+      <Header />
       <AppelApi />
+      <Content />
+      <Footer />
     </div>
   );
 }
