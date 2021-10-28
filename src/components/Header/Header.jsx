@@ -10,22 +10,18 @@ const Header = () => {
       </div>
       <ul className="header-nav-links">
         <li>
-          {' '}
           <Link exact to="/">
             Accueil
-          </Link>{' '}
+          </Link>
         </li>
         <li>
-          {' '}
-          <Link to="/Themes">Thèmes</Link>{' '}
+          <Link to="/Themes">Thèmes</Link>
         </li>
         <li>
-          {' '}
-          <Link to="/Resultats">Résultats</Link>{' '}
+          <Link to="/Resultats">Résultats</Link>
         </li>
         <li>
-          {' '}
-          <Link to="/Quizz">Quizz</Link>{' '}
+          <Link to="/Quizz">Quizz</Link>
         </li>
       </ul>
     </header>
