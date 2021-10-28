@@ -20,14 +20,6 @@ function App() {
           <Route path="/Quizz" component={QuizzPage} />
         </Switch>
       </BrowserRouter>
-      <Header />
-      <QuizzPage />
-      <Switch>
-        <Route exact path="/" component={AccueilPage} />
-        <Route path="/Themes" component={ThemesPage} />
-        <Route path="/Resultats" component={ResultatsPage} />
-        <Route path="/Quizz" component={QuizzPage} />
-      </Switch>
     </div>
   );
 }
