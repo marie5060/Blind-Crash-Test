@@ -5,15 +5,25 @@ import './QuizzAnswerButton.css';
 const QuizzAnswerButton = ({ answer,  rightAnswer, handleClicked, btnClicked}) => {
   console.log('in btn it\'s clicked' + btnClicked)
   let [classes, setClasses] = useState("answerButton");
+  const [chosen, setChosen] = useState(false)
   // let classes = "answerButton"
   useEffect(() => {
-    btnClicked?setClasses(answer === rightAnswer ? "answerButton" : "answerButton loose") :"";
-    console.log(classes, answer)
+    if (btnClicked) {
+      if (chosen) {
+        if (answer === rightAnswer) {
+          setClasses("answerButton chosenBtn")
+        } else {
+          setClasses("answerButton chosenBtn loose")
+        }
+      } else if (!chosen && answer !== rightAnswer) {
+        setClasses("answerButton loose")
+      }
+    }
   }, [btnClicked])
 
   return <button className = {classes} type="button" onClick={(e) => (
     handleClicked(),
-    e.target.classList.add("chosenBtn")
+    setChosen(true)
   )}> {answer} </button>;
 };
 
