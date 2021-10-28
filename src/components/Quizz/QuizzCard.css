@@ -1,0 +1,21 @@
+.quizzCard {
+  width: 70%;
+  height: 70vh;
+  margin: auto;
+  background-color: rgba(206, 203, 200, 0.493);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 2px 2px 5px rgb(200, 190, 179);
+}
+
+.pictureContainer {
+  position: relative;
+  margin: auto;
+}
+
+.answerBtnContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 30px;
+}
