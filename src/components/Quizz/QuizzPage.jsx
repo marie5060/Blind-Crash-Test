@@ -1,3 +1,4 @@
+import LinkBtn from '../Bases/LinkBtn';
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import QuizzCard from './QuizzCard';
@@ -5,6 +6,12 @@ import QuizzCard from './QuizzCard';
 // import LinkBtn from '../Bases/LinkBtn';
 import './QuizzPage.css';
 import initialTracks from '../../severalTracks';
+
+const QuizzPage = () => {
+  return (
+    <div className="QuizzPage-Container">
+      <LinkBtn />
+    </div>
 
 const QuizzPage = () => {
   const [tracks, setTracks] = React.useState(initialTracks);
