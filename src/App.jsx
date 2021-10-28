@@ -12,6 +12,7 @@ function App() {
     <div>
       {/* HEADER */}
       <Header />
+      <QuizzPage />
       <Switch>
         <Route exact path="/" component={AccueilPage} />
         <Route path="/Themes" component={ThemesPage} />
