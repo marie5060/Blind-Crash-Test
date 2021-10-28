@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import AppelApi from './components/Quizz/AppelApi';
 import './App.css';
 import Header from './components/Header/Header';
@@ -12,14 +12,16 @@ function App() {
   return (
     <div>
       {/* HEADER */}
-      <Header />
-      <Switch>
-        <Route exact path="/" component={AccueilPage} />
-        <Route path="/Themes" component={ThemesPage} />
-        <Route path="/Resultats" component={ResultatsPage} />
-        <Route path="/Quizz" component={QuizzPage} />
-      </Switch>
-      <AppelApi />
+      <BrowserRouter>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={AccueilPage} />
+          <Route path="/Themes" component={ThemesPage} />
+          <Route path="/Resultats" component={ResultatsPage} />
+          <Route path="/Quizz" component={QuizzPage} />
+        </Switch>
+        <AppelApi />
+      </BrowserRouter>
     </div>
   );
 }
