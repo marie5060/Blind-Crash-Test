@@ -1,7 +1,13 @@
+/* eslint-disable */
 import React from 'react';
+import './QuizzAlbumPicture.css';
 
-const QuizzAlbumPicture = () => {
-  return <div>coucou je suis pictural !</div>;
+const QuizzAlbumPicture = ({ url }) => {
+  return (
+    <div className="picture">
+      <img src={url} alt="album currenty playing" />
+    </div>
+  );
 };
 
 export default QuizzAlbumPicture;
