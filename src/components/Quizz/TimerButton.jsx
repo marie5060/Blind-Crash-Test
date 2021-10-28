@@ -15,7 +15,7 @@ const TimerButton = () => {
       Timer {count}
       {/* Compteur de questions */}
       <div>
-        <p>Questions x/10</p>
+        <p>Questions 1/10</p>
       </div>
       {/* Création du bouton */}
       <div>
