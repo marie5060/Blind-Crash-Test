@@ -23,3 +23,10 @@
   color: white;
   font-weight: bold;
 }
+
+.header-nav-links-a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+}
