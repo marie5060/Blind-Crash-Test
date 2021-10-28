@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './TimerButton.css';
 
+// Création du timer
 const TimerButton = () => {
   const [count, setCount] = useState(30);
 
@@ -12,9 +13,11 @@ const TimerButton = () => {
   return (
     <div className="timerbutton">
       Timer {count}
+      {/* Compteur de questions */}
       <div>
         <p>Questions x/10</p>
       </div>
+      {/* Création du bouton */}
       <div>
         <button type="button">Suivant</button>
       </div>
