@@ -2,7 +2,7 @@
 
 
 
-import React from 'react';
+import React, { useState } from 'react';
 import QuizzAlbumPicture from './QuizzAlbumPicture';
 import QuizzAudio from './QuizzAudio';
 import QuizzAnswerButton from './QuizzAnswerButton';
@@ -12,7 +12,10 @@ import './QuizzCard.css';
 
 const answers = ["fausse1", "fausse2", "fausse3", "bonnereponse"];
 const QuizzCard = ({ track }) => {
-   function shuffleArray(array2) {
+
+  const [btnClicked, setBtnClicked] = useState(false);
+
+   function shuffleArray(array2) { 
     const array = array2;
     for (let i = array.length - 1; i > 0; i = i-1) {
         let j = Math.floor(Math.random() * (i + 1));
@@ -20,10 +23,16 @@ const QuizzCard = ({ track }) => {
         array[i] = array[j];
         array[j] = temp;
     }
-}
+  }
 
-  shuffleArray(answers);
+  shuffleArray(answers); 
 
+  // const rightAnswer = track.title_short;
+  const rightAnswer = "bonnereponse"
+
+  const handleClicked = () => {
+    setBtnClicked(true);
+  }
   
   return (
     <div className="quizzCard">
@@ -32,10 +41,10 @@ const QuizzCard = ({ track }) => {
         <QuizzAudio url={track.preview} />
       </div>
       <div className="answerBtnContainer">
-        <QuizzAnswerButton answer={answers[0]} />
-        <QuizzAnswerButton answer={answers[1]} />
-        <QuizzAnswerButton answer={answers[2]} />
-        <QuizzAnswerButton answer={answers[3]} />
+        <QuizzAnswerButton btnClicked={btnClicked} handleClicked={handleClicked} answer={answers[0]} rightAnswer={rightAnswer} />
+        <QuizzAnswerButton btnClicked={btnClicked} handleClicked={handleClicked} answer={answers[1]} rightAnswer={rightAnswer}  />
+        <QuizzAnswerButton btnClicked={btnClicked} handleClicked={handleClicked} answer={answers[2]} rightAnswer={rightAnswer}  />
+        <QuizzAnswerButton btnClicked={btnClicked} handleClicked={handleClicked} answer={answers[3]} rightAnswer={rightAnswer}  />
       </div>
       <div className="timerContainer">
         <TimerButton />
