@@ -1,7 +1,10 @@
+/*eslint-disable*/
 import React from 'react';
+import './QuizzAnswerButton.css';
 
-const QuizzAnswerButton = () => {
-  return <div>coucou je suis une mauvaise réponse</div>;
+const QuizzAnswerButton = ({ answer }) => {
+  return <button className = "answerButton" type="button"> {answer} </button>;
 };
 
 export default QuizzAnswerButton;
+
