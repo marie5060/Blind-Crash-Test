@@ -1,0 +1,25 @@
+.header-nav {
+  display: flex;
+  height: 6vw;
+  background: linear-gradient(170deg, #774cd3, #ae2aa9);
+}
+
+.header-nav-logo {
+  display: flex;
+  width: 10%;
+  margin: 15px;
+}
+
+.header-nav-links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 90%;
+}
+
+.header-nav-links li {
+  padding-right: 2vw;
+  padding-bottom: 1.5vw;
+  color: white;
+  font-weight: bold;
+}
