@@ -8,8 +8,6 @@ function App() {
     <div>
       <Header />
       <AppelApi />
-      <Content />
-      <Footer />
     </div>
   );
 }

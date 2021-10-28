@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import DisplayMusic from '../DisplayMusic';
+import DisplayMusic from './DisplayMusic';
 
 const sampleMusic = {
   title: 'fff',
