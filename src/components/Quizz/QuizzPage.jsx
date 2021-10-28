@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import QuizzCard from './QuizzCard';
-import QuizzScore from './QuizzScore';
-import LinkBtn from '../Bases/LinkBtn';
+// import QuizzScore from './QuizzScore';
+// import LinkBtn from '../Bases/LinkBtn';
 import './QuizzPage.css';
 import initialTracks from '../../severalTracks';
 
@@ -26,10 +26,10 @@ const QuizzPage = () => {
       <h1>Quizz</h1>
       <QuizzCard track={tracks[random]} />
       <div className="quizzBottom">
-        <QuizzScore />
+        {/* <QuizzScore /> */}
         <div className="linkBtnsContainer">
-          <LinkBtn />
-          <LinkBtn />
+          {/* <LinkBtn />
+          <LinkBtn /> */}
         </div>
       </div>
     </main>

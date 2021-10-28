@@ -2,7 +2,8 @@
 .loose {
   opacity: 0.3;
 }
-.answerButton { 
+
+.answerButton {
   width: 40%;
   height: 3vw;
   color: wheat;
@@ -15,4 +16,3 @@
 .chosenBtn {
   border: 5px solid black;
 }
-
