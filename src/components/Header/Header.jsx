@@ -23,6 +23,10 @@ const Header = () => {
           {' '}
           <Link to="/Resultats">Résultats</Link>{' '}
         </li>
+        <li>
+          {' '}
+          <Link to="/Quizz">Quizz</Link>{' '}
+        </li>
       </ul>
     </header>
   );
