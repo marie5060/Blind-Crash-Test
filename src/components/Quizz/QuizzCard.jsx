@@ -37,7 +37,10 @@ const QuizzCard = ({ track }) => {
         <QuizzAnswerButton answer={answers[2]} />
         <QuizzAnswerButton answer={answers[3]} />
       </div>
-      <TimerButton />
+      <div className="timerContainer">
+        <TimerButton />
+      </div>
+      
     </div>
   );
 };
