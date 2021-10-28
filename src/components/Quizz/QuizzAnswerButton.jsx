@@ -1,10 +1,20 @@
 /*eslint-disable*/
-import React from 'react';
-import './QuizzAnswerButton.css';
+import React, {useEffect, useState} from 'react';
+import './QuizzAnswerButton.css'; 
 
-const QuizzAnswerButton = ({ answer }) => {
-  return <button className = "answerButton" type="button"> {answer} </button>;
+const QuizzAnswerButton = ({ answer,  rightAnswer, handleClicked, btnClicked}) => {
+
+  let classes = "answerButton"
+
+  useEffect(() => {
+    classes += answer === rightAnswer ? "" : " loose";
+  }, [btnClicked])
+
+  return <button className = {classes} type="button" onClick={(e) => (
+    handleClicked(),
+    e.target.classList.add("chosenBtn")
+  )}> {answer} </button>;
 };
 
-export default QuizzAnswerButton;
+export default QuizzAnswerButton; 
 
