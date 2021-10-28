@@ -3,12 +3,14 @@ import React, {useEffect, useState} from 'react';
 import './QuizzAnswerButton.css'; 
 
 const QuizzAnswerButton = ({ answer,  rightAnswer, handleClicked, btnClicked}) => {
-
-  let classes = "answerButton"
-
-  useEffect(() => {
-    classes += answer === rightAnswer ? "" : " loose";
-  }, [btnClicked])
+  console.log('in btn it\'s clicked' + btnClicked)
+  let [classes, setClasses] = useState("answerButton");
+  btnClicked?setClasses(classes += (answer === rightAnswer ? "" : " loose"));
+  // let classes = "answerButton"
+  // useEffect(() => {
+  //   setClasses(classes += (answer === rightAnswer ? "" : " loose"));
+  //   console.log(classes, answer)
+  // }, [])
 
   return <button className = {classes} type="button" onClick={(e) => (
     handleClicked(),

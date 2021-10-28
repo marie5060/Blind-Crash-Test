@@ -15,7 +15,7 @@ const QuizzCard = ({ track }) => {
 
   const [btnClicked, setBtnClicked] = useState(false);
 
-   function shuffleArray(array2) {
+   function shuffleArray(array2) { 
     const array = array2;
     for (let i = array.length - 1; i > 0; i = i-1) {
         let j = Math.floor(Math.random() * (i + 1));
