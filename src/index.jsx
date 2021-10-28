@@ -9,3 +9,5 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById('root')
 );
+
+ReactDOM.render(<App />, document.getElementById('root'));
