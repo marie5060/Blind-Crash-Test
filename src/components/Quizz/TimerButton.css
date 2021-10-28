@@ -1,0 +1,13 @@
+.timerbutton {
+  display: flex;
+  flex-direction: column;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  box-shadow: 5px 5px 5px black;
+  font-size: 20px;
+}
