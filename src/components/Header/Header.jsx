@@ -10,7 +10,7 @@ const Header = () => {
       </div>
       <ul className="header-nav-links">
         <li>
-          <Link className="header-nav-links-a" exact to="/">
+          <Link className="header-nav-links-a" to="/">
             Accueil
           </Link>
         </li>
