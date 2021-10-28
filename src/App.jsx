@@ -1,4 +1,5 @@
-import React, { Switch, Route } from 'react-router-dom';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
 import AccueilPage from './components/Accueil/AccueilPage';
