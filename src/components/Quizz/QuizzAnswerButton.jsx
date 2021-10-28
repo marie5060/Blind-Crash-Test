@@ -3,7 +3,6 @@ import React, {useEffect, useState} from 'react';
 import './QuizzAnswerButton.css'; 
 
 const QuizzAnswerButton = ({ answer,  rightAnswer, handleClicked, btnClicked}) => {
-  console.log('in btn it\'s clicked' + btnClicked)
   let [classes, setClasses] = useState("answerButton");
   const [chosen, setChosen] = useState(false)
   // let classes = "answerButton"

@@ -1,7 +1,5 @@
 /*eslint-disable*/
 
-
-
 import React, { useState } from 'react';
 import QuizzAlbumPicture from './QuizzAlbumPicture';
 import QuizzAudio from './QuizzAudio';
@@ -25,12 +23,14 @@ const QuizzCard = ({ track }) => {
     }
   }
 
-  shuffleArray(answers); 
-
+  if(!btnClicked){
+    shuffleArray(answers);
+  }
+  
   // const rightAnswer = track.title_short;
   const rightAnswer = "bonnereponse"
 
-  const handleClicked = () => {
+  const handleClicked = () => { 
     setBtnClicked(true);
   }
   
