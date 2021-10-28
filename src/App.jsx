@@ -1,6 +1,5 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-import AppelApi from './components/Quizz/AppelApi';
 import './App.css';
 import Header from './components/Header/Header';
 import AccueilPage from './components/Accueil/AccueilPage';
@@ -20,8 +19,15 @@ function App() {
           <Route path="/Resultats" component={ResultatsPage} />
           <Route path="/Quizz" component={QuizzPage} />
         </Switch>
-        <AppelApi />
       </BrowserRouter>
+      <Header />
+      <QuizzPage />
+      <Switch>
+        <Route exact path="/" component={AccueilPage} />
+        <Route path="/Themes" component={ThemesPage} />
+        <Route path="/Resultats" component={ResultatsPage} />
+        <Route path="/Quizz" component={QuizzPage} />
+      </Switch>
     </div>
   );
 }
