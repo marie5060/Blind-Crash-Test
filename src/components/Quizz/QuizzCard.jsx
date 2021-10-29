@@ -27,8 +27,9 @@ const QuizzCard = ({ track }) => {
   // const rightAnswer = track.title_short;
   const rightAnswer = 'bonnereponse';
 
-  const handleClicked = () => {
+  const handleClick = () => {
     setBtnClicked(true);
+
   };
 
   return (
@@ -40,27 +41,28 @@ const QuizzCard = ({ track }) => {
       <div className="answerBtnContainer">
         <QuizzAnswerButton
           btnClicked={btnClicked}
-          handleClicked={handleClicked}
+          handleClick={handleClick}
           answer={answers[0]}
           rightAnswer={rightAnswer}
         />
         <QuizzAnswerButton
           btnClicked={btnClicked}
-          handleClicked={handleClicked}
+          handleClick={handleClick}
           answer={answers[1]}
           rightAnswer={rightAnswer}
         />
         <QuizzAnswerButton
           btnClicked={btnClicked}
-          handleClicked={handleClicked}
+          handleClick={handleClick}
           answer={answers[2]}
           rightAnswer={rightAnswer}
         />
         <QuizzAnswerButton
           btnClicked={btnClicked}
-          handleClicked={handleClicked}
+          handleClick={handleClick}
           answer={answers[3]}
           rightAnswer={rightAnswer}
+          cl
         />
       </div>
       <div className="timerContainer">
