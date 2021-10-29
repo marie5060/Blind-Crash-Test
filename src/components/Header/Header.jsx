@@ -1,7 +1,29 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import './Header.css';
 
 const Header = () => {
-  return <header>Coucou je suis le header</header>;
+  return (
+    <header className="header-nav">
+      <div className="header-nav-logo">
+        {/* <img src="projets\Crash-Blind-Test-\public\Logo_bct.gif" alt="logo" /> */}
+      </div>
+      <ul className="header-nav-links">
+        <li>
+          <Link to="/">Accueil</Link>
+        </li>
+        <li>
+          <Link to="/Themes">Thèmes</Link>
+        </li>
+        <li>
+          <Link to="/Resultats">Résultats</Link>
+        </li>
+        <li>
+          <Link to="/Quizz">Quizz</Link>
+        </li>
+      </ul>
+    </header>
+  );
 };
 
 export default Header;

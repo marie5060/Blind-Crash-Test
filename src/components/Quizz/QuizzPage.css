@@ -1,0 +1,14 @@
+h1 {
+  text-align: center;
+  font-size: 50px;
+}
+
+.quizzBottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.linkBtnsContainer {
+  display: flex;
+  flex-direction: column;
+}
