@@ -7,10 +7,6 @@ const QuizzAnswerButton = ({ answer,  rightAnswer, handleClick, btnClicked}) => 
 
 let buttonClass = "answerButton";
 
-  // const looseBtn = "answerButton loose";
-  // const chosenLooseBtn = "answerButton loose chosenBtn";
-  // const chosenBtn = "answerButton chosenBtn";
-
     if (btnClicked) {
       if (chosen) {
         if (answer === rightAnswer) {
