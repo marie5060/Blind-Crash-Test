@@ -1,17 +1,20 @@
 {
   "files": {
-    "main.js": "/Blind-Crash-Test/static/js/main.053ce993.chunk.js",
-    "main.js.map": "/Blind-Crash-Test/static/js/main.053ce993.chunk.js.map",
+    "main.css": "/Blind-Crash-Test/static/css/main.e2dce7e4.chunk.css",
+    "main.js": "/Blind-Crash-Test/static/js/main.d6a9ba82.chunk.js",
+    "main.js.map": "/Blind-Crash-Test/static/js/main.d6a9ba82.chunk.js.map",
     "runtime-main.js": "/Blind-Crash-Test/static/js/runtime-main.d4259db8.js",
     "runtime-main.js.map": "/Blind-Crash-Test/static/js/runtime-main.d4259db8.js.map",
-    "static/js/2.89af6a52.chunk.js": "/Blind-Crash-Test/static/js/2.89af6a52.chunk.js",
-    "static/js/2.89af6a52.chunk.js.map": "/Blind-Crash-Test/static/js/2.89af6a52.chunk.js.map",
+    "static/js/2.afbe335f.chunk.js": "/Blind-Crash-Test/static/js/2.afbe335f.chunk.js",
+    "static/js/2.afbe335f.chunk.js.map": "/Blind-Crash-Test/static/js/2.afbe335f.chunk.js.map",
     "index.html": "/Blind-Crash-Test/index.html",
-    "static/js/2.89af6a52.chunk.js.LICENSE.txt": "/Blind-Crash-Test/static/js/2.89af6a52.chunk.js.LICENSE.txt"
+    "static/css/main.e2dce7e4.chunk.css.map": "/Blind-Crash-Test/static/css/main.e2dce7e4.chunk.css.map",
+    "static/js/2.afbe335f.chunk.js.LICENSE.txt": "/Blind-Crash-Test/static/js/2.afbe335f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.d4259db8.js",
-    "static/js/2.89af6a52.chunk.js",
-    "static/js/main.053ce993.chunk.js"
+    "static/js/2.afbe335f.chunk.js",
+    "static/css/main.e2dce7e4.chunk.css",
+    "static/js/main.d6a9ba82.chunk.js"
   ]
 }
