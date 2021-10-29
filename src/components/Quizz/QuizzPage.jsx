@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
+// import LinkBtn from '../Bases/LinkBtn';
 import QuizzCard from './QuizzCard';
 // import QuizzScore from './QuizzScore';
-// import LinkBtn from '../Bases/LinkBtn';
 import './QuizzPage.css';
 import initialTracks from '../../severalTracks';
 
 const QuizzPage = () => {
   const [tracks, setTracks] = React.useState(initialTracks);
   const random = Math.floor(Math.random() * tracks.length);
-  console.log(random);
 
   useEffect(() => {
     axios

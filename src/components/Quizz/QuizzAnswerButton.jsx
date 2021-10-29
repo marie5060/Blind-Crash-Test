@@ -2,28 +2,31 @@
 import React, {useEffect, useState} from 'react';
 import './QuizzAnswerButton.css'; 
 
-const QuizzAnswerButton = ({ answer,  rightAnswer, handleClicked, btnClicked}) => {
-  let [classes, setClasses] = useState("answerButton");
+const QuizzAnswerButton = ({ answer,  rightAnswer, handleClick, btnClicked}) => {
   const [chosen, setChosen] = useState(false)
-  // let classes = "answerButton"
-  useEffect(() => {
+
+let buttonClass = "answerButton";
+
+  // const looseBtn = "answerButton loose";
+  // const chosenLooseBtn = "answerButton loose chosenBtn";
+  // const chosenBtn = "answerButton chosenBtn";
+
     if (btnClicked) {
       if (chosen) {
         if (answer === rightAnswer) {
-          setClasses("answerButton chosenBtn")
+          buttonClass += " chosenBtn";
         } else {
-          setClasses("answerButton chosenBtn loose")
+          buttonClass += " loose chosenBtn";
         }
-      } else if (!chosen && answer !== rightAnswer) {
-        setClasses("answerButton loose")
-      }
+      } else if ( answer !== rightAnswer) {
+          buttonClass += " loose";
+      } 
     }
-  }, [btnClicked])
 
-  return <button className = {classes} type="button" onClick={(e) => (
-    handleClicked(),
+  return <button className = {buttonClass} type="button" onClick={(e) => (
+    handleClick(), 
     setChosen(true)
-  )}> {answer} </button>;
+  )}> {answer} </button>
 };
 
 export default QuizzAnswerButton; 

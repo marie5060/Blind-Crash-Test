@@ -10,9 +10,7 @@ const Header = () => {
       </div>
       <ul className="header-nav-links">
         <li>
-          <Link exact to="/">
-            Accueil
-          </Link>
+          <Link to="/">Accueil</Link>
         </li>
         <li>
           <Link to="/Themes">Thèmes</Link>
