@@ -1,29 +1,49 @@
-/*eslint-disable*/
-import React, {useEffect, useState} from 'react';
-import './QuizzAnswerButton.css'; 
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import './QuizzAnswerButton.css';
 
-const QuizzAnswerButton = ({ answer,  rightAnswer, handleClick, btnClicked}) => {
-  const [chosen, setChosen] = useState(false)
+const QuizzAnswerButton = ({
+  answer,
+  rightAnswer,
+  handleClick,
+  btnClicked,
+}) => {
+  const [chosen, setChosen] = useState(false);
 
-let buttonClass = "answerButton";
+  let buttonClass = 'answerButton';
 
-    if (btnClicked) {
-      if (chosen) {
-        if (answer === rightAnswer) {
-          buttonClass += " chosenBtn";
-        } else {
-          buttonClass += " loose chosenBtn";
-        }
-      } else if ( answer !== rightAnswer) {
-          buttonClass += " loose";
-      } 
+  if (btnClicked) {
+    if (chosen) {
+      if (answer === rightAnswer) {
+        buttonClass += ' chosenBtn';
+      } else {
+        buttonClass += ' loose chosenBtn';
+      }
+    } else if (answer !== rightAnswer) {
+      buttonClass += ' loose';
     }
+  }
 
-  return <button className = {buttonClass} type="button" onClick={(e) => (
-    handleClick(), 
-    setChosen(true)
-  )}> {answer} </button>
+  return (
+    <button
+      className={buttonClass}
+      type="button"
+      onClick={() => {
+        handleClick();
+        setChosen(true);
+      }}
+    >
+      {' '}
+      {answer}{' '}
+    </button>
+  );
 };
 
-export default QuizzAnswerButton; 
+export default QuizzAnswerButton;
 
+QuizzAnswerButton.propTypes = {
+  answer: PropTypes.string.isRequired,
+  rightAnswer: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  btnClicked: PropTypes.bool.isRequired,
+};

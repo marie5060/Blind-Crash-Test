@@ -1,16 +1,11 @@
-/* eslint-disable */
 import React from 'react';
+import PropTypes from 'prop-types';
 import './QuizzAudio.css';
 
 const QuizzAudio = ({ url }) => {
   return (
     <div className="audioContainer">
-      <audio
-        className="audio"
-        controls
-        src={url}
-        autoPlay
-      >
+      <audio className="audio" controls src={url} autoPlay>
         Your browser does not support the
         <code>audio</code> element.
         <track
@@ -21,8 +16,11 @@ const QuizzAudio = ({ url }) => {
         />
       </audio>
     </div>
-    
   );
 };
 
 export default QuizzAudio;
+
+QuizzAudio.propTypes = {
+  url: PropTypes.string.isRequired,
+};
