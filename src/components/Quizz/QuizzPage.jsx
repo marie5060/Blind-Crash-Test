@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect } from 'react';
 import axios from 'axios';
 // import LinkBtn from '../Bases/LinkBtn';
@@ -16,7 +17,7 @@ const QuizzPage = () => {
         'https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/9609091082?&limit=50' // céline dion playlist emilie
       ) // https://cors-anywhere.herokuapp.com/ à ajouter au début
       .then((response) => response.data.tracks.data)
-      .then((data) => setTracks(data));
+      .then((data) => setTracks(data))
   }, []);
 
   // la bonne rep est dans track.title_short
