@@ -1,5 +1,5 @@
-/* eslint-disable */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import QuizzAlbumPicture from './QuizzAlbumPicture';
 import QuizzAudio from './QuizzAudio';
 import QuizzAnswerButton from './QuizzAnswerButton';
@@ -29,7 +29,6 @@ const QuizzCard = ({ track }) => {
 
   const handleClick = () => {
     setBtnClicked(true);
-
   };
 
   return (
@@ -73,3 +72,7 @@ const QuizzCard = ({ track }) => {
 };
 
 export default QuizzCard;
+
+QuizzCard.propTypes = {
+  track: PropTypes.oneOfType([PropTypes.object]).isRequired,
+};

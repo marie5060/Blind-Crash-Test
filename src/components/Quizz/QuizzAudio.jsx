@@ -1,5 +1,5 @@
-/* eslint-disable */
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player'
 import './QuizzAudio.css';
 
@@ -8,8 +8,11 @@ const QuizzAudio = ({ url }) => {
     <div className="audioContainer">
       <ReactPlayer url={url} controls={true} playing={true}/>
     </div>
-    
   );
 };
 
 export default QuizzAudio;
+
+QuizzAudio.propTypes = {
+  url: PropTypes.string.isRequired,
+};
