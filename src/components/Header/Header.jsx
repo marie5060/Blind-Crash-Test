@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
+import logo from './logo.gif';
 
 const Header = () => {
   return (
     <header className="header-nav">
       <div className="header-nav-logo">
-        <img src="./blind-logo.gif" alt="logo" />
+        <img src={logo} alt="logo" />
       </div>
       <ul className="header-nav-links">
         <li>

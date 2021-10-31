@@ -1,6 +1,6 @@
 .header-nav {
   display: flex;
-  height: 6vw;
+  height: 8vw;
   background: linear-gradient(170deg, #774cd3, #ae2aa9);
 }
 
@@ -8,10 +8,6 @@
   display: flex;
   width: 10%;
   margin: 15px;
-}
-
-.header-nav-logo img {
-  width: 100%;
 }
 
 .header-nav-links {
