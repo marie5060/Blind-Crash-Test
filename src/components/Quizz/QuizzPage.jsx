@@ -14,10 +14,19 @@ const QuizzPage = () => {
   useEffect(() => {
     axios
       .get(
-        'https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/9609091082?&limit=50' // céline dion playlist emilie
+        'https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/9631244962?' // céline dion playlist emilie
       ) // https://cors-anywhere.herokuapp.com/ à ajouter au début
       .then((response) => response.data.tracks.data)
-      .then((data) => setTracks(data))
+      .then((data) => {
+        setTracks(data);
+        console.log("dataLength " + data.length);
+        const preview = data.filter((obj) => obj.preview);
+        console.log("prevLength " + preview.length);
+        const title_short = data.filter((obj) => obj.title_short);
+        console.log("titleLength " + title_short.length);
+        const picture = data.filter((obj) => obj.album.cover_medium); 
+        console.log("pictureLength " + picture.length);
+      });
   }, []);
 
   // la bonne rep est dans track.title_short
