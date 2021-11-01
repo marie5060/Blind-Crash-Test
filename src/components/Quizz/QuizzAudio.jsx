@@ -6,7 +6,7 @@ import './QuizzAudio.css';
 const QuizzAudio = ({ url }) => {
   return (
     <div className="audioContainer">
-      <ReactPlayer url={url} controls playing />
+      <ReactPlayer url={url} controls playing volume={0.1} />
     </div>
   );
 };

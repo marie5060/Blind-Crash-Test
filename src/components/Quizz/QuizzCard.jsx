@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable */
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import QuizzAlbumPicture from './QuizzAlbumPicture';
 import QuizzAudio from './QuizzAudio';
@@ -12,12 +13,6 @@ const QuizzCard = ({ track, nextQuestion }) => {
   // const rightAnswer = track.title_short;
   const rightAnswer = 'bonnereponse';
 
-  const handleClick = () => {
-    setBtnClicked(true);
-    setTimeout(nextQuestion, 5000);
-    // setTimeout(setBtnClicked(false), 5000);
-  };
-
   function shuffleArray(array2) {
     const array = array2;
     for (let i = array.length - 1; i > 0; i -= 1) {
@@ -28,6 +23,12 @@ const QuizzCard = ({ track, nextQuestion }) => {
     }
   }
 
+  const handleClick = () => {
+    setBtnClicked(true);
+    setTimeout(nextQuestion, 5000);
+    setTimeout(() => setBtnClicked(false),5000);
+  };
+
   if (!btnClicked) {
     shuffleArray(answers);
   }
@@ -36,6 +37,14 @@ const QuizzCard = ({ track, nextQuestion }) => {
     <div className="quizzCard">
       <div className="pictureContainer">
         <QuizzAlbumPicture url={track.album.cover_medium} />
+        {/* <div className="nextTrack">Morceau suivant</div> */}
+        {btnClicked ? (
+          <div className="nextTrackBg">
+            <div className="nextTrackText">Morceau suivant</div>
+          </div>
+        ) : (
+          ''
+        )}
         <QuizzAudio url={track.preview} />
       </div>
       <div className="answerBtnContainer">

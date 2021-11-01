@@ -12,9 +12,12 @@ const QuizzPage = () => {
   const [nbQuizz, setNbQuizz] = useState(1);
   const [waitingCount, setWaitingCount] = useState(5);
   const random = Math.floor(Math.random() * tracks.length);
+  // let random = 0;
 
   const nextQuestion = () => { 
     setNbQuizz(nbQuizz + 1);
+    console.log(nbQuizz);
+    console.log("random " + random)
   };
 
   useEffect( () => {
@@ -26,14 +29,18 @@ const QuizzPage = () => {
     };
   }, [waitingCount]) 
 
-  useEffect(() => {
-    axios
-      .get(
-        'https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/9609091082?&limit=50' // céline dion playlist emilie
-      ) // https://cors-anywhere.herokuapp.com/ à ajouter au début
-      .then((response) => response.data.tracks.data)
-      .then((data) => setTracks(data))
-  }, []);
+  // useEffect(() => {
+  //   random = Math.floor(Math.random() * tracks.length);
+  // }, [nbQuizz])
+
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       'https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/9609091082?&limit=50' // céline dion playlist emilie
+  //     ) // https://cors-anywhere.herokuapp.com/ à ajouter au début
+  //     .then((response) => response.data.tracks.data)
+  //     .then((data) => setTracks(data))
+  // }, []);
 
   // la bonne rep est dans track.title_short
   return (
