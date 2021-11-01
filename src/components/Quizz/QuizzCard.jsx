@@ -7,8 +7,16 @@ import TimerButton from './TimerButton';
 import './QuizzCard.css';
 
 const answers = ['fausse1', 'fausse2', 'fausse3', 'bonnereponse'];
-const QuizzCard = ({ track }) => {
+const QuizzCard = ({ track, nextQuestion }) => {
   const [btnClicked, setBtnClicked] = useState(false);
+  // const rightAnswer = track.title_short;
+  const rightAnswer = 'bonnereponse';
+
+  const handleClick = () => {
+    setBtnClicked(true);
+    setTimeout(nextQuestion, 5000);
+    // setTimeout(setBtnClicked(false), 5000);
+  };
 
   function shuffleArray(array2) {
     const array = array2;
@@ -23,13 +31,6 @@ const QuizzCard = ({ track }) => {
   if (!btnClicked) {
     shuffleArray(answers);
   }
-
-  // const rightAnswer = track.title_short;
-  const rightAnswer = 'bonnereponse';
-
-  const handleClick = () => {
-    setBtnClicked(true);
-  };
 
   return (
     <div className="quizzCard">
@@ -75,4 +76,5 @@ export default QuizzCard;
 
 QuizzCard.propTypes = {
   track: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  nextQuestion: PropTypes.func.isRequired,
 };
