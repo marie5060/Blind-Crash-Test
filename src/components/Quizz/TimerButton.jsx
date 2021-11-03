@@ -3,24 +3,31 @@ import './TimerButton.css';
 
 // Création du timer
 const TimerButton = () => {
-  const [count, setCount] = useState(30);
-
+  const [leftTime, setLeftTime] = useState(100);
+  const timerStyle = {
+    width: `${leftTime}%`,
+  };
   React.useEffect(() => {
-    const timer = count > 0 && setInterval(() => setCount(count - 1), 1000);
+    const timer =
+      leftTime > 0 && setInterval(() => setLeftTime(leftTime - 0.1), 30);
     return () => clearInterval(timer);
-  }, [count]);
-
+  }, [leftTime]);
+  // const element = document.getElementById('progressBar');
+  // const timeleft = 30;
+  // const timetotal = 30;
+  // const progressBarWidth = (timeleft * element.offsetWidth) / timetotal;
+  // element
+  //   .find('div')
+  //   .animate({ width: progressBarWidth }, 500)
+  //   .html(`${Math.floor(timeleft / 60)}:${timeleft % 60}`);
+  // if (timeleft > 0) {
+  //   setTimeout(() => {
+  //     TimerButton(timeleft - 1, timetotal, element);
+  //   }, 1000);
+  // }
   return (
-    <div className="timerbutton">
-      Timer {count}
-      {/* Compteur de questions */}
-      <div>
-        <p>Questions 1/10</p>
-      </div>
-      {/* Création du bouton */}
-      <div>
-        <button type="button">Suivant</button>
-      </div>
+    <div id="progressBar">
+      <div className="bar" style={timerStyle} />
     </div>
   );
 };
