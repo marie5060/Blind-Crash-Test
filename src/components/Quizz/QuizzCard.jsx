@@ -10,6 +10,8 @@ const answers = ['fausse1', 'fausse2', 'fausse3', 'bonnereponse'];
 const QuizzCard = ({ track }) => {
   const [btnClicked, setBtnClicked] = useState(false);
 
+  // penser à récupérer le track.length pour le random en dessous
+
   function shuffleArray(array2) {
     const array = array2;
     for (let i = array.length - 1; i > 0; i -= 1) {
