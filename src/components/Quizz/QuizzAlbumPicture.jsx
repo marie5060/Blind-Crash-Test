@@ -1,5 +1,5 @@
-/* eslint-disable */
 import React from 'react';
+import PropTypes from 'prop-types';
 import './QuizzAlbumPicture.css';
 
 const QuizzAlbumPicture = ({ url }) => {
@@ -11,3 +11,7 @@ const QuizzAlbumPicture = ({ url }) => {
 };
 
 export default QuizzAlbumPicture;
+
+QuizzAlbumPicture.propTypes = {
+  url: PropTypes.string.isRequired,
+};

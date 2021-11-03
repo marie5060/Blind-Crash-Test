@@ -25,3 +25,47 @@
   justify-content: center;
   margin-top: -5vh;
 }
+
+.nextTrackText {
+  font-size: 1vw;
+  width: fit-content;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: wheat;
+  z-index: 1;
+}
+
+.nextTrackBg {
+  background-color: transparent;
+  border-radius: 20px;
+  position: absolute;
+  right: 10vw;
+  top: 15vh;
+}
+
+.nextTrackBg::before {
+  content: '';
+  text-align: center;
+  color: wheat;
+  display: block;
+  position: absolute;
+  border-radius: 20px;
+  z-index: -1;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #774cd3;
+  animation-duration: 5s;
+  animation-name: fill;
+}
+
+@keyframes fill {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
