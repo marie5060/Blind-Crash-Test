@@ -12,6 +12,17 @@ const QuizzPage = () => {
   const [waitingCount, setWaitingCount] = useState(5);
   const random = Math.floor(Math.random() * tracks.length);
 
+  const badTracksArray = [];
+  for (let i = 0; i < 3; i += 1) {
+    let number = Math.floor(Math.random() * tracks.length);
+    const numbersArray = [];
+    numbersArray.push(number);
+    while (number === random || numbersArray.includes(number)) {
+      number = Math.floor(Math.random() * tracks.length);
+    }
+    badTracksArray.push(tracks[number]);
+  }
+
   const nextQuestion = () => {
     setNbQuizz(nbQuizz + 1);
   };
@@ -28,7 +39,7 @@ const QuizzPage = () => {
   useEffect(() => {
     axios
       .get(
-        'https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/9609091082?&limit=50' // céline dion playlist emilie
+        'https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/6223140704?&limit=50' // céline dion playlist emilie
       ) // https://cors-anywhere.herokuapp.com/ à ajouter au début
       .then((response) => response.data.tracks.data)
       .then((data) => setTracks(data));
@@ -43,7 +54,11 @@ const QuizzPage = () => {
           <div className="waitingCount">{waitingCount}</div>
         </div>
       ) : (
-        <QuizzCard track={tracks[random]} nextQuestion={nextQuestion} />
+        <QuizzCard
+          goodTrack={tracks[random]}
+          badTrackArray={badTracksArray}
+          nextQuestion={nextQuestion}
+        />
       )}
       <div className="quizzBottom">
         {/* <QuizzScore /> */}

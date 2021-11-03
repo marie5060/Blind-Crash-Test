@@ -7,16 +7,24 @@ import QuizzAnswerButton from './QuizzAnswerButton';
 import TimerButton from './TimerButton';
 import './QuizzCard.css';
 
-//temporary tab (waiting real answers feature)
-const answers = ['fausse1', 'fausse2', 'fausse3', 'bonnereponse'];
 
-const QuizzCard = ({ track, nextQuestion }) => {
+const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   const [btnClicked, setBtnClicked] = useState(false);
   
-  // const rightAnswer = track.title_short;
-  console.log(track.title_short)
-  const rightAnswer = 'bonnereponse';
+  const badAnswers = [];
+  for (let i = 0; i < badTrackArray.length; i+= 1) {
+    badAnswers.push(badTrackArray[i].title_short)
+  }
+  console.log(badAnswers);
 
+  // const rightAnswer = goodTrack.title_short;
+  const rightAnswer = goodTrack.title_short;
+  console.log(rightAnswer);
+
+  //temporary tab (waiting real answers feature)
+  const answers = [...badAnswers, rightAnswer];
+  console.log(answers);
+  
   function shuffleArray(array2) {
     const array = array2;
     for (let i = array.length - 1; i > 0; i -= 1) {
@@ -40,7 +48,7 @@ const QuizzCard = ({ track, nextQuestion }) => {
   return (
     <div className="quizzCard">
       <div className="pictureContainer">
-        <QuizzAlbumPicture url={track.album.cover_medium} />
+        <QuizzAlbumPicture url={goodTrack.album.cover_medium} />
         {btnClicked ? (
           <div className="nextTrackBg">
             <div className="nextTrackText">Morceau suivant</div>
@@ -48,7 +56,7 @@ const QuizzCard = ({ track, nextQuestion }) => {
         ) : (
           ''
         )}
-        <QuizzAudio url={track.preview} />
+        <QuizzAudio url={goodTrack.preview} />
       </div>
       <div className="answerBtnContainer">
         <QuizzAnswerButton
