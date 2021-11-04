@@ -33,8 +33,7 @@ const QuizzAnswerButton = ({
         setChosen(true);
       }}
     >
-      {' '}
-      {answer}{' '}
+      {answer}
     </button>
   );
 };
