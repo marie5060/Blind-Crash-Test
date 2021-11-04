@@ -1,8 +1,10 @@
 #progressBar {
+  display: flex;
   width: 90%;
   margin: 10px auto;
-  height: 22px;
+  height: 20px;
   background-color: rgb(107, 6, 107);
+  border-radius: 2%;
 }
 
 #progressBar div {
@@ -10,8 +12,6 @@
   text-align: right;
   padding: 0 10px;
   line-height: 22px; /* same as #progressBar height if we want text middle aligned */
-
-  /* width: 0; */
   background-color: #ea00c3;
   box-sizing: border-box;
 }
