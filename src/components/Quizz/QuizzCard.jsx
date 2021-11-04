@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import QuizzAlbumPicture from './QuizzAlbumPicture';
@@ -7,23 +6,12 @@ import QuizzAnswerButton from './QuizzAnswerButton';
 import TimerButton from './TimerButton';
 import './QuizzCard.css';
 
-
 const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   const [btnClicked, setBtnClicked] = useState(false);
-  
-  // récupére les titles des mauvaises réponses
-  const badAnswers = [];
-  for (let i = 0; i < badTrackArray.length; i+= 1) {
-    badAnswers.push(badTrackArray[i].title_short)
-  }
+  const [answers, setAnswers] = useState([]);
 
-  // récupére le title de la bonne réponse
-  const rightAnswer = goodTrack.title_short;
+  const theRightAnswer = goodTrack.title_short;
 
-  // Tableau des titles de toutes les réponses
-  let answers = [...badAnswers, rightAnswer];
-  console.log(`réponse avant mélange : ${answers}`)
-  
   function shuffleArray(array2) {
     const array = array2;
     for (let i = array.length - 1; i > 0; i -= 1) {
@@ -32,20 +20,38 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
       array[i] = array[j];
       array[j] = temp;
     }
+    return array;
   }
+
+  const creerTableauReponses = () => {
+    // récupére les titles des mauvaises réponses
+    const badAnswers = [];
+    for (let i = 0; i < badTrackArray.length; i += 1) {
+      badAnswers.push(badTrackArray[i].title_short);
+    }
+    // récupére le title de la bonne réponse
+    const rightAnswer = goodTrack.title_short;
+    // je mélange et modifie answers
+    setAnswers(shuffleArray([...badAnswers, rightAnswer]));
+  };
+
+  useEffect(() => {
+    creerTableauReponses();
+    console.log(`réponse après mélange 1: ${answers}`);
+  }, []);
+
+  useEffect(() => {
+    if (!btnClicked) {
+      creerTableauReponses();
+    }
+    console.log(`réponse après mélange 2: ${answers}`);
+  }, [btnClicked]);
 
   const handleClick = () => {
     setBtnClicked(true);
     setTimeout(nextQuestion, 5000);
-    setTimeout(() => setBtnClicked(false),5000);
+    setTimeout(() => setBtnClicked(false), 5000);
   };
-
-  useEffect(() => {
-    if (!btnClicked) {
-      shuffleArray(answers);
-    }
-    console.log(`réponse après mélagne: ${answers}`);
-  }, [btnClicked])
 
   return (
     <div className="quizzCard">
@@ -61,29 +67,31 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
         <QuizzAudio url={goodTrack.preview} />
       </div>
       <div className="answerBtnContainer">
+        {/* map sur composant */}
+
         <QuizzAnswerButton
           btnClicked={btnClicked}
           handleClick={handleClick}
           answer={answers[0]}
-          rightAnswer={rightAnswer}
+          rightAnswer={theRightAnswer}
         />
         <QuizzAnswerButton
           btnClicked={btnClicked}
           handleClick={handleClick}
           answer={answers[1]}
-          rightAnswer={rightAnswer}
+          rightAnswer={theRightAnswer}
         />
         <QuizzAnswerButton
           btnClicked={btnClicked}
           handleClick={handleClick}
           answer={answers[2]}
-          rightAnswer={rightAnswer}
+          rightAnswer={theRightAnswer}
         />
         <QuizzAnswerButton
           btnClicked={btnClicked}
           handleClick={handleClick}
           answer={answers[3]}
-          rightAnswer={rightAnswer}
+          rightAnswer={theRightAnswer}
         />
       </div>
       <div className="timerContainer">
@@ -97,5 +105,6 @@ export default QuizzCard;
 
 QuizzCard.propTypes = {
   goodTrack: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  badTrackArray: PropTypes.oneOfType([PropTypes.array]).isRequired,
   nextQuestion: PropTypes.func.isRequired,
 };
