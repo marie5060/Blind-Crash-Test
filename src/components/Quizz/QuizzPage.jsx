@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+/* eslint-disable */
 // import LinkBtn from '../Bases/LinkBtn';
 import QuizzCard from './QuizzCard';
 // import QuizzScore from './QuizzScore';
 import './QuizzPage.css';
-import initialTracks from '../../severalTracks';
+import initialTracks from 'severalTracks';
 
 const QuizzPage = () => {
+
   const [tracks, setTracks] = React.useState(initialTracks);
   const [nbQuizz, setNbQuizz] = useState(1);
   const [waitingCount, setWaitingCount] = useState(5);
@@ -28,11 +30,12 @@ const QuizzPage = () => {
   useEffect(() => {
     axios
       .get(
-        'https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/9609091082?&limit=50' // céline dion playlist emilie
+        'https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/9626980522?&limit=50'
       ) // https://cors-anywhere.herokuapp.com/ à ajouter au début
       .then((response) => response.data.tracks.data)
       .then((data) => setTracks(data));
   }, []);
+
 
   // la bonne rep est dans track.title_short
   return (
