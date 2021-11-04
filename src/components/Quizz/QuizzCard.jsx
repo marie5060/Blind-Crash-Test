@@ -74,32 +74,14 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
         <QuizzAudio url={goodTrack.preview} />
       </div>
       <div className="answerBtnContainer">
-        {/* map sur composant */}
-
-        <QuizzAnswerButton
-          btnClicked={btnClicked}
-          handleClick={handleClick}
-          answer={answers[0]}
-          rightAnswer={theRightAnswer}
-        />
-        <QuizzAnswerButton
-          btnClicked={btnClicked}
-          handleClick={handleClick}
-          answer={answers[1]}
-          rightAnswer={theRightAnswer}
-        />
-        <QuizzAnswerButton
-          btnClicked={btnClicked}
-          handleClick={handleClick}
-          answer={answers[2]}
-          rightAnswer={theRightAnswer}
-        />
-        <QuizzAnswerButton
-          btnClicked={btnClicked}
-          handleClick={handleClick}
-          answer={answers[3]}
-          rightAnswer={theRightAnswer}
-        />
+        {answers.map((answer) => (
+          <QuizzAnswerButton
+            btnClicked={btnClicked}
+            handleClick={handleClick}
+            answer={answer}
+            rightAnswer={theRightAnswer}
+          />
+        ))}
       </div>
       <div className="timerContainer">
         <TimerButton
