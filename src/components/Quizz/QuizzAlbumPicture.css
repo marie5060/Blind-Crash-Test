@@ -1,0 +1,8 @@
+.picture {
+  text-align: center;
+  height: 30vh;
+}
+
+.picture img {
+  height: 100%;
+}
