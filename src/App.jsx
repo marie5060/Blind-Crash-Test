@@ -9,7 +9,6 @@ import QuizzPage from './components/Quizz/QuizzPage';
 
 function App() {
   const [chosenId, setChosenId] = React.useState(0);
-  console.log(chosenId);
 
   return (
     <div>
@@ -23,7 +22,10 @@ function App() {
             component={() => <ThemesPage setChosenId={setChosenId} />}
           />
           <Route path="/BlindTest/Resultats" component={ResultatsPage} />
-          <Route path="/BlindTest/Quizz" component={QuizzPage} />
+          <Route
+            path="/BlindTest/Quizz"
+            component={() => <QuizzPage chosenId={chosenId} />}
+          />
           <Route exact path="/" component={AccueilPage} />
         </Switch>
       </BrowserRouter>

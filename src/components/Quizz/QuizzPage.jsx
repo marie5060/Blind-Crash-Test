@@ -7,16 +7,12 @@ import QuizzCard from './QuizzCard';
 import './QuizzPage.css';
 import initialTracks from 'severalTracks';
 
-const QuizzPage = () => {
+const QuizzPage = ({chosenId}) => {
 
   const [tracks, setTracks] = React.useState(initialTracks);
   const [nbQuizz, setNbQuizz] = useState(1);
   const [waitingCount, setWaitingCount] = useState(5);
   const random = Math.floor(Math.random() * tracks.length);
-
-  const nextQuestion = () => {
-    setNbQuizz(nbQuizz + 1);
-  };
 
   useEffect(() => {
     const timer =
@@ -30,12 +26,15 @@ const QuizzPage = () => {
   useEffect(() => {
     axios
       .get(
-        'https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/9626980522?&limit=50'
+        `https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/${chosenId.themeId}?&limit=50`
       ) // https://cors-anywhere.herokuapp.com/ à ajouter au début
       .then((response) => response.data.tracks.data)
       .then((data) => setTracks(data));
   }, []);
 
+  const nextQuestion = () => {
+    setNbQuizz(nbQuizz + 1);
+  };
 
   // la bonne rep est dans track.title_short
   return (
