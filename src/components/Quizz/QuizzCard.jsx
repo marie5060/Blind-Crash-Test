@@ -21,7 +21,7 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   const rightAnswer = `good ${goodTrack.title_short}`;
 
   // Tableau des titles de toutes les réponses
-  const answers = [...badAnswers, rightAnswer];
+  let answers = [...badAnswers, rightAnswer];
   console.log(`réponse avant mélange : ${answers}`)
   
   function shuffleArray(array2) {
@@ -40,10 +40,12 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
     setTimeout(() => setBtnClicked(false),5000);
   };
 
-  if (!btnClicked) {
-    shuffleArray(answers);
-  }
-  console.log(`réponse après mélagne: ${answers}`);
+  useEffect(() => {
+    if (!btnClicked) {
+      answers = shuffleArray(answers);
+    }
+    console.log(`réponse après mélagne: ${answers}`);
+  }, [btnClicked])
 
   return (
     <div className="quizzCard">
