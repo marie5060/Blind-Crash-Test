@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 /* eslint-disable */
 import PropTypes from 'prop-types';
@@ -12,14 +11,11 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   const [btnClicked, setBtnClicked] = useState(false);
   const [answers, setAnswers] = useState([]);
   const theRightAnswer = goodTrack.title_short;
+  
 // temporary tab (waiting real answers feature)
   const [leftTimeWhenClick, setLeftTimeWhenClick] = useState(100);
   console.log(typeof leftTimeWhenClick);
   console.log(`${leftTimeWhenClick.toFixed(0)}%`);
-
-  // const rightAnswer = track.title_short;
-  console.log(track.title_short);
-  const rightAnswer = 'bonnereponse';
 
   // penser à récupérer le track.length pour le random en dessous
 

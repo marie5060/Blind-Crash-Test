@@ -9,14 +9,13 @@ import initialTracks from 'severalTracks';
 
 const QuizzPage = ({chosenId}) => {
 
-  const [tracks, setTracks] = React.useState(initialTracks);
+  const [tracks, setTracks] = useState(initialTracks);
   const [nbQuizz, setNbQuizz] = useState(1);
   const [waitingCount, setWaitingCount] = useState(5);
 
   const random = Math.floor(Math.random() * tracks.length);
 
   // Timer
-
   useEffect(() => {
     const timer =
       waitingCount > 0 &&
@@ -50,8 +49,6 @@ const QuizzPage = ({chosenId}) => {
     }
     badTracksArray.push(tracks[number]);
   }
-
-  // la bonne rep est dans track.title_short
   
   return (
     <main>
