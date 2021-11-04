@@ -1,5 +1,4 @@
-/* eslint-disable */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import QuizzAlbumPicture from './QuizzAlbumPicture';
 import QuizzAudio from './QuizzAudio';
@@ -7,14 +6,17 @@ import QuizzAnswerButton from './QuizzAnswerButton';
 import TimerButton from './TimerButton';
 import './QuizzCard.css';
 
-//temporary tab (waiting real answers feature)
+// temporary tab (waiting real answers feature)
 const answers = ['fausse1', 'fausse2', 'fausse3', 'bonnereponse'];
 
 const QuizzCard = ({ track, nextQuestion }) => {
   const [btnClicked, setBtnClicked] = useState(false);
-  
+  const [leftTimeWhenClick, setLeftTimeWhenClick] = useState(100);
+  console.log(typeof leftTimeWhenClick);
+  console.log(`${leftTimeWhenClick.toFixed(0)}%`);
+
   // const rightAnswer = track.title_short;
-  console.log(track.title_short)
+  console.log(track.title_short);
   const rightAnswer = 'bonnereponse';
 
   function shuffleArray(array2) {
@@ -30,7 +32,7 @@ const QuizzCard = ({ track, nextQuestion }) => {
   const handleClick = () => {
     setBtnClicked(true);
     setTimeout(nextQuestion, 5000);
-    setTimeout(() => setBtnClicked(false),5000);
+    setTimeout(() => setBtnClicked(false), 5000);
   };
 
   if (!btnClicked) {
@@ -78,7 +80,10 @@ const QuizzCard = ({ track, nextQuestion }) => {
         />
       </div>
       <div className="timerContainer">
-        <TimerButton />
+        <TimerButton
+          btnClicked={btnClicked}
+          setLeftTimeWhenClick={setLeftTimeWhenClick}
+        />
       </div>
     </div>
   );
