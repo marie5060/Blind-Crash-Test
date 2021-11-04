@@ -11,17 +11,18 @@ import './QuizzCard.css';
 const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   const [btnClicked, setBtnClicked] = useState(false);
   
+  // récupére les titles des mauvaises réponses
   const badAnswers = [];
   for (let i = 0; i < badTrackArray.length; i+= 1) {
     badAnswers.push(badTrackArray[i].title_short)
   }
   console.log(badAnswers);
 
-  // const rightAnswer = goodTrack.title_short;
+  // récupére le title de la bonne réponse
   const rightAnswer = goodTrack.title_short;
   console.log(rightAnswer);
 
-  //temporary tab (waiting real answers feature)
+  // Tableau des titles de toutes les réponses
   const answers = [...badAnswers, rightAnswer];
   console.log(answers);
   

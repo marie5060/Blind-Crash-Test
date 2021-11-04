@@ -12,6 +12,7 @@ const QuizzPage = () => {
   const [waitingCount, setWaitingCount] = useState(5);
   const random = Math.floor(Math.random() * tracks.length);
 
+  // récupére un tableau d'objet de mauvaises réponses
   const badTracksArray = [];
   for (let i = 0; i < 3; i += 1) {
     let number = Math.floor(Math.random() * tracks.length);
