@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import QuizzAlbumPicture from './QuizzAlbumPicture';
 import QuizzAudio from './QuizzAudio';
@@ -16,6 +16,8 @@ const QuizzCard = ({ track, nextQuestion }) => {
   // const rightAnswer = track.title_short;
   console.log(track.title_short)
   const rightAnswer = 'bonnereponse';
+
+  // penser à récupérer le track.length pour le random en dessous
 
   function shuffleArray(array2) {
     const array = array2;
