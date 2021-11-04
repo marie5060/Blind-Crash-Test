@@ -14,10 +14,10 @@ function App() {
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route exact path="/" component={AccueilPage} />
-          <Route path="/Themes" component={ThemesPage} />
-          <Route path="/Resultats" component={ResultatsPage} />
-          <Route path="/Quizz" component={QuizzPage} />
+          <Route exact path="/BlindTest/" component={AccueilPage} />
+          <Route path="/BlindTest/Themes" component={ThemesPage} />
+          <Route path="/BlindTest/Resultats" component={ResultatsPage} />
+          <Route path="/BlindTest/Quizz" component={QuizzPage} />
         </Switch>
       </BrowserRouter>
     </div>
