@@ -22,6 +22,7 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
 
   // Tableau des titles de toutes les réponses
   const answers = [...badAnswers, rightAnswer];
+  console.log(`réponse avant mélange : ${answers}`)
   
   function shuffleArray(array2) {
     const array = array2;
@@ -42,7 +43,7 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   if (!btnClicked) {
     shuffleArray(answers);
   }
-  console.log(answers);
+  console.log(`réponse après mélagne: ${answers}`);
 
   return (
     <div className="quizzCard">
@@ -81,7 +82,6 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
           handleClick={handleClick}
           answer={answers[3]}
           rightAnswer={rightAnswer}
-          cl
         />
       </div>
       <div className="timerContainer">
@@ -94,6 +94,6 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
 export default QuizzCard;
 
 QuizzCard.propTypes = {
-  track: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  goodTrack: PropTypes.oneOfType([PropTypes.object]).isRequired,
   nextQuestion: PropTypes.func.isRequired,
 };

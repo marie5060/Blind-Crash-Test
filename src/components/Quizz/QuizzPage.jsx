@@ -23,6 +23,7 @@ const QuizzPage = () => {
     }
     badTracksArray.push(tracks[number]);
   }
+  console.log(`mauvaises réponses : ${badTracksArray}`);
 
   const nextQuestion = () => {
     setNbQuizz(nbQuizz + 1);
