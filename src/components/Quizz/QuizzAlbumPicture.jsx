@@ -1,7 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import './QuizzAlbumPicture.css';
 
-const QuizzAlbumPicture = () => {
-  return <div>coucou je suis pictural !</div>;
+const QuizzAlbumPicture = ({ url }) => {
+  return (
+    <div className="picture">
+      <img src={url} alt="album currenty playing" />
+    </div>
+  );
 };
 
 export default QuizzAlbumPicture;
+
+QuizzAlbumPicture.propTypes = {
+  url: PropTypes.string.isRequired,
+};
