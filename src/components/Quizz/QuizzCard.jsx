@@ -16,15 +16,12 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   for (let i = 0; i < badTrackArray.length; i+= 1) {
     badAnswers.push(badTrackArray[i].title_short)
   }
-  console.log(badAnswers);
 
   // récupére le title de la bonne réponse
-  const rightAnswer = goodTrack.title_short;
-  console.log(rightAnswer);
+  const rightAnswer = `good ${goodTrack.title_short}`;
 
   // Tableau des titles de toutes les réponses
   const answers = [...badAnswers, rightAnswer];
-  console.log(answers);
   
   function shuffleArray(array2) {
     const array = array2;
@@ -45,6 +42,7 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   if (!btnClicked) {
     shuffleArray(answers);
   }
+  console.log(answers);
 
   return (
     <div className="quizzCard">

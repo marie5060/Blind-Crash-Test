@@ -40,7 +40,7 @@ const QuizzPage = () => {
   useEffect(() => {
     axios
       .get(
-        'https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/6223140704?&limit=50' // céline dion playlist emilie
+        'https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/9626990642?&limit=50'
       ) // https://cors-anywhere.herokuapp.com/ à ajouter au début
       .then((response) => response.data.tracks.data)
       .then((data) => setTracks(data));
