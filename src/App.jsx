@@ -8,6 +8,9 @@ import ResultatsPage from './components/Resultats/ResultatsPage';
 import QuizzPage from './components/Quizz/QuizzPage';
 
 function App() {
+  const [chosenId, setChosenId] = React.useState(0);
+  console.log(chosenId);
+
   return (
     <div>
       {/* HEADER */}
@@ -15,7 +18,11 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/" component={AccueilPage} />
-          <Route path="/Themes" component={ThemesPage} />
+          <Route
+            path="/Themes"
+            component={() => <ThemesPage setChosenId={setChosenId} />}
+          />
+
           <Route path="/Resultats" component={ResultatsPage} />
           <Route path="/Quizz" component={QuizzPage} />
         </Switch>
