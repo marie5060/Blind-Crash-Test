@@ -1,29 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+/* eslint-disable */
 // import LinkBtn from '../Bases/LinkBtn';
 import QuizzCard from './QuizzCard';
 // import QuizzScore from './QuizzScore';
 import './QuizzPage.css';
-import initialTracks from '../../severalTracks';
+import initialTracks from 'severalTracks';
 
-const QuizzPage = () => {
+const QuizzPage = ({chosenId}) => {
+
   const [tracks, setTracks] = React.useState(initialTracks);
   const [nbQuizz, setNbQuizz] = useState(1);
   const [waitingCount, setWaitingCount] = useState(5);
 
   const random = Math.floor(Math.random() * tracks.length);
 
-  // appel API
-  useEffect(() => {
-    axios
-      .get(
-        'https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/9626990642?&limit=50'
-      ) // https://cors-anywhere.herokuapp.com/ à ajouter au début
-      .then((response) => response.data.tracks.data)
-      .then((data) => setTracks(data));
-  }, []);
-
   // Timer
+
   useEffect(() => {
     const timer =
       waitingCount > 0 &&
@@ -32,6 +25,15 @@ const QuizzPage = () => {
       clearInterval(timer);
     };
   }, [waitingCount]);
+  
+    useEffect(() => {
+    axios
+      .get(
+        `https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/${chosenId.themeId}?&limit=50`
+      ) // https://cors-anywhere.herokuapp.com/ à ajouter au début
+      .then((response) => response.data.tracks.data)
+      .then((data) => setTracks(data));
+  }, []);
 
   const nextQuestion = () => {
     setNbQuizz(nbQuizz + 1);
@@ -49,6 +51,8 @@ const QuizzPage = () => {
     badTracksArray.push(tracks[number]);
   }
 
+  // la bonne rep est dans track.title_short
+  
   return (
     <main>
       <h1>Quizz</h1>

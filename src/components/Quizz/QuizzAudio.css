@@ -1,9 +1,10 @@
 .audioContainer {
-  opacity: 0;
+  opacity: 1;
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 20%;
+  height: 20%;
   top: 0;
+  background-color: red;
 }
 
 .audioContainer > * {
