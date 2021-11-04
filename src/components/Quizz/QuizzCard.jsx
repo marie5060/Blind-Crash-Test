@@ -18,7 +18,7 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   }
 
   // récupére le title de la bonne réponse
-  const rightAnswer = `good ${goodTrack.title_short}`;
+  const rightAnswer = goodTrack.title_short;
 
   // Tableau des titles de toutes les réponses
   let answers = [...badAnswers, rightAnswer];
@@ -42,7 +42,7 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
 
   useEffect(() => {
     if (!btnClicked) {
-      answers = shuffleArray(answers);
+      shuffleArray(answers);
     }
     console.log(`réponse après mélagne: ${answers}`);
   }, [btnClicked])
