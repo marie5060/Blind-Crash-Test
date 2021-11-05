@@ -1,4 +1,4 @@
-.quizzCard {
+.quizz-card {
   width: 70%;
   height: 70vh;
   margin: auto;
@@ -8,25 +8,25 @@
   box-shadow: 2px 2px 5px rgb(200, 190, 179);
 }
 
-.pictureContainer {
+.picture-container {
   position: relative;
   margin: auto;
 }
 
-.answerBtnContainer {
+.answer-btn-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 30px;
 }
 
-.timerContainer {
+.timer-container {
   display: flex;
   justify-content: center;
   margin-top: -5vh;
 }
 
-.nextTrackText {
+.next-track-text {
   font-size: 1vw;
   width: fit-content;
   padding: 10px 20px;
@@ -35,7 +35,7 @@
   z-index: 1;
 }
 
-.nextTrackBg {
+.next-track-bg {
   background-color: transparent;
   border-radius: 20px;
   position: absolute;
@@ -43,7 +43,7 @@
   top: 15vh;
 }
 
-.nextTrackBg::before {
+.next-track-bg::before {
   content: '';
   text-align: center;
   color: wheat;

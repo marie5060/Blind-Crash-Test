@@ -10,10 +10,10 @@ const QuizzAnswerButton = ({
 }) => {
   const [chosen, setChosen] = useState(false);
 
-  let buttonClass = 'answerButton';
+  let buttonClass = 'answer-button';
 
   if (btnClicked) {
-    buttonClass = 'answerButton';
+    buttonClass = 'answer-button';
     if (chosen) {
       if (answer === rightAnswer) {
         buttonClass += ' chosenBtn';

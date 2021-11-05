@@ -13,7 +13,7 @@ const QuizzPage = ({chosenId}) => {
   const [nbQuizz, setNbQuizz] = useState(1);
   const [waitingCount, setWaitingCount] = useState(5);
 
-  const random = Math.floor(Math.random() * tracks.length);
+  const random = Math.floor(Math.random() * tracks.length); 
 
   // Timer
   useEffect(() => {
@@ -54,8 +54,8 @@ const QuizzPage = ({chosenId}) => {
     <main>
       <h1>Quizz</h1>
       {waitingCount > 0 && nbQuizz === 1 ? (
-        <div className="waitingContainer">
-          <div className="waitingCount">{waitingCount}</div>
+        <div className="waiting-container">
+          <div className="waiting-count">{waitingCount}</div>
         </div>
       ) : (
         <QuizzCard
@@ -64,9 +64,9 @@ const QuizzPage = ({chosenId}) => {
           nextQuestion={nextQuestion}
         />
       )}
-      <div className="quizzBottom">
+      <div className="quizz-bottom">
         {/* <QuizzScore /> */}
-        <div className="linkBtnsContainer">
+        <div className="link-btns-container">
           {/* <LinkBtn />
           <LinkBtn /> */}
         </div>
