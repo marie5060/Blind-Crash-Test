@@ -6,7 +6,7 @@ const LinkBtnNewTheme = () => {
   return (
     <div>
       <Link to="/BlindTest/Themes">
-        <button type="button" className="newTheme">
+        <button type="button" className="new-theme">
           Choisis ta partie !
         </button>
       </Link>
