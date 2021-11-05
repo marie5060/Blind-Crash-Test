@@ -8,13 +8,13 @@ import './AccueilPage.css';
 const AccueilPage = () => {
   return (
     <main className="body">
-      <div className="pseudoContainer">
+      <div className="pseudo-container">
         <h1>Choisis ton pseudo avant de lancer ta partie</h1>
         <form className="pseudo">
           <input type="text" placeholder="Pseudo" />
         </form>
       </div>
-      <div className="fastGameContainer">
+      <div className="fast-game-container">
         <div className="textFastGameContainer">
           <h1>Jouer immédiatement !</h1>
           <p>
@@ -26,7 +26,7 @@ const AccueilPage = () => {
 
         <LinkBtnFastGame />
       </div>
-      <div className="newThemeContainer">
+      <div className="new-theme-container">
         <h1> Personnaliser une partie</h1>
         <p>Pour choisir ta partie c est par ici !!</p>
         <LinkBtnNewTheme />
