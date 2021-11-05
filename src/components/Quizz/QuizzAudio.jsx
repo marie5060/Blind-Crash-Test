@@ -6,13 +6,13 @@ import './QuizzAudio.css';
 
 const QuizzAudio = ({ url }) => {
   return (
-    <div className="audioContainer">
+    <div className="audio-container">
       <ReactPlayer url={url} controls playing volume={0.1} />
     </div>
   );
 };
 
-export default QuizzAudio;
+export default QuizzAudio; 
 
 QuizzAudio.propTypes = {
   url: PropTypes.string.isRequired,

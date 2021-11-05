@@ -13,7 +13,7 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   const theRightAnswer = goodTrack.title_short;
   
 // temporary tab (waiting real answers feature)
-  const [leftTimeWhenClick, setLeftTimeWhenClick] = useState(100);
+  const [leftTimeWhenClick, setLeftTimeWhenClick] = useState(100); 
   console.log(typeof leftTimeWhenClick);
   console.log(`${leftTimeWhenClick.toFixed(0)}%`);
 
@@ -61,19 +61,19 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   };
 
   return (
-    <div className="quizzCard">
-      <div className="pictureContainer">
+    <div className="quizz-card">
+      <div className="picture-container">
         <QuizzAlbumPicture url={goodTrack.album.cover_medium} />
         {btnClicked ? (
-          <div className="nextTrackBg">
-            <div className="nextTrackText">Morceau suivant</div>
+          <div className="next-track-bg">
+            <div className="next-track-text">Morceau suivant</div>
           </div>
         ) : (
           ''
         )}
         <QuizzAudio url={goodTrack.preview} />
       </div>
-      <div className="answerBtnContainer">
+      <div className="answer-btn-container">
         {answers.map((answer) => (
           <QuizzAnswerButton
             btnClicked={btnClicked}
@@ -83,7 +83,7 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
           />
         ))}
       </div>
-      <div className="timerContainer">
+      <div className="timer-container">
         <TimerButton
           btnClicked={btnClicked}
           setLeftTimeWhenClick={setLeftTimeWhenClick}

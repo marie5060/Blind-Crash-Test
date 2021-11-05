@@ -16,20 +16,20 @@ const ThemesPage = ({ setChosenId }) => {
   ];
 
   const artisteArray = [
-    { name: 'Céline Dion', id: '9626980522' },
-    { name: 'Johnny Halliday ', id: '9626990642' },
-    { name: 'Francis Cabrel', id: '9626971702' },
-    { name: 'Queen', id: '9640482882' },
-    { name: 'Beatles', id: '9640491642' },
-    { name: 'Daft Punk', id: '9640499662' },
-    { name: 'Metallica', id: '9640504822' },
-    { name: 'Michael Jackson', id: '9640511622' },
+    { name: 'Céline Dion', id: '9609091082' },
+    { name: 'Johnny Halliday ', id: '9640519902' },
+    { name: 'Francis Cabrel', id: '9626952802' },
+    { name: 'Queen', id: '9640525022' },
+    { name: 'Beatles', id: '9631202962' },
+    { name: 'Daft Punk', id: '9631208562' },
+    { name: 'Metallica', id: '9640532082' },
+    { name: 'Michael Jackson', id: '9640536442' },
   ];
 
   return (
-    <div className="ThemesPage-Container">
+    <div className="themes-page-container">
       <h2>Thèmes</h2>
-      <div className="themeItems">
+      <div className="theme-items">
         <div className="item1 item">
           <ThemeItem
             themeName={themeArray[0].name}
@@ -88,7 +88,7 @@ const ThemesPage = ({ setChosenId }) => {
         </div>
       </div>
       <h2>Artistes</h2>
-      <div className="themeItems">
+      <div className="theme-items">
         <div className="item1 item">
           <ThemeItem
             themeName={artisteArray[0].name}
