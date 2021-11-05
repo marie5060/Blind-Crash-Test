@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -44,5 +43,5 @@ const BurgerNav = ({ showLink }) => {
 export default BurgerNav;
 
 BurgerNav.propTypes = {
-  showLink: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  showLink: PropTypes.oneOfType([PropTypes.bool]).isRequired,
 };
