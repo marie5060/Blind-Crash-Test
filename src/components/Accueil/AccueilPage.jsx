@@ -3,7 +3,7 @@ import React from 'react';
 // import LinkBtnAccueil from '../Bases/LinkBtnAcceuil';
 import LinkBtnFastGame from '../Bases/LinkBtnFastGame';
 import LinkBtnNewTheme from '../Bases/LinkBtnNewTheme';
-import './accueilPage.css';
+import './AccueilPage.css';
 
 const AccueilPage = () => {
   return (
