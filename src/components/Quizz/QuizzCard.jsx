@@ -30,27 +30,34 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   }
 
   const creerTableauReponses = () => {
-    // récupére les titles des mauvaises réponses
-    const badAnswers = [];
-    for (let i = 0; i < badTrackArray.length; i += 1) {
-      badAnswers.push(badTrackArray[i].title_short);
-    }
     // récupére le title de la bonne réponse
-    const rightAnswer = goodTrack.title_short;
+    const answerList = [
+      {
+        title_short: goodTrack.title_short,
+        id: goodTrack.id,
+      },
+    ];
+
+    // récupére les titles des mauvaises réponses
+    for (let i = 0; i < badTrackArray.length; i += 1) {
+      answerList.push({
+        title_short: badTrackArray[i].title_short,
+        id: badTrackArray[i].id,
+      });
+    }
+
     // je mélange et modifie answers
-    setAnswers(shuffleArray([...badAnswers, rightAnswer]));
+    setAnswers(shuffleArray(answerList));
   };
 
   useEffect(() => {
     creerTableauReponses();
-    console.log(`réponse après mélange 1: ${answers}`);
   }, []);
 
   useEffect(() => {
     if (!btnClicked) {
       creerTableauReponses();
     }
-    console.log(`réponse après mélange 2: ${answers}`);
   }, [btnClicked]);
 
   const handleClick = () => {
@@ -77,9 +84,9 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
           <QuizzAnswerButton
             btnClicked={btnClicked}
             handleClick={handleClick}
-            answer={answer}
+            answer={answer.title_short}
             rightAnswer={theRightAnswer}
-            key={answer}
+            key={answer.id}
           />
         ))}
       </div>

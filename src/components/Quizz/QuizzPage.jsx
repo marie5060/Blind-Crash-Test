@@ -49,9 +49,10 @@ const QuizzPage = ({ chosenId }) => {
   const badTracksArray = [];
   for (let i = 0; i < 3; i += 1) {
     let number = Math.floor(Math.random() * tracks.length);
-    const numbersArray = [];
-    numbersArray.push(number);
-    while (number === random || numbersArray.includes(number)) {
+    while (
+      tracks[number].id === tracks[random].id ||
+      badTracksArray.includes(tracks[number])
+    ) {
       number = Math.floor(Math.random() * tracks.length);
     }
     badTracksArray.push(tracks[number]);
@@ -85,5 +86,5 @@ const QuizzPage = ({ chosenId }) => {
 export default QuizzPage;
 
 QuizzPage.propTypes = {
-  chosenId: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  chosenId: PropTypes.oneOfType([PropTypes.number]).isRequired,
 };
