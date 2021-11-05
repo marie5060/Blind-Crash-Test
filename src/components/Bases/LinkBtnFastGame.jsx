@@ -4,7 +4,7 @@ import './linkBtnFastGame.css';
 const LinkBtnFastGame = () => {
   return (
     <div>
-      <button type="button" className="fastGame">
+      <button type="button" className="fast-game">
         Partie Rapide
       </button>
     </div>
