@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
@@ -9,16 +8,25 @@ import ResultatsPage from './components/Resultats/ResultatsPage';
 import QuizzPage from './components/Quizz/QuizzPage';
 
 function App() {
+  const [chosenId, setChosenId] = React.useState(0);
+
   return (
     <div>
       {/* HEADER */}
       <BrowserRouter>
         <Header />
         <Switch>
+          <Route exact path="/BlindTest/" component={AccueilPage} />
+          <Route
+            path="/BlindTest/Themes"
+            component={() => <ThemesPage setChosenId={setChosenId} />}
+          />
+          <Route path="/BlindTest/Resultats" component={ResultatsPage} />
+          <Route
+            path="/BlindTest/Quizz"
+            component={() => <QuizzPage chosenId={chosenId} />}
+          />
           <Route exact path="/" component={AccueilPage} />
-          <Route path="/Themes" component={ThemesPage} />
-          <Route path="/Resultats" component={ResultatsPage} />
-          <Route path="/Quizz" component={QuizzPage} />
         </Switch>
       </BrowserRouter>
     </div>

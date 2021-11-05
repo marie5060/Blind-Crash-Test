@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* eslint-disable */
+=======
+/*eslint-disable */
+>>>>>>> bd79e0e7e3f06e46ec7a04b639c36509e3411583
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
