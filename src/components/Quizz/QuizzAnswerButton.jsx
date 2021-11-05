@@ -13,6 +13,7 @@ const QuizzAnswerButton = ({
   let buttonClass = 'answerButton';
 
   if (btnClicked) {
+    buttonClass = 'answerButton';
     if (chosen) {
       if (answer === rightAnswer) {
         buttonClass += ' chosenBtn';

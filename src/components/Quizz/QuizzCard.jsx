@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import QuizzAlbumPicture from './QuizzAlbumPicture';
@@ -7,15 +6,17 @@ import QuizzAnswerButton from './QuizzAnswerButton';
 import TimerButton from './TimerButton';
 import './QuizzCard.css';
 
-//temporary tab (waiting real answers feature)
-const answers = ['fausse1', 'fausse2', 'fausse3', 'bonnereponse'];
-
-const QuizzCard = ({ track, nextQuestion }) => {
+const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   const [btnClicked, setBtnClicked] = useState(false);
-  
-  // const rightAnswer = track.title_short;
-  console.log(track.title_short)
-  const rightAnswer = 'bonnereponse';
+  const [answers, setAnswers] = useState([]);
+  const theRightAnswer = goodTrack.title_short;
+
+  // temporary tab (waiting real answers feature)
+  const [leftTimeWhenClick, setLeftTimeWhenClick] = useState(100);
+  console.log(typeof leftTimeWhenClick);
+  console.log(`${leftTimeWhenClick.toFixed(0)}%`);
+
+  // penser à récupérer le track.length pour le random en dessous
 
   function shuffleArray(array2) {
     const array = array2;
@@ -25,22 +26,43 @@ const QuizzCard = ({ track, nextQuestion }) => {
       array[i] = array[j];
       array[j] = temp;
     }
+    return array;
   }
+
+  const creerTableauReponses = () => {
+    // récupére les titles des mauvaises réponses
+    const badAnswers = [];
+    for (let i = 0; i < badTrackArray.length; i += 1) {
+      badAnswers.push(badTrackArray[i].title_short);
+    }
+    // récupére le title de la bonne réponse
+    const rightAnswer = goodTrack.title_short;
+    // je mélange et modifie answers
+    setAnswers(shuffleArray([...badAnswers, rightAnswer]));
+  };
+
+  useEffect(() => {
+    creerTableauReponses();
+    console.log(`réponse après mélange 1: ${answers}`);
+  }, []);
+
+  useEffect(() => {
+    if (!btnClicked) {
+      creerTableauReponses();
+    }
+    console.log(`réponse après mélange 2: ${answers}`);
+  }, [btnClicked]);
 
   const handleClick = () => {
     setBtnClicked(true);
     setTimeout(nextQuestion, 5000);
-    setTimeout(() => setBtnClicked(false),5000);
+    setTimeout(() => setBtnClicked(false), 5000);
   };
-
-  if (!btnClicked) {
-    shuffleArray(answers);
-  }
 
   return (
     <div className="quizzCard">
       <div className="pictureContainer">
-        <QuizzAlbumPicture url={track.album.cover_medium} />
+        <QuizzAlbumPicture url={goodTrack.album.cover_medium} />
         {btnClicked ? (
           <div className="nextTrackBg">
             <div className="nextTrackText">Morceau suivant</div>
@@ -48,37 +70,24 @@ const QuizzCard = ({ track, nextQuestion }) => {
         ) : (
           ''
         )}
-        <QuizzAudio url={track.preview} />
+        <QuizzAudio url={goodTrack.preview} />
       </div>
       <div className="answerBtnContainer">
-        <QuizzAnswerButton
-          btnClicked={btnClicked}
-          handleClick={handleClick}
-          answer={answers[0]}
-          rightAnswer={rightAnswer}
-        />
-        <QuizzAnswerButton
-          btnClicked={btnClicked}
-          handleClick={handleClick}
-          answer={answers[1]}
-          rightAnswer={rightAnswer}
-        />
-        <QuizzAnswerButton
-          btnClicked={btnClicked}
-          handleClick={handleClick}
-          answer={answers[2]}
-          rightAnswer={rightAnswer}
-        />
-        <QuizzAnswerButton
-          btnClicked={btnClicked}
-          handleClick={handleClick}
-          answer={answers[3]}
-          rightAnswer={rightAnswer}
-          cl
-        />
+        {answers.map((answer) => (
+          <QuizzAnswerButton
+            btnClicked={btnClicked}
+            handleClick={handleClick}
+            answer={answer}
+            rightAnswer={theRightAnswer}
+            key={answer}
+          />
+        ))}
       </div>
       <div className="timerContainer">
-        <TimerButton />
+        <TimerButton
+          btnClicked={btnClicked}
+          setLeftTimeWhenClick={setLeftTimeWhenClick}
+        />
       </div>
     </div>
   );
@@ -87,6 +96,7 @@ const QuizzCard = ({ track, nextQuestion }) => {
 export default QuizzCard;
 
 QuizzCard.propTypes = {
-  track: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  goodTrack: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  badTrackArray: PropTypes.oneOfType([PropTypes.array]).isRequired,
   nextQuestion: PropTypes.func.isRequired,
 };
