@@ -28,10 +28,13 @@ const QuizzPage = ({chosenId}) => {
     useEffect(() => {
     axios
       .get(
-        `https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/${chosenId.themeId}?&limit=50`
+        `https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/${chosenId}?&limit=50`
       ) // https://cors-anywhere.herokuapp.com/ à ajouter au début
       .then((response) => response.data.tracks.data)
-      .then((data) => setTracks(data));
+      .then((data) => {
+        const okData = data.filter((track) => track.album.cover_medium && track.preview && !(track.title_short).includes('('));
+        setTracks(okData);
+      });
   }, []);
 
   const nextQuestion = () => {

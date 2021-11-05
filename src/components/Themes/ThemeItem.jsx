@@ -9,7 +9,7 @@ const ThemeItem = ({ themeName, themeId, setChosenId }) => {
         type="button"
         className="theme-button"
         onClick={() => {
-          setChosenId({ themeId });
+          setChosenId(themeId);
         }}
       >
         {themeName}
