@@ -1,5 +1,5 @@
 
-.pseudoContainer {
+.pseudo-container {
   width: 100%;
   height: 30vh;
   margin: auto;
@@ -12,29 +12,23 @@ input {
   border: none;
   border-bottom: 2px solid black;
   width: 40%;
-
-  /* margin: 10%; */
   margin-left: 30%;
 }
 
-.fastGameContainer {
+.fast-game-container {
   width: 100%;
   height: 40vh;
   margin: auto;
   color: white;
-
-  /* background:linear-gradient(121.83deg, #774cd3 31.32%, #ae2aa9 87.66%);} */
   background-color: #671782;
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
 }
 
-.newThemeContainer {
+.new-theme-container {
   width: 100%;
   height: 40vh;
   margin: auto;
   background-color: #f5f5f5;
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
-
-  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   color: black;
 }
