@@ -79,6 +79,7 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
             handleClick={handleClick}
             answer={answer}
             rightAnswer={theRightAnswer}
+            key={answer}
           />
         ))}
       </div>

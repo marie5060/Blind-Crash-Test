@@ -1,4 +1,3 @@
-/*eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
@@ -12,7 +11,7 @@ const QuizzAudio = ({ url }) => {
   );
 };
 
-export default QuizzAudio; 
+export default QuizzAudio;
 
 QuizzAudio.propTypes = {
   url: PropTypes.string.isRequired,
