@@ -1,0 +1,9 @@
+.newTheme {
+  width: 40%;
+  height: 3vw;
+  color: wheat;
+  font-size: 1vw;
+  border-radius: 20px;
+  margin: 3vh 30px;
+  background: linear-gradient(121.83deg, #774cd3 31.32%, #ae2aa9 87.66%);
+}

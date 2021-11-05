@@ -1,0 +1,9 @@
+.fastGame {
+  width: 40%;
+  height: 3vw;
+  color: white;
+  font-size: 1vw;
+  border-radius: 20px;
+  margin: 3vh 30px;
+  background: black;
+}
