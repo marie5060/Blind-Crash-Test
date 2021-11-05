@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-/* eslint-disable */
 import PropTypes from 'prop-types';
 import QuizzAlbumPicture from './QuizzAlbumPicture';
 import QuizzAudio from './QuizzAudio';
@@ -11,8 +10,8 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   const [btnClicked, setBtnClicked] = useState(false);
   const [answers, setAnswers] = useState([]);
   const theRightAnswer = goodTrack.title_short;
-  
-// temporary tab (waiting real answers feature)
+
+  // temporary tab (waiting real answers feature)
   const [leftTimeWhenClick, setLeftTimeWhenClick] = useState(100);
   console.log(typeof leftTimeWhenClick);
   console.log(`${leftTimeWhenClick.toFixed(0)}%`);
@@ -80,6 +79,7 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
             handleClick={handleClick}
             answer={answer}
             rightAnswer={theRightAnswer}
+            key={answer}
           />
         ))}
       </div>

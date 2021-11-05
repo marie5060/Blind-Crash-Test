@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
-/* eslint-disable */
 // import LinkBtn from '../Bases/LinkBtn';
+import initialTracks from '../../severalTracks';
 import QuizzCard from './QuizzCard';
 // import QuizzScore from './QuizzScore';
 import './QuizzPage.css';
-import initialTracks from 'severalTracks';
 
-const QuizzPage = ({chosenId}) => {
-
+const QuizzPage = ({ chosenId }) => {
   const [tracks, setTracks] = useState(initialTracks);
   const [nbQuizz, setNbQuizz] = useState(1);
   const [waitingCount, setWaitingCount] = useState(5);
@@ -24,8 +23,8 @@ const QuizzPage = ({chosenId}) => {
       clearInterval(timer);
     };
   }, [waitingCount]);
-  
-    useEffect(() => {
+
+  useEffect(() => {
     axios
       .get(
         `https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/${chosenId.themeId}?&limit=50`
@@ -49,7 +48,7 @@ const QuizzPage = ({chosenId}) => {
     }
     badTracksArray.push(tracks[number]);
   }
-  
+
   return (
     <main>
       <h1>Quizz</h1>
@@ -76,3 +75,7 @@ const QuizzPage = ({chosenId}) => {
 };
 
 export default QuizzPage;
+
+QuizzPage.propTypes = {
+  chosenId: PropTypes.oneOfType([PropTypes.object]).isRequired,
+};
