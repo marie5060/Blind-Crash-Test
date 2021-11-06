@@ -10,7 +10,7 @@ import './QuizzPage.css';
 const QuizzPage = ({ chosenId }) => {
   const [tracks, setTracks] = useState(initialTracks);
   const [nbQuizz, setNbQuizz] = useState(1);
-  const [waitingCount, setWaitingCount] = useState(5);
+  const [waitingCount, setWaitingCount] = useState(3);
 
   const random = Math.floor(Math.random() * tracks.length);
 

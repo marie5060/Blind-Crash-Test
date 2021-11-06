@@ -9,14 +9,10 @@ import './QuizzCard.css';
 const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   const [btnClicked, setBtnClicked] = useState(false);
   const [answers, setAnswers] = useState([]);
-
-  // temporary tab (waiting real answers feature)
   const [leftTimeWhenClick, setLeftTimeWhenClick] = useState(100);
   // console.log pour éviter erreur eslint (en attendant pouvoir utiliser leftTimeWhenClick pour calcul score)
   console.log(`${leftTimeWhenClick.toFixed(0)}%`);
   const theRightAnswer = goodTrack.title_short;
-
-  // penser à récupérer le track.length pour le random en dessous
 
   function shuffleArray(array2) {
     const array = array2;
@@ -62,8 +58,8 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
 
   const handleClick = () => {
     setBtnClicked(true);
-    setTimeout(nextQuestion, 5000);
-    setTimeout(() => setBtnClicked(false), 5000);
+    setTimeout(nextQuestion, 3000);
+    setTimeout(() => setBtnClicked(false), 3000);
   };
 
   return (
