@@ -8,7 +8,8 @@ import ResultatsPage from './components/Resultats/ResultatsPage';
 import QuizzPage from './components/Quizz/QuizzPage';
 
 function App() {
-  const [chosenId, setChosenId] = React.useState(9626980522);
+  const [chosenId, setChosenId] = React.useState('9626980522');
+  console.log('re-render App');
 
   return (
     <div>
@@ -26,7 +27,6 @@ function App() {
             path="/Blind-Crash-Test/Quizz"
             component={() => <QuizzPage chosenId={chosenId} />}
           />
-          <Route exact path="/" component={AccueilPage} />
         </Switch>
       </BrowserRouter>
     </div>

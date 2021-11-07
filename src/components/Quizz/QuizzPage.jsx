@@ -8,6 +8,7 @@ import QuizzCard from './QuizzCard';
 import './QuizzPage.css';
 
 const QuizzPage = ({ chosenId }) => {
+  console.log('re-render QuizzPage');
   const [tracks, setTracks] = useState(initialTracks);
   const [nbQuizz, setNbQuizz] = useState(1);
   const [waitingCount, setWaitingCount] = useState(3);
@@ -39,7 +40,7 @@ const QuizzPage = ({ chosenId }) => {
         );
         setTracks(okData);
       });
-  }, []);
+  }, [chosenId]);
 
   const nextQuestion = () => {
     setNbQuizz(nbQuizz + 1);

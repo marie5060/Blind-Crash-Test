@@ -13,6 +13,49 @@
   margin: auto;
 }
 
+/* btn "Morceau suivant" */
+.next-track-bg {
+  background-color: rgb(168, 75, 173);
+  border-radius: 20px;
+  position: absolute;
+  right: 10vw;
+  top: 15vh;
+}
+
+.next-track-bg:hover {
+  cursor: pointer;
+}
+
+.next-track-text {
+  font-size: 1vw;
+  width: fit-content;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: wheat;
+}
+
+.next-track-animation {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  border-radius: 20px;
+  background-color: rgba(119, 76, 211, 0.753);
+  animation-duration: 3s;
+  animation-name: fill;
+}
+
+@keyframes fill {
+  from {
+    width: 10%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+/* end btn "Morceau suivant" */
+
 .answer-btn-container {
   display: flex;
   flex-wrap: wrap;
@@ -24,48 +67,4 @@
   display: flex;
   justify-content: center;
   margin-top: -5vh;
-}
-
-.next-track-text {
-  font-size: 1vw;
-  width: fit-content;
-  padding: 10px 20px;
-  border-radius: 20px;
-  color: wheat;
-  z-index: 1;
-}
-
-.next-track-bg {
-  background-color: transparent;
-  border-radius: 20px;
-  position: absolute;
-  right: 10vw;
-  top: 15vh;
-}
-
-.next-track-bg::before {
-  content: '';
-  text-align: center;
-  color: wheat;
-  display: block;
-  position: absolute;
-  border-radius: 20px;
-  z-index: -1;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #774cd3;
-  animation-duration: 3s;
-  animation-name: fill;
-}
-
-@keyframes fill {
-  from {
-    width: 0%;
-  }
-
-  to {
-    width: 100%;
-  }
 }
