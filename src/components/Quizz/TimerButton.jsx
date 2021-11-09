@@ -1,28 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import './TimerButton.css';
 
-// Création du timer
-const TimerButton = () => {
-  const [count, setCount] = useState(30);
+const TimerButton = ({ btnClicked, setLeftTimeWhenClick, setBtnClicked }) => {
+  const [leftTime, setLeftTime] = useState(100);
+  const [step, setStep] = useState(0.1);
+  const timerStyle = {
+    width: `${leftTime}%`,
+  };
+  console.log('re-render timer');
 
-  React.useEffect(() => {
-    const timer = count > 0 && setInterval(() => setCount(count - 1), 1000);
+  const resetTimer = () => {
+    console.log('resetTimer');
+    setStep(0.1);
+    setLeftTime(100);
+  };
+
+  useEffect(() => {
+    const timer =
+      leftTime > 0 && setInterval(() => setLeftTime(leftTime - step), 15);
+    if (leftTime < 1) {
+      setBtnClicked(true);
+    }
     return () => clearInterval(timer);
-  }, [count]);
+  }, [leftTime]);
+
+  useEffect(() => {
+    if (btnClicked) {
+      setStep(0);
+      setLeftTimeWhenClick(leftTime);
+      setTimeout(() => resetTimer(), 3000);
+    }
+  }, [btnClicked]);
 
   return (
-    <div className="timerbutton">
-      Timer {count}
-      {/* Compteur de questions */}
-      <div>
-        <p>Questions 1/10</p>
-      </div>
-      {/* Création du bouton */}
-      <div>
-        <button type="button">Suivant</button>
-      </div>
+    <div id="progress-bar">
+      <div className="bar" style={timerStyle} />
     </div>
   );
 };
 
 export default TimerButton;
+
+TimerButton.propTypes = {
+  btnClicked: PropTypes.bool.isRequired,
+  setLeftTimeWhenClick: PropTypes.func.isRequired,
+  setBtnClicked: PropTypes.func.isRequired,
+};

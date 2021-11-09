@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
-/* eslint-disable */
 // import LinkBtn from '../Bases/LinkBtn';
+import initialTracks from '../../severalTracks';
 import QuizzCard from './QuizzCard';
 // import QuizzScore from './QuizzScore';
 import './QuizzPage.css';
-import initialTracks from 'severalTracks';
 
-const QuizzPage = ({chosenId}) => {
-
-  const [tracks, setTracks] = React.useState(initialTracks);
+const QuizzPage = ({ chosenId }) => {
+  console.log('re-render QuizzPage');
+  const [tracks, setTracks] = useState(initialTracks);
   const [nbQuizz, setNbQuizz] = useState(1);
-  const [waitingCount, setWaitingCount] = useState(5);
+  const [waitingCount, setWaitingCount] = useState(3);
+
   const random = Math.floor(Math.random() * tracks.length);
 
+  // Timer
   useEffect(() => {
     const timer =
       waitingCount > 0 &&
@@ -26,30 +28,54 @@ const QuizzPage = ({chosenId}) => {
   useEffect(() => {
     axios
       .get(
-        `https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/${chosenId.themeId}?&limit=50`
+        `https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/${chosenId}?&limit=50`
       ) // https://cors-anywhere.herokuapp.com/ à ajouter au début
       .then((response) => response.data.tracks.data)
-      .then((data) => setTracks(data));
-  }, []);
+      .then((data) => {
+        const okData = data.filter(
+          (track) =>
+            track.album.cover_medium &&
+            track.preview &&
+            !track.title_short.includes('(')
+        );
+        setTracks(okData);
+      });
+  }, [chosenId]);
 
   const nextQuestion = () => {
     setNbQuizz(nbQuizz + 1);
   };
 
-  // la bonne rep est dans track.title_short
+  // récupére un tableau d'objet de mauvaises réponses
+  const badTracksArray = [];
+  for (let i = 0; i < 3; i += 1) {
+    let number = Math.floor(Math.random() * tracks.length);
+    while (
+      tracks[number].id === tracks[random].id ||
+      badTracksArray.includes(tracks[number])
+    ) {
+      number = Math.floor(Math.random() * tracks.length);
+    }
+    badTracksArray.push(tracks[number]);
+  }
+
   return (
     <main>
       <h1>Quizz</h1>
       {waitingCount > 0 && nbQuizz === 1 ? (
-        <div className="waitingContainer">
-          <div className="waitingCount">{waitingCount}</div>
+        <div className="waiting-container">
+          <div className="waiting-count">{waitingCount}</div>
         </div>
       ) : (
-        <QuizzCard track={tracks[random]} nextQuestion={nextQuestion} />
+        <QuizzCard
+          goodTrack={tracks[random]}
+          badTrackArray={badTracksArray}
+          nextQuestion={nextQuestion}
+        />
       )}
-      <div className="quizzBottom">
+      <div className="quizz-bottom">
         {/* <QuizzScore /> */}
-        <div className="linkBtnsContainer">
+        <div className="link-btns-container">
           {/* <LinkBtn />
           <LinkBtn /> */}
         </div>
@@ -59,3 +85,7 @@ const QuizzPage = ({chosenId}) => {
 };
 
 export default QuizzPage;
+
+QuizzPage.propTypes = {
+  chosenId: PropTypes.oneOfType([PropTypes.number]).isRequired,
+};

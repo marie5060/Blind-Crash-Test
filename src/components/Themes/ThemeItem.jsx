@@ -9,7 +9,7 @@ const ThemeItem = ({ themeName, themeId, setChosenId }) => {
         type="button"
         className="glow-on-hover"
         onClick={() => {
-          setChosenId({ themeId });
+          setChosenId(themeId);
         }}
       >
         {themeName}

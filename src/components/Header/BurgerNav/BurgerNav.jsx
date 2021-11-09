@@ -43,5 +43,5 @@ const BurgerNav = ({ showLink }) => {
 export default BurgerNav;
 
 BurgerNav.propTypes = {
-  showLink: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  showLink: PropTypes.oneOfType([PropTypes.bool]).isRequired,
 };

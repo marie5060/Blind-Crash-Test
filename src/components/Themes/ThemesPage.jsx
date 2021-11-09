@@ -27,7 +27,7 @@ const ThemesPage = ({ setChosenId }) => {
   ];
 
   return (
-    <div className="ThemesPage-Container">
+    <div className="themes-page-container">
       <h2>Thèmes</h2>
       <div className="themeItems">
         {themeArray.map((item) => (
