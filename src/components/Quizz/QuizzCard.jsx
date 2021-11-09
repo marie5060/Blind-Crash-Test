@@ -6,18 +6,19 @@ import QuizzAnswerButton from './QuizzAnswerButton';
 import TimerButton from './TimerButton';
 import './QuizzCard.css';
 
-const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
+const QuizzCard = ({
+  goodTrack,
+  badTrackArray,
+  nextQuestion,
+  setCurrentScore,
+}) => {
   const [btnClicked, setBtnClicked] = useState(false);
   const [answers, setAnswers] = useState([]);
-  console.log('re-render QuizzCard');
-
-  // temporary tab (waiting real answers feature)
+  const [win, setWin] = useState(false);
   const [leftTimeWhenClick, setLeftTimeWhenClick] = useState(100);
-  // console.log pour éviter erreur eslint (en attendant pouvoir utiliser leftTimeWhenClick pour calcul score)
-  console.log(`${leftTimeWhenClick.toFixed(0)}%`);
   const theRightAnswer = goodTrack.title_short;
-
-  // penser à récupérer le track.length pour le random en dessous
+  console.log(`dans quizz card btnClicked: ${btnClicked}`);
+  console.log(`dans quizz card win: ${win}`);
 
   function shuffleArray(array2) {
     const array = array2;
@@ -52,21 +53,35 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   };
 
   useEffect(() => {
+    console.log('autreUsEffect creer tableau');
     creerTableauReponses();
   }, []);
 
   useEffect(() => {
     if (!btnClicked) {
+      console.log(
+        `dans useEffect quizzCard, ds !btnCkicked, creerTableau: ${btnClicked}`
+      );
       creerTableauReponses();
     } else {
       setTimeout(nextQuestion, 3000);
       setTimeout(() => setBtnClicked(false), 3000);
+      setTimeout(() => setWin(false), 3000);
     }
   }, [btnClicked]);
 
   const handleClick = () => {
     setBtnClicked(true);
   };
+
+  useEffect(() => {
+    if (win) {
+      console.log(`score:${parseInt(leftTimeWhenClick.toFixed(0), 10)}`);
+      setCurrentScore(parseInt(leftTimeWhenClick.toFixed(0), 10));
+    } else {
+      setCurrentScore(0);
+    }
+  }, [win]);
 
   return (
     <div className="quizz-card">
@@ -85,6 +100,7 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
           <QuizzAnswerButton
             btnClicked={btnClicked}
             handleClick={handleClick}
+            setWin={setWin}
             answer={answer.title_short}
             rightAnswer={theRightAnswer}
             key={answer.id}
@@ -108,4 +124,5 @@ QuizzCard.propTypes = {
   goodTrack: PropTypes.oneOfType([PropTypes.object]).isRequired,
   badTrackArray: PropTypes.oneOfType([PropTypes.array]).isRequired,
   nextQuestion: PropTypes.func.isRequired,
+  setCurrentScore: PropTypes.func.isRequired,
 };

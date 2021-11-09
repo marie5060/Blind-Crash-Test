@@ -7,6 +7,7 @@ const QuizzAnswerButton = ({
   rightAnswer,
   handleClick,
   btnClicked,
+  setWin,
 }) => {
   const [chosen, setChosen] = useState(false);
 
@@ -17,6 +18,7 @@ const QuizzAnswerButton = ({
     if (chosen) {
       if (answer === rightAnswer) {
         buttonClass += ' chosenBtn';
+        setWin(true);
       } else {
         buttonClass += ' loose chosenBtn';
       }
@@ -30,6 +32,9 @@ const QuizzAnswerButton = ({
       className={buttonClass}
       type="button"
       onClick={() => {
+        console.log(
+          'clliiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiick'
+        );
         handleClick();
         setChosen(true);
       }}
@@ -46,4 +51,5 @@ QuizzAnswerButton.propTypes = {
   rightAnswer: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
   btnClicked: PropTypes.bool.isRequired,
+  setWin: PropTypes.func.isRequired,
 };
