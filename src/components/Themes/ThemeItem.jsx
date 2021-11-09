@@ -7,7 +7,7 @@ const ThemeItem = ({ themeName, themeId, setChosenId }) => {
     <div>
       <button
         type="button"
-        className="themeButton"
+        className="glow-on-hover"
         onClick={() => {
           setChosenId({ themeId });
         }}
