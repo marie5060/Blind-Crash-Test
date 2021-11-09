@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import LinkBtnGoQuizz from '../Bases/LinkBtnGoQuizz';
 import ThemeItem from './ThemeItem';
 import './ThemesPage.css';
 
@@ -16,14 +17,14 @@ const ThemesPage = ({ setChosenId }) => {
   ];
 
   const artisteArray = [
-    { name: 'Céline Dion', id: '9626980522', num: 1 },
-    { name: 'Johnny Halliday ', id: '9626990642', num: 2 },
-    { name: 'Francis Cabrel', id: '9626971702', num: 3 },
-    { name: 'Queen', id: '9640482882', num: 4 },
-    { name: 'Beatles', id: '9640491642', num: 5 },
-    { name: 'Daft Punk', id: '9640499662', num: 6 },
-    { name: 'Metallica', id: '9640504822', num: 7 },
-    { name: 'Michael Jackson', id: '9640511622', num: 8 },
+    { name: 'Céline Dion', id: '9609091082', num: 1 },
+    { name: 'Johnny Halliday ', id: '9640519902', num: 2 },
+    { name: 'Francis Cabrel', id: '9626952802', num: 3 },
+    { name: 'Queen', id: '9640525022', num: 4 },
+    { name: 'Beatles', id: '9631202962', num: 5 },
+    { name: 'Daft Punk', id: '9631208562', num: 6 },
+    { name: 'Metallica', id: '9640532082', num: 7 },
+    { name: 'Michael Jackson', id: '9640536442', num: 8 },
   ];
 
   return (
@@ -55,6 +56,9 @@ const ThemesPage = ({ setChosenId }) => {
         ))}
       </div>
       <h2>Difficulté</h2>
+      <div className="go-quizz-container">
+        <LinkBtnGoQuizz />
+      </div>
     </div>
   );
 };
