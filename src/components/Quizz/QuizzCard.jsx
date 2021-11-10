@@ -9,6 +9,7 @@ import './QuizzCard.css';
 const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   const [btnClicked, setBtnClicked] = useState(false);
   const [answers, setAnswers] = useState([]);
+  console.log('re-render QuizzCard');
 
   // temporary tab (waiting real answers feature)
   const [leftTimeWhenClick, setLeftTimeWhenClick] = useState(100);
@@ -57,26 +58,26 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   useEffect(() => {
     if (!btnClicked) {
       creerTableauReponses();
+    } else {
+      setTimeout(nextQuestion, 3000);
+      setTimeout(() => setBtnClicked(false), 3000);
     }
   }, [btnClicked]);
 
   const handleClick = () => {
     setBtnClicked(true);
-    setTimeout(nextQuestion, 5000);
-    setTimeout(() => setBtnClicked(false), 5000);
   };
 
   return (
     <div className="quizz-card">
       <div className="picture-container">
         <QuizzAlbumPicture url={goodTrack.album.cover_medium} />
-        {btnClicked ? (
-          <div className="next-track-bg">
-            <div className="next-track-text">Morceau suivant</div>
-          </div>
-        ) : (
-          ''
-        )}
+
+        <button type="button" onClick={handleClick} className="next-track-bg">
+          <div className="next-track-text">Morceau suivant</div>
+          {btnClicked ? <div className="next-track-animation" /> : null}
+        </button>
+
         <QuizzAudio url={goodTrack.preview} />
       </div>
       <div className="answer-btn-container">
@@ -94,6 +95,7 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
         <TimerButton
           btnClicked={btnClicked}
           setLeftTimeWhenClick={setLeftTimeWhenClick}
+          setBtnClicked={setBtnClicked}
         />
       </div>
     </div>

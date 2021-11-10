@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const LinkBtnNewTheme = () => {
   return (
     <div>
-      <Link to="/BlindTest/Themes">
+      <Link to="/Blind-Crash-Test/Themes">
         <button type="button" className="new-theme">
           Choisis ta partie !
         </button>
