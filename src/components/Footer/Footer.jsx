@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Footer.css';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+  const handleEmailChange = (e) => setEmail(e.target.value);
+
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -10,7 +13,8 @@ const Footer = () => {
           name="email"
           id="email"
           placeholder="email"
-          value=""
+          onChange={handleEmailChange}
+          value={email}
         />
         <button type="submit">Partager votre score</button>
       </div>
