@@ -1,0 +1,11 @@
+.stars-container {
+  width: 4vw;
+  margin-right: 1vw;
+  background-color: inherit;
+  border: inherit;
+  cursor: pointer;
+}
+
+.stars-container img {
+  width: 100%;
+}

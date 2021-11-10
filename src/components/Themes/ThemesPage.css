@@ -69,3 +69,8 @@ h2 {
   justify-content: center;
   margin: 100px 0 100px 0;
 }
+
+.difficulty-container {
+  display: flex;
+  margin-top: 3vh;
+}
