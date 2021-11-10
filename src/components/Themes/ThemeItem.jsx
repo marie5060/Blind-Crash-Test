@@ -1,4 +1,3 @@
-import React from 'react';
 import './ThemeItem.css';
 import PropTypes from 'prop-types';
 

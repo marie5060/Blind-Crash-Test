@@ -8,6 +8,7 @@ import QuizzCard from './QuizzCard';
 import './QuizzPage.css';
 
 const QuizzPage = ({ chosenId }) => {
+  console.log(chosenId);
   const [tracks, setTracks] = useState(initialTracks);
   const [nbQuizz, setNbQuizz] = useState(1);
   const [waitingCount, setWaitingCount] = useState(3);

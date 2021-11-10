@@ -1,11 +1,12 @@
 import React from 'react';
 // import { Switch, Route, BrowserRouter } from 'react-router-dom';
 // import LinkBtnAccueil from '../Bases/LinkBtnAcceuil';
+import PropTypes from 'prop-types';
 import LinkBtnFastGame from '../Bases/LinkBtnFastGame';
 import LinkBtnNewTheme from '../Bases/LinkBtnNewTheme';
 import './AccueilPage.css';
 
-const AccueilPage = () => {
+const AccueilPage = ({ setChosenId }) => {
   return (
     <main className="body">
       <div className="pseudo-container">
@@ -24,7 +25,7 @@ const AccueilPage = () => {
         </div>
         {/* <LinkBtnAccueil /> */}
 
-        <LinkBtnFastGame />
+        <LinkBtnFastGame setChosenId={setChosenId} />
       </div>
       <div className="new-theme-container">
         <h1> Personnaliser une partie</h1>
@@ -36,3 +37,7 @@ const AccueilPage = () => {
 };
 
 export default AccueilPage;
+
+AccueilPage.propTypes = {
+  setChosenId: PropTypes.func.isRequired,
+};
