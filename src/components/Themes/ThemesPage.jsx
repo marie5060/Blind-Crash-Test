@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import LinkBtnGoQuizz from '../Bases/LinkBtnGoQuizz';
 import ThemeItem from './ThemeItem';
+import Stars from './Difficulty';
 import './ThemesPage.css';
 
 const ThemesPage = ({ setChosenId }) => {
@@ -25,6 +26,8 @@ const ThemesPage = ({ setChosenId }) => {
     { name: 'Metallica', id: '9640532082', num: 7 },
     { name: 'Michael Jackson', id: '9640536442', num: 8 },
   ];
+
+  const difficultys = [1, 2, 3, 4, 5];
 
   return (
     <div className="themes-page-container">
@@ -55,6 +58,11 @@ const ThemesPage = ({ setChosenId }) => {
         ))}
       </div>
       <h2>Difficulté</h2>
+      <div className="difficulty-container">
+        {difficultys.map((star) => (
+          <Stars key={star} />
+        ))}
+      </div>
       <div className="go-quizz-container">
         <LinkBtnGoQuizz />
       </div>
