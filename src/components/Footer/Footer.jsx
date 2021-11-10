@@ -1,10 +1,15 @@
 import React from 'react';
+import './Footer.css';
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="footer">
       <div className="footer-container">
-        <input type="text" />
+        <label htmlFor="email">
+          Email :
+          <input type="email" name="email" id="email" value="" />
+        </label>
+        <button type="submit">Partager votre score</button>
       </div>
     </footer>
   );

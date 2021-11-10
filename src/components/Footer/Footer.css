@@ -1,0 +1,11 @@
+.footer-container{
+    display: flex;
+    flex-direction: row;
+    background-color: darkorchid;
+    padding: 2%;
+}
+#email{    
+    border-bottom: 2px solid black;
+    width: 60%;
+    margin-left: 5%;
+}
