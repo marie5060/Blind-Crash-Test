@@ -7,6 +7,18 @@
 
 #email {
   border-bottom: 2px solid black;
+  border-radius: 15px;
   width: 20%;
   margin-left: 1.2%;
+}
+
+button {
+    border-radius: 15px;
+    box-shadow: 10px 2px solid black;
+    margin-left: 1.2%;
+    width: 15%;
+}
+
+.social {
+  margin-left: 40%;
 }

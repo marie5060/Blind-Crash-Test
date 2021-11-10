@@ -16,7 +16,30 @@ const Footer = () => {
           onChange={handleEmailChange}
           value={email}
         />
-        <button type="submit">Partager votre score</button>
+        <button type="submit">Partager votre résultat</button>
+        <div className="social">
+          <a
+            href="https://twitter.com/"
+            className="twitter-button"
+            data-show-count="false"
+          >
+            <img src="Logos/logo-twitter.png" alt="twitter" />
+          </a>
+          <a
+            href="https://facebook.com/"
+            className="facebook-button"
+            data-show-count="false"
+          >
+            <img src="Logos/logo-facebook.png" alt="facebook" />
+          </a>
+          <a
+            href="https://instagram.com/"
+            className="instagram-button"
+            data-show-count="false"
+          >
+            <img src="Logos/logo-instagram.jpeg" alt="instagram" />
+          </a>
+        </div>
       </div>
     </footer>
   );
