@@ -8,10 +8,8 @@ const TimerButton = ({ btnClicked, setLeftTimeWhenClick, setBtnClicked }) => {
   const timerStyle = {
     width: `${leftTime}%`,
   };
-  console.log('re-render timer');
 
   const resetTimer = () => {
-    console.log('resetTimer');
     setStep(0.1);
     setLeftTime(100);
   };
