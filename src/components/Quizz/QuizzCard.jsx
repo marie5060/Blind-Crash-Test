@@ -69,7 +69,7 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion, difficulty }) => {
     setBtnClicked(true);
   };
 
-  // si la difficulté > 3 change l'image pour afficher point d'interrogation
+  // si la difficulté >= 3 change l'image pour afficher point d'interrogation
   if (difficulty >= 3) {
     coverImage = interrogation;
   }
@@ -94,6 +94,7 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion, difficulty }) => {
             handleClick={handleClick}
             answer={answer.title_short}
             rightAnswer={theRightAnswer}
+            difficulty={difficulty}
             key={answer.id}
           />
         ))}
