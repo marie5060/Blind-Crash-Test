@@ -12,6 +12,11 @@ const QuizzPage = ({ chosenId }) => {
   const [nbQuizz, setNbQuizz] = useState(1);
   const [waitingCount, setWaitingCount] = useState(3);
 
+  // difficulté choisie sur PageThème
+  const difficulty = 4;
+  // nombre de mauvaise réponses à récupérer selon le niveau de difficulté, initialisé à 3
+  let numBadAnswerToGet = 3;
+
   const random = Math.floor(Math.random() * tracks.length);
 
   // Timer
@@ -45,9 +50,19 @@ const QuizzPage = ({ chosenId }) => {
     setNbQuizz(nbQuizz + 1);
   };
 
+  // change le nombre de mauvaise réponse à récupérer selon le niveau de difficulté
+  if (difficulty === 1) {
+    numBadAnswerToGet = 1;
+  } else if (difficulty === 4) {
+    numBadAnswerToGet = 5;
+  } else if (difficulty === 5) {
+    numBadAnswerToGet = 7;
+  }
+
   // récupére un tableau d'objet de mauvaises réponses
   const badTracksArray = [];
-  for (let i = 0; i < 3; i += 1) {
+  /// modifie le nombre de réponse que je récupère ///
+  for (let i = 0; i < numBadAnswerToGet; i += 1) {
     let number = Math.floor(Math.random() * tracks.length);
     while (
       tracks[number].id === tracks[random].id ||
@@ -70,6 +85,7 @@ const QuizzPage = ({ chosenId }) => {
           goodTrack={tracks[random]}
           badTrackArray={badTracksArray}
           nextQuestion={nextQuestion}
+          difficulty={difficulty}
         />
       )}
       <div className="quizz-bottom">
