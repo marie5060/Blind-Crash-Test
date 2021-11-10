@@ -1,13 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-/* eslint-disable */
-import React from 'react';
-=======
-/*eslint-disable*/
-=======
->>>>>>> 938deed7bfa0a0267e8ae6b7b880656f8296e5f8
 import React, { useState } from 'react';
->>>>>>> bd79e0e7e3f06e46ec7a04b639c36509e3411583
 import { Link } from 'react-router-dom';
 import BurgerNav from './BurgerNav/BurgerNav';
 import './Header.css';
