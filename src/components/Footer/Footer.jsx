@@ -5,10 +5,13 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-        <label htmlFor="email">
-          Email :
-          <input type="email" name="email" id="email" value="" />
-        </label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="email"
+          value=""
+        />
         <button type="submit">Partager votre score</button>
       </div>
     </footer>

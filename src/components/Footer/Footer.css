@@ -1,11 +1,12 @@
-.footer-container{
-    display: flex;
-    flex-direction: row;
-    background-color: darkorchid;
-    padding: 2%;
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(143, 35, 197);
+  padding: 2%;
 }
-#email{    
-    border-bottom: 2px solid black;
-    width: 60%;
-    margin-left: 5%;
+
+#email {
+  border-bottom: 2px solid black;
+  width: 20%;
+  margin-left: 1.2%;
 }
