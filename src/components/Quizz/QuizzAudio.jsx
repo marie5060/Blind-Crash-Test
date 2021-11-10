@@ -4,6 +4,7 @@ import ReactPlayer from 'react-player';
 import './QuizzAudio.css';
 
 const QuizzAudio = ({ url }) => {
+  console.log('re-render QuizzAudio');
   return (
     <div className="audio-container">
       <ReactPlayer url={url} controls playing volume={0.1} />

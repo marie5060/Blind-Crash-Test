@@ -9,12 +9,14 @@ import QuizzScore from './QuizzScore';
 import './QuizzPage.css';
 
 const QuizzPage = ({ chosenId }) => {
+  console.log("re-render QuizzPage")
   const [tracks, setTracks] = useState(initialTracks);
   const [nbQuizz, setNbQuizz] = useState(1);
   const [waitingCount, setWaitingCount] = useState(3);
   const [currentScore, setCurrentScore] = useState(1);
-
-  const random = Math.floor(Math.random() * tracks.length);
+  
+  let random = Math.floor(Math.random() * tracks.length);
+  console.log("random = " + random)
 
   // Timer 3 - 2 - 1 quizz start
   useEffect(() => {
@@ -44,6 +46,8 @@ const QuizzPage = ({ chosenId }) => {
   // }, [chosenId]);
 
   const nextQuestion = () => {
+    random = Math.floor(Math.random() * tracks.length);
+    console.log("random = " + random)
     setNbQuizz(nbQuizz + 1);
   };
 
@@ -83,7 +87,6 @@ const QuizzPage = ({ chosenId }) => {
         />
       )}
       <div className="quizz-bottom">
-        {/* <QuizzScore /> */}
         <div className="link-btns-container">
           {/* <LinkBtn />
           <LinkBtn /> */}
@@ -96,5 +99,5 @@ const QuizzPage = ({ chosenId }) => {
 export default QuizzPage;
 
 QuizzPage.propTypes = {
-  chosenId: PropTypes.oneOfType([PropTypes.number]).isRequired,
+  chosenId: PropTypes.string.isRequired,
 };

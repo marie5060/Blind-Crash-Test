@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import QuizzAlbumPicture from './QuizzAlbumPicture';
@@ -17,8 +18,7 @@ const QuizzCard = ({
   const [win, setWin] = useState(false);
   const [leftTimeWhenClick, setLeftTimeWhenClick] = useState(100);
   const theRightAnswer = goodTrack.title_short;
-  console.log(`dans quizz card btnClicked: ${btnClicked}`);
-  console.log(`dans quizz card win: ${win}`);
+  console.log(`re-render QuizzCard win est : ${win}, `);
 
   function shuffleArray(array2) {
     const array = array2;
@@ -53,35 +53,40 @@ const QuizzCard = ({
   };
 
   useEffect(() => {
-    console.log('autreUsEffect creer tableau');
+    console.log('useEffect creerTableau ,[]');
     creerTableauReponses();
   }, []);
 
   useEffect(() => {
     if (!btnClicked) {
-      console.log(
-        `dans useEffect quizzCard, ds !btnCkicked, creerTableau: ${btnClicked}`
-      );
+      console.log('useEffect btnClicked false');
       creerTableauReponses();
     } else {
-      setTimeout(nextQuestion, 3000);
-      setTimeout(() => setBtnClicked(false), 3000);
-      setTimeout(() => setWin(false), 3000);
+      console.log('useEffect btnClicked true');
+      setTimeout(() => {
+        nextQuestion;
+        setBtnClicked(false);
+        setWin(false);
+      }, 3000);
+      // setTimeout(nextQuestion, 3000);
+      // setTimeout(() => setBtnClicked(false), 3000);
+      // setTimeout(() => setWin(false), 3000);
     }
   }, [btnClicked]);
+
+  useEffect(() => {
+    if (win) {
+      console.log('useEffect win true');
+      setCurrentScore(parseInt(leftTimeWhenClick.toFixed(0), 10));
+    } else {
+      console.log('useEffect win false');
+      setCurrentScore(0);
+    }
+  }, [win]);
 
   const handleClick = () => {
     setBtnClicked(true);
   };
-
-  useEffect(() => {
-    if (win) {
-      console.log(`score:${parseInt(leftTimeWhenClick.toFixed(0), 10)}`);
-      setCurrentScore(parseInt(leftTimeWhenClick.toFixed(0), 10));
-    } else {
-      setCurrentScore(0);
-    }
-  }, [win]);
 
   return (
     <div className="quizz-card">
