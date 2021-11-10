@@ -5,8 +5,9 @@ import QuizzAudio from './QuizzAudio';
 import QuizzAnswerButton from './QuizzAnswerButton';
 import TimerButton from './TimerButton';
 import './QuizzCard.css';
+import interrogation from './interrogation.png';
 
-const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
+const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion, difficulty }) => {
   const [btnClicked, setBtnClicked] = useState(false);
   const [answers, setAnswers] = useState([]);
 
@@ -16,7 +17,8 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   // console.log pour éviter erreur eslint (en attendant pouvoir utiliser leftTimeWhenClick pour calcul score)
   const theRightAnswer = goodTrack.title_short;
 
-  // penser à récupérer le track.length pour le random en dessous
+  // image afficher  initialisé à la cover du morceau
+  let coverImage = goodTrack.album.cover_medium;
 
   function shuffleArray(array2) {
     const array = array2;
@@ -67,11 +69,17 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
     setBtnClicked(true);
   };
 
+  // si la difficulté > 3 change l'image pour afficher point d'interrogation
+  if (difficulty >= 3) {
+    coverImage = interrogation;
+  }
+
   return (
     <div className="quizz-card">
       <div className="picture-container">
-        <QuizzAlbumPicture url={goodTrack.album.cover_medium} />
-
+        <div className="picture-container-image">
+          <QuizzAlbumPicture url={coverImage} />
+        </div>
         <button type="button" onClick={handleClick} className="next-track-bg">
           <div className="next-track-text">Morceau suivant</div>
           {btnClicked ? <div className="next-track-animation" /> : null}
@@ -107,4 +115,5 @@ QuizzCard.propTypes = {
   goodTrack: PropTypes.oneOfType([PropTypes.object]).isRequired,
   badTrackArray: PropTypes.oneOfType([PropTypes.array]).isRequired,
   nextQuestion: PropTypes.func.isRequired,
+  difficulty: PropTypes.oneOfType([PropTypes.number]).isRequired,
 };
