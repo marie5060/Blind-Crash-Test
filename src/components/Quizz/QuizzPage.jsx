@@ -13,7 +13,7 @@ const QuizzPage = ({ chosenId }) => {
   const [waitingCount, setWaitingCount] = useState(3);
 
   // difficulté choisie sur PageThème
-  const difficulty = 4;
+  const difficulty = 5;
   // nombre de mauvaise réponses à récupérer selon le niveau de difficulté, initialisé à 3
   let numBadAnswerToGet = 3;
 
