@@ -9,7 +9,6 @@ import QuizzPage from './components/Quizz/QuizzPage';
 
 function App() {
   const [chosenId, setChosenId] = React.useState('9626980522');
-  console.log('re-render App');
 
   return (
     <div>
