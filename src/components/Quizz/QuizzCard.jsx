@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import QuizzAlbumPicture from './QuizzAlbumPicture';
@@ -13,14 +12,21 @@ const QuizzCard = ({
   nextQuestion,
   setCurrentScore,
 }) => {
+  // Le bouton a été cliqué
   const [btnClicked, setBtnClicked] = useState(false);
+  // tableau de réponses
   const [answers, setAnswers] = useState([]);
+  // Le joueur a gagné / perdu
   const [win, setWin] = useState(false);
+  // temps restant lors du click
   const [leftTimeWhenClick, setLeftTimeWhenClick] = useState(100);
+  // Bonne réponse
   const theRightAnswer = goodTrack.title_short;
-  console.log(`re-render QuizzCard win est : ${win}, `);
 
-  function shuffleArray(array2) {
+  let answerList = [];
+
+  // Fonction de mélange des réponses
+  const shuffleArray = (array2) => {
     const array = array2;
     for (let i = array.length - 1; i > 0; i -= 1) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -29,42 +35,33 @@ const QuizzCard = ({
       array[j] = temp;
     }
     return array;
-  }
+  };
 
+  // Génère un tableau de 4 réponses et les
   const creerTableauReponses = () => {
     // récupére le title de la bonne réponse
-    const answerList = [
+    answerList = [
       {
         title_short: goodTrack.title_short,
         id: goodTrack.id,
       },
     ];
-
-    // récupére les titles des mauvaises réponses
     for (let i = 0; i < badTrackArray.length; i += 1) {
       answerList.push({
         title_short: badTrackArray[i].title_short,
         id: badTrackArray[i].id,
       });
     }
-
     // je mélange et modifie answers
     setAnswers(shuffleArray(answerList));
   };
 
   useEffect(() => {
-    console.log('useEffect creerTableau ,[]');
-    creerTableauReponses();
-  }, []);
-
-  useEffect(() => {
     if (!btnClicked) {
-      console.log('useEffect btnClicked false');
       creerTableauReponses();
     } else {
-      console.log('useEffect btnClicked true');
       setTimeout(() => {
-        nextQuestion;
+        nextQuestion();
         setBtnClicked(false);
         setWin(false);
       }, 3000);
@@ -74,12 +71,14 @@ const QuizzCard = ({
     }
   }, [btnClicked]);
 
+  // useEffect(() => {
+  //   creerTableauReponses();
+  // }, [answers]);
+
   useEffect(() => {
     if (win) {
-      console.log('useEffect win true');
       setCurrentScore(parseInt(leftTimeWhenClick.toFixed(0), 10));
     } else {
-      console.log('useEffect win false');
       setCurrentScore(0);
     }
   }, [win]);

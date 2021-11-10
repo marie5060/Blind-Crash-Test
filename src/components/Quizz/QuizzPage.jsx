@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -9,14 +8,24 @@ import QuizzScore from './QuizzScore';
 import './QuizzPage.css';
 
 const QuizzPage = ({ chosenId }) => {
-  console.log("re-render QuizzPage")
+  // tableau de chansons
   const [tracks, setTracks] = useState(initialTracks);
+  // Compteur de question
   const [nbQuizz, setNbQuizz] = useState(1);
+  // Compteur de 3s avant de commancer le jeu
   const [waitingCount, setWaitingCount] = useState(3);
+  // Score actuel du joueur
   const [currentScore, setCurrentScore] = useState(1);
-  
-  let random = Math.floor(Math.random() * tracks.length);
-  console.log("random = " + random)
+
+  const [random, setRandom] = useState(0);
+
+  const badTracksArray = [];
+
+  useEffect(() => {
+    setRandom(Math.floor(Math.random() * tracks.length));
+    console.log('random');
+    // Remplir les 4 réponses
+  }, [nbQuizz]);
 
   // Timer 3 - 2 - 1 quizz start
   useEffect(() => {
@@ -28,31 +37,24 @@ const QuizzPage = ({ chosenId }) => {
     };
   }, [waitingCount]);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       `https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/${chosenId}?&limit=50`
-  //     ) // https://cors-anywhere.herokuapp.com/ à ajouter au début
-  //     .then((response) => response.data.tracks.data)
-  //     .then((data) => {
-  //       const okData = data.filter(
-  //         (track) =>
-  //           track.album.cover_medium &&
-  //           track.preview &&
-  //           !track.title_short.includes('(')
-  //       );
-  //       setTracks(okData);
-  //     });
-  // }, [chosenId]);
+  useEffect(() => {
+    axios
+      .get(
+        `https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/${chosenId}?&limit=50`
+      ) // https://cors-anywhere.herokuapp.com/ à ajouter au début
+      .then((response) => response.data.tracks.data)
+      .then((data) => {
+        const okData = data.filter(
+          (track) =>
+            track.album.cover_medium &&
+            track.preview &&
+            !track.title_short.includes('(')
+        );
+        setTracks(okData);
+      });
+    console.log('appel axios');
+  }, [chosenId]);
 
-  const nextQuestion = () => {
-    random = Math.floor(Math.random() * tracks.length);
-    console.log("random = " + random)
-    setNbQuizz(nbQuizz + 1);
-  };
-
-  // récupére un tableau d'objet de mauvaises réponses
-  const badTracksArray = [];
   for (let i = 0; i < 3; i += 1) {
     let number = Math.floor(Math.random() * tracks.length);
     while (
@@ -64,15 +66,17 @@ const QuizzPage = ({ chosenId }) => {
     badTracksArray.push(tracks[number]);
   }
 
+  const nextQuestion = () => {
+    setNbQuizz(nbQuizz + 1);
+  };
+
   return (
     <main>
       <div className="topQuizz">
         <div>
           Score : <QuizzScore currentScore={currentScore} nbQuizz={nbQuizz} />
         </div>
-        <div>
-          {nbQuizz} / 10
-        </div>
+        <div>{nbQuizz} / 10</div>
       </div>
       {waitingCount > 0 && nbQuizz === 1 ? (
         <div className="waiting-container">

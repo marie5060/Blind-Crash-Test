@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import './TimerButton.css';
 
 const TimerButton = ({ btnClicked, setLeftTimeWhenClick, setBtnClicked }) => {
-  console.log('re-render TimerButton');
   const [leftTime, setLeftTime] = useState(100);
   const [step, setStep] = useState(0.1);
   const timerStyle = {

@@ -9,7 +9,6 @@ const QuizzAnswerButton = ({
   btnClicked,
   setWin,
 }) => {
-  console.log('re-render QuizzAnswerButton');
   const [chosen, setChosen] = useState(false);
 
   let buttonClass = 'answer-button';
@@ -19,9 +18,6 @@ const QuizzAnswerButton = ({
     if (chosen) {
       if (answer === rightAnswer) {
         setWin(true);
-        console.log(
-          'WIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIINNNNNNNNNNNNNNNNNNNNNNNNNNNNN'
-        );
         buttonClass += ' chosenBtn';
       } else {
         buttonClass += ' loose chosenBtn';
