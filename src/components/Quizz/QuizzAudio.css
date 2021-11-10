@@ -1,13 +1,12 @@
-.audioContainer {
+.audio-container {
   opacity: 1;
   position: absolute;
   width: 20%;
   height: 20%;
   top: 0;
-  background-color: red;
 }
 
-.audioContainer > * {
+.audio-container > * {
   width: 100% !important;
   height: 100% !important;
 }

@@ -1,12 +1,21 @@
-.ThemesPage-Container {
-  display: flex;
-  flex-direction: column;
+h2 {
+  font-size: 30px;
+  color: white;
 }
 
-.themeItems {
+.themes-page-container {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 100px 50px 100px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./background-theme.jpg");
+}
+
+.theme-items {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 150px 150px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .item {
@@ -53,4 +62,10 @@
 .item8 {
   grid-column: 4/5;
   grid-row: 2/3;
+}
+
+.go-quizz-container {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0 100px 0;
 }

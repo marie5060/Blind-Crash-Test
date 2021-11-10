@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import BurgerNav from './BurgerNav/BurgerNav';
@@ -29,22 +28,28 @@ const Header = () => {
         <nav className="header-navbar">
           <ul className="header-nav-links">
             <li>
-              <Link className="header-nav-links-a" to="/BlindTest/">
+              <Link className="header-nav-links-a" to="/Blind-Crash-Test/">
                 Accueil
               </Link>
             </li>
             <li>
-              <Link className="header-nav-links-a" to="/BlindTest/Themes">
+              <Link
+                className="header-nav-links-a"
+                to="/Blind-Crash-Test/Themes"
+              >
                 Thèmes
               </Link>
             </li>
             <li>
-              <Link className="header-nav-links-a" to="/BlindTest/Resultats">
+              <Link
+                className="header-nav-links-a"
+                to="/Blind-Crash-Test/Resultats"
+              >
                 Résultats
               </Link>
             </li>
             <li>
-              <Link className="header-nav-links-a" to="/BlindTest/Quizz">
+              <Link className="header-nav-links-a" to="/Blind-Crash-Test/Quizz">
                 Quizz
               </Link>
             </li>
