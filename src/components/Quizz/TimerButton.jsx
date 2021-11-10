@@ -26,7 +26,7 @@ const TimerButton = ({ btnClicked, setLeftTimeWhenClick }) => {
   }, [btnClicked]);
 
   return (
-    <div id="progressBar">
+    <div id="progress-bar">
       <div className="bar" style={timerStyle} />
     </div>
   );

@@ -8,7 +8,7 @@ import ResultatsPage from './components/Resultats/ResultatsPage';
 import QuizzPage from './components/Quizz/QuizzPage';
 
 function App() {
-  const [chosenId, setChosenId] = React.useState(0);
+  const [chosenId, setChosenId] = React.useState(9626980522);
 
   return (
     <div>
@@ -16,14 +16,14 @@ function App() {
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route exact path="/BlindTest/" component={AccueilPage} />
+          <Route exact path="/Blind-Crash-Test/" component={AccueilPage} />
           <Route
-            path="/BlindTest/Themes"
+            path="/Blind-Crash-Test/Themes"
             component={() => <ThemesPage setChosenId={setChosenId} />}
           />
-          <Route path="/BlindTest/Resultats" component={ResultatsPage} />
+          <Route path="/Blind-Crash-Test/Resultats" component={ResultatsPage} />
           <Route
-            path="/BlindTest/Quizz"
+            path="/Blind-Crash-Test/Quizz"
             component={() => <QuizzPage chosenId={chosenId} />}
           />
           <Route exact path="/" component={AccueilPage} />

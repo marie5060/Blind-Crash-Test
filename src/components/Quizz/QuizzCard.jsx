@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-/* eslint-disable */
 import PropTypes from 'prop-types';
 import QuizzAlbumPicture from './QuizzAlbumPicture';
 import QuizzAudio from './QuizzAudio';
@@ -10,12 +9,12 @@ import './QuizzCard.css';
 const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   const [btnClicked, setBtnClicked] = useState(false);
   const [answers, setAnswers] = useState([]);
-  const theRightAnswer = goodTrack.title_short;
-  
-// temporary tab (waiting real answers feature)
+
+  // temporary tab (waiting real answers feature)
   const [leftTimeWhenClick, setLeftTimeWhenClick] = useState(100);
-  console.log(typeof leftTimeWhenClick);
+  // console.log pour éviter erreur eslint (en attendant pouvoir utiliser leftTimeWhenClick pour calcul score)
   console.log(`${leftTimeWhenClick.toFixed(0)}%`);
+  const theRightAnswer = goodTrack.title_short;
 
   // penser à récupérer le track.length pour le random en dessous
 
@@ -31,27 +30,34 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   }
 
   const creerTableauReponses = () => {
-    // récupére les titles des mauvaises réponses
-    const badAnswers = [];
-    for (let i = 0; i < badTrackArray.length; i += 1) {
-      badAnswers.push(badTrackArray[i].title_short);
-    }
     // récupére le title de la bonne réponse
-    const rightAnswer = goodTrack.title_short;
+    const answerList = [
+      {
+        title_short: goodTrack.title_short,
+        id: goodTrack.id,
+      },
+    ];
+
+    // récupére les titles des mauvaises réponses
+    for (let i = 0; i < badTrackArray.length; i += 1) {
+      answerList.push({
+        title_short: badTrackArray[i].title_short,
+        id: badTrackArray[i].id,
+      });
+    }
+
     // je mélange et modifie answers
-    setAnswers(shuffleArray([...badAnswers, rightAnswer]));
+    setAnswers(shuffleArray(answerList));
   };
 
   useEffect(() => {
     creerTableauReponses();
-    console.log(`réponse après mélange 1: ${answers}`);
   }, []);
 
   useEffect(() => {
     if (!btnClicked) {
       creerTableauReponses();
     }
-    console.log(`réponse après mélange 2: ${answers}`);
   }, [btnClicked]);
 
   const handleClick = () => {
@@ -61,29 +67,30 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion }) => {
   };
 
   return (
-    <div className="quizzCard">
-      <div className="pictureContainer">
+    <div className="quizz-card">
+      <div className="picture-container">
         <QuizzAlbumPicture url={goodTrack.album.cover_medium} />
         {btnClicked ? (
-          <div className="nextTrackBg">
-            <div className="nextTrackText">Morceau suivant</div>
+          <div className="next-track-bg">
+            <div className="next-track-text">Morceau suivant</div>
           </div>
         ) : (
           ''
         )}
         <QuizzAudio url={goodTrack.preview} />
       </div>
-      <div className="answerBtnContainer">
+      <div className="answer-btn-container">
         {answers.map((answer) => (
           <QuizzAnswerButton
             btnClicked={btnClicked}
             handleClick={handleClick}
-            answer={answer}
+            answer={answer.title_short}
             rightAnswer={theRightAnswer}
+            key={answer.id}
           />
         ))}
       </div>
-      <div className="timerContainer">
+      <div className="timer-container">
         <TimerButton
           btnClicked={btnClicked}
           setLeftTimeWhenClick={setLeftTimeWhenClick}

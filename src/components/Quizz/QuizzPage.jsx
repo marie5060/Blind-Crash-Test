@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
-/* eslint-disable */
 // import LinkBtn from '../Bases/LinkBtn';
+import initialTracks from '../../severalTracks';
 import QuizzCard from './QuizzCard';
 // import QuizzScore from './QuizzScore';
 import './QuizzPage.css';
-import initialTracks from 'severalTracks';
 
-const QuizzPage = ({chosenId}) => {
-
+const QuizzPage = ({ chosenId }) => {
   const [tracks, setTracks] = useState(initialTracks);
   const [nbQuizz, setNbQuizz] = useState(1);
   const [waitingCount, setWaitingCount] = useState(5);
@@ -24,14 +23,22 @@ const QuizzPage = ({chosenId}) => {
       clearInterval(timer);
     };
   }, [waitingCount]);
-  
-    useEffect(() => {
+
+  useEffect(() => {
     axios
       .get(
-        `https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/${chosenId.themeId}?&limit=50`
+        `https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/${chosenId}?&limit=50`
       ) // https://cors-anywhere.herokuapp.com/ à ajouter au début
       .then((response) => response.data.tracks.data)
-      .then((data) => setTracks(data));
+      .then((data) => {
+        const okData = data.filter(
+          (track) =>
+            track.album.cover_medium &&
+            track.preview &&
+            !track.title_short.includes('(')
+        );
+        setTracks(okData);
+      });
   }, []);
 
   const nextQuestion = () => {
@@ -42,20 +49,21 @@ const QuizzPage = ({chosenId}) => {
   const badTracksArray = [];
   for (let i = 0; i < 3; i += 1) {
     let number = Math.floor(Math.random() * tracks.length);
-    const numbersArray = [];
-    numbersArray.push(number);
-    while (number === random || numbersArray.includes(number)) {
+    while (
+      tracks[number].id === tracks[random].id ||
+      badTracksArray.includes(tracks[number])
+    ) {
       number = Math.floor(Math.random() * tracks.length);
     }
     badTracksArray.push(tracks[number]);
   }
-  
+
   return (
     <main>
       <h1>Quizz</h1>
       {waitingCount > 0 && nbQuizz === 1 ? (
-        <div className="waitingContainer">
-          <div className="waitingCount">{waitingCount}</div>
+        <div className="waiting-container">
+          <div className="waiting-count">{waitingCount}</div>
         </div>
       ) : (
         <QuizzCard
@@ -64,9 +72,9 @@ const QuizzPage = ({chosenId}) => {
           nextQuestion={nextQuestion}
         />
       )}
-      <div className="quizzBottom">
+      <div className="quizz-bottom">
         {/* <QuizzScore /> */}
-        <div className="linkBtnsContainer">
+        <div className="link-btns-container">
           {/* <LinkBtn />
           <LinkBtn /> */}
         </div>
@@ -76,3 +84,7 @@ const QuizzPage = ({chosenId}) => {
 };
 
 export default QuizzPage;
+
+QuizzPage.propTypes = {
+  chosenId: PropTypes.oneOfType([PropTypes.number]).isRequired,
+};

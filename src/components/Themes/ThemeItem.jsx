@@ -7,9 +7,9 @@ const ThemeItem = ({ themeName, themeId, setChosenId }) => {
     <div>
       <button
         type="button"
-        className="themeButton"
+        className="theme-button"
         onClick={() => {
-          setChosenId({ themeId });
+          setChosenId(themeId);
         }}
       >
         {themeName}
