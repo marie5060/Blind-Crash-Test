@@ -1,7 +1,13 @@
 import React from 'react';
 
 const Footer = () => {
-  return <footer>Coucou je suis le footer</footer>;
+  return (
+    <footer>
+      <div className="footer-container">
+        <input type="text" />
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;
