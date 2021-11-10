@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const QuizzScore = ({ currentScore, nbQuizz }) => {
-  const [totalScore, setTotalScore] = useState(20);
+  const [totalScore, setTotalScore] = useState(0);
 
   useEffect(() => {
     setTotalScore(totalScore + currentScore);

@@ -15,7 +15,7 @@ const QuizzPage = ({ chosenId }) => {
   // Compteur de 3s avant de commancer le jeu
   const [waitingCount, setWaitingCount] = useState(3);
   // Score actuel du joueur
-  const [currentScore, setCurrentScore] = useState(1);
+  const [currentScore, setCurrentScore] = useState(0);
 
   const [random, setRandom] = useState(0);
 
@@ -40,7 +40,7 @@ const QuizzPage = ({ chosenId }) => {
   useEffect(() => {
     axios
       .get(
-        `https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/${chosenId}?&limit=50`
+        `https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/${chosenId}`
       ) // https://cors-anywhere.herokuapp.com/ à ajouter au début
       .then((response) => response.data.tracks.data)
       .then((data) => {
