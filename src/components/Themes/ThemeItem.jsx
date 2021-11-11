@@ -1,5 +1,5 @@
-import './ThemeItem.css';
 import PropTypes from 'prop-types';
+import './ThemeItem.css';
 
 const ThemeItem = ({ themeName, themeId, setChosenId }) => {
   return (

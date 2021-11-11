@@ -27,7 +27,7 @@ const QuizzAnswerButton = ({
       buttonClass += ' loose';
     }
   }
-  // console.log(difficulty);
+
   if (difficulty === 5) {
     buttonClass += ' hard-difficulty';
   }

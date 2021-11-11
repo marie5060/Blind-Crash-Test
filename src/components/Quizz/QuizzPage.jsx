@@ -69,7 +69,6 @@ const QuizzPage = ({ chosenId }) => {
   }
 
   // récupére un tableau d'objet de mauvaises réponses
-  // const badTracksArray = [];
   /// modifie le nombre de réponse que je récupère ///
   for (let i = 0; i < numBadAnswerToGet; i += 1) {
     let number = Math.floor(Math.random() * tracks.length);
@@ -81,10 +80,6 @@ const QuizzPage = ({ chosenId }) => {
     }
     badTracksArray.push(tracks[number]);
   }
-
-  // const nextQuestion = () => {
-  //   setNbQuizz(nbQuizz + 1);
-  // };
 
   return (
     <main>

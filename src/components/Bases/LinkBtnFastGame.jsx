@@ -1,7 +1,6 @@
-import React from 'react';
-import './linkBtnFastGame.css';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import './linkBtnFastGame.css';
 
 const LinkBtnFastGame = ({ setChosenId }) => {
   const numberPlaylists = [
