@@ -7,7 +7,6 @@ import QuizzScore from './QuizzScore';
 import './QuizzPage.css';
 
 const QuizzPage = ({ chosenId }) => {
-  console.log(`chosenId : ${chosenId}`);
   // tableau de chansons
   const [tracks, setTracks] = useState(initialTracks);
   // Compteur de question
@@ -106,6 +105,7 @@ const QuizzPage = ({ chosenId }) => {
           nextQuestion={nextQuestion}
           setCurrentScore={setCurrentScore}
           difficulty={difficulty}
+          nbQuizz={nbQuizz}
         />
       )}
     </main>

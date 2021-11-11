@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import QuizzAlbumPicture from './QuizzAlbumPicture';
 import QuizzAudio from './QuizzAudio';
 import QuizzAnswerButton from './QuizzAnswerButton';
 import TimerButton from './TimerButton';
-import './QuizzCard.css';
 import interrogation from './interrogation.png';
+import './QuizzCard.css';
 
 const QuizzCard = ({
   goodTrack,
@@ -13,6 +14,7 @@ const QuizzCard = ({
   nextQuestion,
   setCurrentScore,
   difficulty,
+  nbQuizz,
 }) => {
   // Le bouton a été cliqué
   const [btnClicked, setBtnClicked] = useState(false);
@@ -89,17 +91,32 @@ const QuizzCard = ({
     coverImage = interrogation;
   }
 
+  if (nbQuizz === 11) {
+    return <Redirect to="/Blind-Crash-Test/Resultats" />;
+  }
   return (
     <div className="quizz-card">
       <div className="picture-container">
         <div className="picture-container-image">
           <QuizzAlbumPicture url={coverImage} />
         </div>
-        <button type="button" onClick={handleClick} className="next-track-bg">
-          <div className="next-track-text">Morceau suivant</div>
-          {btnClicked ? <div className="next-track-animation" /> : null}
-        </button>
-
+        {nbQuizz > 9 ? (
+          <Link to="/Blind-Crash-Test/Resultats">
+            <button
+              type="button"
+              onClick={handleClick}
+              className="next-track-bg"
+            >
+              <div className="next-track-text">Voir les résultats</div>
+              {btnClicked ? <div className="next-track-animation" /> : null}
+            </button>
+          </Link>
+        ) : (
+          <button type="button" onClick={handleClick} className="next-track-bg">
+            <div className="next-track-text">Morceau suivant</div>
+            {btnClicked ? <div className="next-track-animation" /> : null}
+          </button>
+        )}
         <QuizzAudio url={goodTrack.preview} />
       </div>
       <div className="answer-btn-container">
@@ -134,4 +151,5 @@ QuizzCard.propTypes = {
   nextQuestion: PropTypes.func.isRequired,
   setCurrentScore: PropTypes.func.isRequired,
   difficulty: PropTypes.oneOfType([PropTypes.number]).isRequired,
+  nbQuizz: PropTypes.number.isRequired,
 };
