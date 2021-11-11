@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import AccueilPage from './components/Accueil/AccueilPage';
 import ThemesPage from './components/Themes/ThemesPage';
@@ -34,6 +35,7 @@ function App() {
           />
         </Switch>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }
