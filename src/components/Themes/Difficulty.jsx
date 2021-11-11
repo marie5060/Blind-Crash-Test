@@ -1,4 +1,3 @@
-import React from 'react';
 import star from './star.png';
 import './Difficulty.css';
 

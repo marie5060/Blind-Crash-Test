@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import BurgerNav from './BurgerNav/BurgerNav';
-import './Header.css';
 import logo from './logo.gif';
+import './Header.css';
 
 const Header = () => {
   const [showLinks, setShowLinks] = useState(false);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './QuizzAnswerButton.css';
 
@@ -7,6 +7,7 @@ const QuizzAnswerButton = ({
   rightAnswer,
   handleClick,
   btnClicked,
+  setWin,
   difficulty,
 }) => {
   const [chosen, setChosen] = useState(false);
@@ -17,6 +18,7 @@ const QuizzAnswerButton = ({
     buttonClass = 'answer-button';
     if (chosen) {
       if (answer === rightAnswer) {
+        setWin(true);
         buttonClass += ' chosenBtn';
       } else {
         buttonClass += ' loose chosenBtn';
@@ -25,7 +27,7 @@ const QuizzAnswerButton = ({
       buttonClass += ' loose';
     }
   }
-  console.log(difficulty);
+
   if (difficulty === 5) {
     buttonClass += ' hard-difficulty';
   }
@@ -51,5 +53,6 @@ QuizzAnswerButton.propTypes = {
   rightAnswer: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
   btnClicked: PropTypes.bool.isRequired,
+  setWin: PropTypes.func.isRequired,
   difficulty: PropTypes.number.isRequired,
 };

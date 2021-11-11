@@ -1,26 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import QuizzAlbumPicture from './QuizzAlbumPicture';
 import QuizzAudio from './QuizzAudio';
 import QuizzAnswerButton from './QuizzAnswerButton';
 import TimerButton from './TimerButton';
-import './QuizzCard.css';
 import interrogation from './interrogation.png';
+import './QuizzCard.css';
 
-const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion, difficulty }) => {
+const QuizzCard = ({
+  goodTrack,
+  badTrackArray,
+  nextQuestion,
+  setCurrentScore,
+  difficulty,
+  nbQuizz,
+}) => {
+  // Le bouton a été cliqué
   const [btnClicked, setBtnClicked] = useState(false);
+  // tableau de réponses
   const [answers, setAnswers] = useState([]);
-
-  // temporary tab (waiting real answers feature)
+  // Le joueur a gagné / perdu
+  const [win, setWin] = useState(false);
+  // temps restant lors du click
   const [leftTimeWhenClick, setLeftTimeWhenClick] = useState(100);
-  console.log(leftTimeWhenClick);
-  // console.log pour éviter erreur eslint (en attendant pouvoir utiliser leftTimeWhenClick pour calcul score)
+  // Bonne réponse
   const theRightAnswer = goodTrack.title_short;
 
+  let answerList = [];
   // image afficher  initialisé à la cover du morceau
   let coverImage = goodTrack.album.cover_medium;
 
-  function shuffleArray(array2) {
+  // Fonction de mélange des réponses
+  const shuffleArray = (array2) => {
     const array = array2;
     for (let i = array.length - 1; i > 0; i -= 1) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -29,41 +41,46 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion, difficulty }) => {
       array[j] = temp;
     }
     return array;
-  }
+  };
 
+  // Génère un tableau de 4 réponses et les
   const creerTableauReponses = () => {
     // récupére le title de la bonne réponse
-    const answerList = [
+    answerList = [
       {
         title_short: goodTrack.title_short,
         id: goodTrack.id,
       },
     ];
-
-    // récupére les titles des mauvaises réponses
     for (let i = 0; i < badTrackArray.length; i += 1) {
       answerList.push({
         title_short: badTrackArray[i].title_short,
         id: badTrackArray[i].id,
       });
     }
-
     // je mélange et modifie answers
     setAnswers(shuffleArray(answerList));
   };
 
   useEffect(() => {
-    creerTableauReponses();
-  }, []);
-
-  useEffect(() => {
     if (!btnClicked) {
       creerTableauReponses();
     } else {
-      setTimeout(nextQuestion, 3000);
-      setTimeout(() => setBtnClicked(false), 3000);
+      setTimeout(() => {
+        nextQuestion();
+        setBtnClicked(false);
+        setWin(false);
+      }, 3000);
     }
   }, [btnClicked]);
+
+  useEffect(() => {
+    if (win) {
+      setCurrentScore(parseInt(leftTimeWhenClick.toFixed(0), 10));
+    } else {
+      setCurrentScore(0);
+    }
+  }, [win]);
 
   const handleClick = () => {
     setBtnClicked(true);
@@ -74,17 +91,32 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion, difficulty }) => {
     coverImage = interrogation;
   }
 
+  if (nbQuizz === 11) {
+    return <Redirect to="/Blind-Crash-Test/Resultats" />;
+  }
   return (
     <div className="quizz-card">
       <div className="picture-container">
         <div className="picture-container-image">
           <QuizzAlbumPicture url={coverImage} />
         </div>
-        <button type="button" onClick={handleClick} className="next-track-bg">
-          <div className="next-track-text">Morceau suivant</div>
-          {btnClicked ? <div className="next-track-animation" /> : null}
-        </button>
-
+        {nbQuizz > 9 ? (
+          <Link to="/Blind-Crash-Test/Resultats">
+            <button
+              type="button"
+              onClick={handleClick}
+              className="next-track-bg"
+            >
+              <div className="next-track-text">Voir les résultats</div>
+              {btnClicked ? <div className="next-track-animation" /> : null}
+            </button>
+          </Link>
+        ) : (
+          <button type="button" onClick={handleClick} className="next-track-bg">
+            <div className="next-track-text">Morceau suivant</div>
+            {btnClicked ? <div className="next-track-animation" /> : null}
+          </button>
+        )}
         <QuizzAudio url={goodTrack.preview} />
       </div>
       <div className="answer-btn-container">
@@ -92,6 +124,7 @@ const QuizzCard = ({ goodTrack, badTrackArray, nextQuestion, difficulty }) => {
           <QuizzAnswerButton
             btnClicked={btnClicked}
             handleClick={handleClick}
+            setWin={setWin}
             answer={answer.title_short}
             rightAnswer={theRightAnswer}
             difficulty={difficulty}
@@ -116,5 +149,7 @@ QuizzCard.propTypes = {
   goodTrack: PropTypes.oneOfType([PropTypes.object]).isRequired,
   badTrackArray: PropTypes.oneOfType([PropTypes.array]).isRequired,
   nextQuestion: PropTypes.func.isRequired,
+  setCurrentScore: PropTypes.func.isRequired,
   difficulty: PropTypes.oneOfType([PropTypes.number]).isRequired,
+  nbQuizz: PropTypes.number.isRequired,
 };
