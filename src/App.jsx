@@ -16,12 +16,20 @@ function App() {
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route exact path="/Blind-Crash-Test/" component={AccueilPage} />
+          {/* <Route exact path="/Blind-Crash-Test/" component={AccueilPage} /> */}
+          <Route
+            exact
+            path="/Blind-Crash-Test/"
+            component={() => <AccueilPage setChosenId={setChosenId} />}
+          />
           <Route
             path="/Blind-Crash-Test/Themes"
             component={() => <ThemesPage setChosenId={setChosenId} />}
           />
-          <Route path="/Blind-Crash-Test/Resultats" component={ResultatsPage} />
+          <Route
+            path="/Blind-Crash-Test/Resultats"
+            component={() => <ResultatsPage setChosenId={setChosenId} />}
+          />
           <Route
             path="/Blind-Crash-Test/Quizz"
             component={() => <QuizzPage chosenId={chosenId} />}

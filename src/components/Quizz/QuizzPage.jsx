@@ -7,6 +7,7 @@ import QuizzScore from './QuizzScore';
 import './QuizzPage.css';
 
 const QuizzPage = ({ chosenId }) => {
+  console.log(`chosenId : ${chosenId}`);
   // tableau de chansons
   const [tracks, setTracks] = useState(initialTracks);
   // Compteur de question
@@ -17,20 +18,15 @@ const QuizzPage = ({ chosenId }) => {
   const [currentScore, setCurrentScore] = useState(0);
 
   const [random, setRandom] = useState(0);
+  // difficulté choisie sur PageThème
+  const difficulty = 4;
+  // nombre de mauvaise réponses à récupérer selon le niveau de difficulté, initialisé à 3
+  let numBadAnswerToGet = 3;
 
   const badTracksArray = [];
-  const randomsArray = [];
 
   useEffect(() => {
-    setRandom(() => {
-      let nbRandom = Math.floor(Math.random() * tracks.length);
-      while (randomsArray.includes(nbRandom)) {
-        nbRandom = Math.floor(Math.random() * tracks.length);
-      }
-      randomsArray.push(nbRandom);
-      return nbRandom;
-    });
-    // Remplir les 4 réponses
+    setRandom(Math.floor(Math.random() * tracks.length));
   }, [nbQuizz]);
 
   // Timer 3 - 2 - 1 quizz start
@@ -60,7 +56,23 @@ const QuizzPage = ({ chosenId }) => {
       });
   }, [chosenId]);
 
-  for (let i = 0; i < 3; i += 1) {
+  const nextQuestion = () => {
+    setNbQuizz(nbQuizz + 1);
+  };
+
+  // change le nombre de mauvaise réponse à récupérer selon le niveau de difficulté
+  if (difficulty === 1) {
+    numBadAnswerToGet = 1;
+  } else if (difficulty === 4) {
+    numBadAnswerToGet = 5;
+  } else if (difficulty === 5) {
+    numBadAnswerToGet = 7;
+  }
+
+  // récupére un tableau d'objet de mauvaises réponses
+  // const badTracksArray = [];
+  /// modifie le nombre de réponse que je récupère ///
+  for (let i = 0; i < numBadAnswerToGet; i += 1) {
     let number = Math.floor(Math.random() * tracks.length);
     while (
       tracks[number].id === tracks[random].id ||
@@ -71,9 +83,9 @@ const QuizzPage = ({ chosenId }) => {
     badTracksArray.push(tracks[number]);
   }
 
-  const nextQuestion = () => {
-    setNbQuizz(nbQuizz + 1);
-  };
+  // const nextQuestion = () => {
+  //   setNbQuizz(nbQuizz + 1);
+  // };
 
   return (
     <main>
@@ -93,11 +105,9 @@ const QuizzPage = ({ chosenId }) => {
           badTrackArray={badTracksArray}
           nextQuestion={nextQuestion}
           setCurrentScore={setCurrentScore}
+          difficulty={difficulty}
         />
       )}
-      <div className="quizz-bottom">
-        <div className="link-btns-container" />
-      </div>
     </main>
   );
 };

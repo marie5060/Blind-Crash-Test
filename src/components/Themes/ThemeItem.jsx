@@ -1,4 +1,3 @@
-import React from 'react';
 import './ThemeItem.css';
 import PropTypes from 'prop-types';
 
@@ -7,7 +6,7 @@ const ThemeItem = ({ themeName, themeId, setChosenId }) => {
     <div>
       <button
         type="button"
-        className="theme-button"
+        className="glow-on-hover"
         onClick={() => {
           setChosenId(themeId);
         }}

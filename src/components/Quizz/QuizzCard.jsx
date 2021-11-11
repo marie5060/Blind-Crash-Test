@@ -5,12 +5,14 @@ import QuizzAudio from './QuizzAudio';
 import QuizzAnswerButton from './QuizzAnswerButton';
 import TimerButton from './TimerButton';
 import './QuizzCard.css';
+import interrogation from './interrogation.png';
 
 const QuizzCard = ({
   goodTrack,
   badTrackArray,
   nextQuestion,
   setCurrentScore,
+  difficulty,
 }) => {
   // Le bouton a été cliqué
   const [btnClicked, setBtnClicked] = useState(false);
@@ -24,6 +26,8 @@ const QuizzCard = ({
   const theRightAnswer = goodTrack.title_short;
 
   let answerList = [];
+  // image afficher  initialisé à la cover du morceau
+  let coverImage = goodTrack.album.cover_medium;
 
   // Fonction de mélange des réponses
   const shuffleArray = (array2) => {
@@ -68,10 +72,6 @@ const QuizzCard = ({
     }
   }, [btnClicked]);
 
-  // useEffect(() => {
-  //   creerTableauReponses();
-  // }, [answers]);
-
   useEffect(() => {
     if (win) {
       setCurrentScore(parseInt(leftTimeWhenClick.toFixed(0), 10));
@@ -84,11 +84,17 @@ const QuizzCard = ({
     setBtnClicked(true);
   };
 
+  // si la difficulté >= 3 change l'image pour afficher point d'interrogation
+  if (difficulty >= 3) {
+    coverImage = interrogation;
+  }
+
   return (
     <div className="quizz-card">
       <div className="picture-container">
-        <QuizzAlbumPicture url={goodTrack.album.cover_medium} />
-
+        <div className="picture-container-image">
+          <QuizzAlbumPicture url={coverImage} />
+        </div>
         <button type="button" onClick={handleClick} className="next-track-bg">
           <div className="next-track-text">Morceau suivant</div>
           {btnClicked ? <div className="next-track-animation" /> : null}
@@ -104,6 +110,7 @@ const QuizzCard = ({
             setWin={setWin}
             answer={answer.title_short}
             rightAnswer={theRightAnswer}
+            difficulty={difficulty}
             key={answer.id}
           />
         ))}
@@ -126,4 +133,5 @@ QuizzCard.propTypes = {
   badTrackArray: PropTypes.oneOfType([PropTypes.array]).isRequired,
   nextQuestion: PropTypes.func.isRequired,
   setCurrentScore: PropTypes.func.isRequired,
+  difficulty: PropTypes.oneOfType([PropTypes.number]).isRequired,
 };

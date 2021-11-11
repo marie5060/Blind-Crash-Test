@@ -8,16 +8,6 @@
   padding: 2vh 5vw;
 }
 
-.quizz-bottom {
-  display: flex;
-  justify-content: space-between;
-}
-
-.link-btns-container {
-  display: flex;
-  flex-direction: column;
-}
-
 .waiting-container {
   width: 70%;
   height: 70vh;
