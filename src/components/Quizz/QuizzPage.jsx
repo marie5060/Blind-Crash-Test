@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-// import LinkBtn from '../Bases/LinkBtn';
 import initialTracks from '../../severalTracks';
 import QuizzCard from './QuizzCard';
 import QuizzScore from './QuizzScore';
@@ -14,16 +13,23 @@ const QuizzPage = ({ chosenId }) => {
   const [nbQuizz, setNbQuizz] = useState(1);
   // Compteur de 3s avant de commancer le jeu
   const [waitingCount, setWaitingCount] = useState(3);
-  // Score actuel du joueur
+  // Score de la question en cours
   const [currentScore, setCurrentScore] = useState(0);
 
   const [random, setRandom] = useState(0);
 
   const badTracksArray = [];
+  const randomsArray = [];
 
   useEffect(() => {
-    setRandom(Math.floor(Math.random() * tracks.length));
-    console.log('random');
+    setRandom(() => {
+      let nbRandom = Math.floor(Math.random() * tracks.length);
+      while (randomsArray.includes(nbRandom)) {
+        nbRandom = Math.floor(Math.random() * tracks.length);
+      }
+      randomsArray.push(nbRandom);
+      return nbRandom;
+    });
     // Remplir les 4 réponses
   }, [nbQuizz]);
 
@@ -52,7 +58,6 @@ const QuizzPage = ({ chosenId }) => {
         );
         setTracks(okData);
       });
-    console.log('appel axios');
   }, [chosenId]);
 
   for (let i = 0; i < 3; i += 1) {
@@ -91,10 +96,7 @@ const QuizzPage = ({ chosenId }) => {
         />
       )}
       <div className="quizz-bottom">
-        <div className="link-btns-container">
-          {/* <LinkBtn />
-          <LinkBtn /> */}
-        </div>
+        <div className="link-btns-container" />
       </div>
     </main>
   );

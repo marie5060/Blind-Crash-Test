@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const QuizzScore = ({ currentScore, nbQuizz }) => {
@@ -6,7 +6,6 @@ const QuizzScore = ({ currentScore, nbQuizz }) => {
 
   useEffect(() => {
     setTotalScore(totalScore + currentScore);
-    console.log(totalScore);
   }, [nbQuizz]);
 
   return <span className="score">{totalScore}</span>;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import QuizzAlbumPicture from './QuizzAlbumPicture';
 import QuizzAudio from './QuizzAudio';
@@ -65,9 +65,6 @@ const QuizzCard = ({
         setBtnClicked(false);
         setWin(false);
       }, 3000);
-      // setTimeout(nextQuestion, 3000);
-      // setTimeout(() => setBtnClicked(false), 3000);
-      // setTimeout(() => setWin(false), 3000);
     }
   }, [btnClicked]);
 

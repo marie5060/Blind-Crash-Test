@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './QuizzAnswerButton.css';
 
@@ -32,9 +32,6 @@ const QuizzAnswerButton = ({
       className={buttonClass}
       type="button"
       onClick={() => {
-        console.log(
-          'clliiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiick'
-        );
         handleClick();
         setChosen(true);
       }}
