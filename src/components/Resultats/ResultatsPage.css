@@ -1,3 +1,48 @@
-.ResultatsPage-Container {
-  background-color: red;
+.result-gauge {
+  background-color: black;
+  color: white;
+  margin: 10vh 20vh;
+  height: 10vh;
+  font-size: 1.5vw;
+  text-align: center;
+  line-height: 10vh;
+  border-radius: 50px;
+}
+
+.result-table-container {
+  background: linear-gradient(140deg, #774cd3, #ae2aa9);
+  width: 80%;
+  margin: auto;
+  border-radius: 20px;
+  text-align: center;
+  padding: 5vh;
+}
+
+.result-title {
+  padding-bottom: 5vh;
+  color: white;
+}
+
+.result-table {
+  background-color: white;
+  margin: auto;
+  width: 90%;
+  font-size: 1.5vw;
+}
+
+.result-table,
+.result-table th,
+.result-table td {
+  border: 2px solid black;
+  padding: 2vh;
+}
+
+.result-table th {
+  width: 20%;
+}
+
+.result-stars-container > * {
+  width: 15%;
+  border: none;
+  margin-right: 0;
 }
