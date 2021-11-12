@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './Footer.css';
+import Twitter from './Logos/Twitter.png';
+import Facebook from './Logos/Facebook.png';
+import Instagram from './Logos/Instagram.jpg';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -23,21 +26,21 @@ const Footer = () => {
             className="twitter-button"
             data-show-count="false"
           >
-            <img src="Logos/logo-twitter.png" alt="twitter" />
+            <img src={Twitter} alt="twitter" />
           </a>
           <a
             href="https://facebook.com/"
             className="facebook-button"
             data-show-count="false"
           >
-            <img src="Logos/logo-facebook.png" alt="facebook" />
+            <img src={Facebook} alt="facebook" />
           </a>
           <a
             href="https://instagram.com/"
             className="instagram-button"
             data-show-count="false"
           >
-            <img src="Logos/logo-instagram.jpeg" alt="instagram" />
+            <img src={Instagram} alt="instagram" />
           </a>
         </div>
       </div>
