@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+/* eslint-disable */
+import { useState } from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
@@ -10,20 +11,9 @@ import './App.css';
 
 function App() {
   const [chosenId, setChosenId] = useState('9626980522');
-  const [scoreFinal, setScoreFinal] = useState(0);
   const [pseudo, setPseudo] = useState('Anonyme');
   const [themeName, setThemeName] = useState('Aucun thème');
   const [difficulty, setDifficulty] = useState(2);
-  const [quizzResult, setQuizzResult] = useState({});
-
-  useEffect(() => {
-    setQuizzResult({
-      scoreFinal,
-      pseudo,
-      themeName,
-      difficulty,
-    });
-  }, []);
 
   return (
     <div>
@@ -33,29 +23,28 @@ function App() {
           <Route
             exact
             path="/Blind-Crash-Test/"
-            component={() => (
-              <AccueilPage setChosenId={setChosenId} setPseudo={setPseudo} />
-            )}
+            render={(routeProps) => <AccueilPage {...routeProps} />}
           />
           <Route
             path="/Blind-Crash-Test/Themes"
-            component={() => (
-              <ThemesPage
-                setChosenId={setChosenId}
-                setThemeName={setThemeName}
-                setDifficulty={setDifficulty}
-              />
+            render={(routeProps) => (
+              <ThemesPage {...routeProps} setChosenId={setChosenId} />
             )}
           />
           <Route
             path="/Blind-Crash-Test/Resultats"
-            component={() => <ResultatsPage quizzResult={quizzResult} />}
+            render={(routeProps) => (
+              <ResultatsPage
+                {...routeProps}
+                pseudo={pseudo}
+                themeName={themeName}
+                difficulty={difficulty}
+              />
+            )}
           />
           <Route
             path="/Blind-Crash-Test/Quizz"
-            component={() => (
-              <QuizzPage chosenId={chosenId} setScoreFinal={setScoreFinal} />
-            )}
+            component={() => <QuizzPage chosenId={chosenId} />}
           />
         </Switch>
       </BrowserRouter>

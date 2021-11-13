@@ -1,26 +1,28 @@
-/* eslint-disable */
 import { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const QuizzScore = ({ currentScore, nbQuizz, setScoreFinal, btnClicked }) => {
-  const [totalScore, setTotalScore] = useState(0);
-  // console.log(btnClicked)
-  // console.log(totalScore);
-  // console.log("dans score currentScore " + currentScore)
-
-  // useEffect(() => {
-  //   if (btnClicked) {
-  //     setTotalScore(totalScore + currentScore);
-  //   }
-  // }, [btnClicked, currentScore]);
-  // console.log("dans score btnClicked "+btnClicked)
-  // console.log("dans score totalScore "+totalScore);
+const QuizzScore = ({ currentScore, nbQuizz, btnClicked }) => {
+  const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     if (nbQuizz === 10 && btnClicked) {
-      setScoreFinal(currentScore);
+      setTimeout(() => {
+        setRedirect(true);
+      }, 3000);
     }
-  }, [btnClicked])
+  }, [btnClicked]);
+
+  if (redirect) {
+    return (
+      <Redirect
+        to={{
+          pathname: '/Blind-Crash-Test/Resultats',
+          state: { currentScore },
+        }}
+      />
+    );
+  }
 
   return <span className="score">{currentScore}</span>;
 };
@@ -30,6 +32,5 @@ export default QuizzScore;
 QuizzScore.propTypes = {
   currentScore: PropTypes.number.isRequired,
   nbQuizz: PropTypes.number.isRequired,
-  setScoreFinal: PropTypes.func.isRequired,
   btnClicked: PropTypes.bool.isRequired,
 };

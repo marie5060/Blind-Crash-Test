@@ -2,11 +2,23 @@ import PropTypes from 'prop-types';
 import Stars from '../Themes/Difficulty';
 import './ResultatsPage.css';
 
-const ResultatsPage = ({ quizzResult }) => {
+const ResultatsPage = ({
+  location: {
+    state: { currentScore },
+  },
+  pseudo,
+  themeName,
+  difficulty,
+}) => {
   const starsQte = [];
-  for (let i = 0; i < quizzResult.difficulty; i += 1) {
+  for (let i = 0; i < difficulty; i += 1) {
     starsQte.push(i);
   }
+
+  console.log(currentScore);
+  console.log(pseudo);
+  console.log(themeName);
+  console.log(difficulty);
 
   return (
     <main>
@@ -28,9 +40,9 @@ const ResultatsPage = ({ quizzResult }) => {
           </thead>
           <tbody>
             <tr>
-              <td>{quizzResult.scoreFinal}</td>
-              <td>{quizzResult.pseudo}</td>
-              <td>{quizzResult.themeName}</td>
+              <td>{currentScore}</td>
+              <td>{pseudo}</td>
+              <td>{themeName}</td>
               <td className="result-stars-container">
                 {starsQte.map((elem) => (
                   <Stars key={elem} />
@@ -71,5 +83,9 @@ const ResultatsPage = ({ quizzResult }) => {
 export default ResultatsPage;
 
 ResultatsPage.propTypes = {
-  quizzResult: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  location: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  currentScore: PropTypes.number.isRequired,
+  pseudo: PropTypes.string.isRequired,
+  themeName: PropTypes.string.isRequired,
+  difficulty: PropTypes.number.isRequired,
 };

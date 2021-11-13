@@ -6,7 +6,7 @@ import QuizzCard from './QuizzCard';
 import QuizzScore from './QuizzScore';
 import './QuizzPage.css';
 
-const QuizzPage = ({ chosenId, setScoreFinal }) => {
+const QuizzPage = ({ chosenId }) => {
   // Le bouton a été cliqué
   const [btnClicked, setBtnClicked] = useState(false);
   // tableau de chansons
@@ -15,7 +15,7 @@ const QuizzPage = ({ chosenId, setScoreFinal }) => {
   const [nbQuizz, setNbQuizz] = useState(1);
   // Compteur de 3s avant de commancer le jeu
   const [waitingCount, setWaitingCount] = useState(3);
-  // Score de la question en cours
+  // Score du quizz qui se met à jour au fur et à mesure
   const [currentScore, setCurrentScore] = useState(0);
   console.log(`dans quizzPage ${currentScore}`);
 
@@ -92,7 +92,6 @@ const QuizzPage = ({ chosenId, setScoreFinal }) => {
           <QuizzScore
             currentScore={currentScore}
             nbQuizz={nbQuizz}
-            setScoreFinal={setScoreFinal}
             btnClicked={btnClicked}
           />
         </div>
@@ -123,5 +122,4 @@ export default QuizzPage;
 
 QuizzPage.propTypes = {
   chosenId: PropTypes.string.isRequired,
-  setScoreFinal: PropTypes.func.isRequired,
 };

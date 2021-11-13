@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import QuizzAlbumPicture from './QuizzAlbumPicture';
 import QuizzAudio from './QuizzAudio';
@@ -94,9 +94,6 @@ const QuizzCard = ({
     coverImage = interrogation;
   }
 
-  if (nbQuizz === 11) {
-    return <Redirect to="/Blind-Crash-Test/Resultats" />;
-  }
   return (
     <div className="quizz-card">
       <div className="picture-container">

@@ -43,7 +43,12 @@ const Header = () => {
             <li>
               <Link
                 className="header-nav-links-a"
-                to="/Blind-Crash-Test/Resultats"
+                to={{
+                  pathname: '/Blind-Crash-Test/Resultats',
+                  state: {
+                    currentScore: null,
+                  },
+                }}
               >
                 Résultats
               </Link>
