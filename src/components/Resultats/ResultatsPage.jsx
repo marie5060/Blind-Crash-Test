@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react/cjs/react.development';
+import { useState, useEffect } from 'react/cjs/react.development';
 import Stars from '../Themes/Difficulty';
 import './ResultatsPage.css';
 
@@ -8,10 +8,17 @@ const ResultatsPage = ({
     state: { currentScore, chosenTheme, pseudo, difficulty },
   },
 }) => {
-  console.log(currentScore);
+  const [winners, setWinners] = useState([]);
 
   useEffect(() => {
     if (currentScore !== null) {
+      const starsQte = [];
+      if (difficulty) {
+        for (let i = 0; i < difficulty; i += 1) {
+          starsQte.push(i);
+        }
+      }
+
       const result =
         sessionStorage.getItem('resultArray') === null
           ? []
@@ -20,19 +27,29 @@ const ResultatsPage = ({
         currentScore,
         pseudo,
         chosenTheme,
-        difficulty,
+        difficulty: starsQte,
       });
       sessionStorage.setItem('resultArray', JSON.stringify(result));
-      console.log(JSON.parse(sessionStorage.getItem('resultArray')));
     }
+    const unorderedWinners = JSON.parse(sessionStorage.getItem('resultArray'));
+    function bubulle(tab2) {
+      const tab = tab2;
+      let changed;
+      do {
+        changed = false;
+        for (let i = 0; i < tab.length - 1; i += 1) {
+          if (tab[i].currentScore > tab[i + 1].currentScore) {
+            const tmp = tab[i];
+            tab[i] = tab[i + 1];
+            tab[i + 1] = tmp;
+            changed = true;
+          }
+        }
+      } while (changed);
+      return tab;
+    }
+    setWinners(bubulle(unorderedWinners).reverse());
   }, []);
-
-  const starsQte = [];
-  if (difficulty) {
-    for (let i = 0; i < difficulty; i += 1) {
-      starsQte.push(i);
-    }
-  }
 
   return (
     <main>
@@ -53,40 +70,18 @@ const ResultatsPage = ({
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>{currentScore}</td>
-              <td>{pseudo}</td>
-              <td>{chosenTheme}</td>
-              <td className="result-stars-container">
-                {starsQte.map((elem) => (
-                  <Stars key={elem} />
-                ))}
-              </td>
-            </tr>
-            <tr>
-              <td>10 000</td>
-              <td>Aurélien</td>
-              <td>Céline Dion</td>
-              <td className="result-stars-container">
-                <Stars />
-                <Stars />
-                <Stars />
-                <Stars />
-                <Stars />
-              </td>
-            </tr>
-            <tr>
-              <td>10 000</td>
-              <td>Aurélien</td>
-              <td>Céline Dion</td>
-              <td className="result-stars-container">
-                <Stars />
-                <Stars />
-                <Stars />
-                <Stars />
-                <Stars />
-              </td>
-            </tr>
+            {winners.map((winner) => (
+              <tr>
+                <td>{winner.currentScore}</td>
+                <td>{winner.pseudo}</td>
+                <td>{winner.chosenTheme}</td>
+                <td className="result-stars-container">
+                  {winner.difficulty.map((elem) => (
+                    <Stars key={elem} />
+                  ))}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

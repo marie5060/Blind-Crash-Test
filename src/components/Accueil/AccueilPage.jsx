@@ -4,7 +4,6 @@ import LinkBtnNewTheme from '../Bases/LinkBtnNewTheme';
 import './AccueilPage.css';
 
 const AccueilPage = ({ setChosenId, setChosenTheme }) => {
-  console.log(JSON.parse(sessionStorage.getItem('resultArray')));
   return (
     <main>
       <div className="pseudo-container">
