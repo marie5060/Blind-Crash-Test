@@ -30,9 +30,9 @@
   border-radius: 10px;
 }
 
-.glow-on-hover:active {
+/* .glow-on-hover:active {
   color: white;
-}
+} */
 
 .glow-on-hover::after {
   z-index: -1;
@@ -52,6 +52,23 @@
 
 .glow-on-hover:hover::before {
   opacity: 1;
+}
+
+.chosenthemeBtn {
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  font-style: bold;
+  background: linear-gradient(45deg, white, #7a00ff, #ff00c8, #f00);
+  top: -5px;
+  left: -5px;
+  background-size: 400%;
+  width: 225px;
+  height: 105px;
+  animation: glowing 20s linear infinite;
+  border-radius: 10px;
 }
 
 @keyframes glowing {

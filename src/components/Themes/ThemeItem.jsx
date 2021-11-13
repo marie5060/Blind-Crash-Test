@@ -1,13 +1,28 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import './ThemeItem.css';
 
-const ThemeItem = ({ themeName, themeId, setChosenId }) => {
+const ThemeItem = ({
+  themeName,
+  themeId,
+  setChosenId,
+  // handleClickTheme,
+  // resetTheme,
+}) => {
+  const [chosenTheme, setChosenTheme] = useState(false);
+
+  console.log(chosenTheme);
+  let themeButtonClass = 'glow-on-hover';
+
+  themeButtonClass = chosenTheme ? 'chosenthemeBtn' : 'glow-on-hover';
+
   return (
     <div>
       <button
         type="button"
-        className="glow-on-hover"
+        className={themeButtonClass}
         onClick={() => {
+          setChosenTheme(true);
           setChosenId(themeId);
         }}
       >

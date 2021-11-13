@@ -11,6 +11,8 @@ import './App.css';
 function App() {
   const [chosenId, setChosenId] = useState('9626980522');
 
+  console.log(chosenId);
+
   return (
     <div>
       <BrowserRouter>
