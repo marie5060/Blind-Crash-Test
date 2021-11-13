@@ -6,7 +6,9 @@ import QuizzCard from './QuizzCard';
 import QuizzScore from './QuizzScore';
 import './QuizzPage.css';
 
-const QuizzPage = ({ chosenId }) => {
+const QuizzPage = ({ chosenId, setScoreFinal }) => {
+  // Le bouton a été cliqué
+  const [btnClicked, setBtnClicked] = useState(false);
   // tableau de chansons
   const [tracks, setTracks] = useState(initialTracks);
   // Compteur de question
@@ -15,6 +17,7 @@ const QuizzPage = ({ chosenId }) => {
   const [waitingCount, setWaitingCount] = useState(3);
   // Score de la question en cours
   const [currentScore, setCurrentScore] = useState(0);
+  console.log(`dans quizzPage ${currentScore}`);
 
   const [random, setRandom] = useState(0);
   // difficulté choisie sur PageThème
@@ -85,7 +88,13 @@ const QuizzPage = ({ chosenId }) => {
     <main>
       <div className="topQuizz">
         <div>
-          Score : <QuizzScore currentScore={currentScore} nbQuizz={nbQuizz} />
+          Score :{' '}
+          <QuizzScore
+            currentScore={currentScore}
+            nbQuizz={nbQuizz}
+            setScoreFinal={setScoreFinal}
+            btnClicked={btnClicked}
+          />
         </div>
         <div>{nbQuizz} / 10</div>
       </div>
@@ -98,9 +107,12 @@ const QuizzPage = ({ chosenId }) => {
           goodTrack={tracks[random]}
           badTrackArray={badTracksArray}
           nextQuestion={nextQuestion}
+          currentScore={currentScore}
           setCurrentScore={setCurrentScore}
           difficulty={difficulty}
           nbQuizz={nbQuizz}
+          btnClicked={btnClicked}
+          setBtnClicked={setBtnClicked}
         />
       )}
     </main>
@@ -111,4 +123,5 @@ export default QuizzPage;
 
 QuizzPage.propTypes = {
   chosenId: PropTypes.string.isRequired,
+  setScoreFinal: PropTypes.func.isRequired,
 };

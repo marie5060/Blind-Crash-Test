@@ -23,7 +23,7 @@ function App() {
       themeName,
       difficulty,
     });
-  }, [scoreFinal]);
+  }, []);
 
   return (
     <div>

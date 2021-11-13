@@ -15,9 +15,12 @@ const QuizzCard = ({
   setCurrentScore,
   difficulty,
   nbQuizz,
+  btnClicked,
+  setBtnClicked,
+  currentScore,
 }) => {
   // Le bouton a été cliqué
-  const [btnClicked, setBtnClicked] = useState(false);
+  // const [btnClicked, setBtnClicked] = useState(false);
   // tableau de réponses
   const [answers, setAnswers] = useState([]);
   // Le joueur a gagné / perdu
@@ -66,21 +69,21 @@ const QuizzCard = ({
     if (!btnClicked) {
       creerTableauReponses();
     } else {
+      console.log(
+        `dans quizzCrad win: et leftTime: ${win} ${leftTimeWhenClick}`
+      );
+      if (win) {
+        setCurrentScore(
+          currentScore + parseInt(leftTimeWhenClick.toFixed(0), 10)
+        );
+      }
       setTimeout(() => {
         nextQuestion();
         setBtnClicked(false);
         setWin(false);
       }, 3000);
     }
-  }, [btnClicked]);
-
-  useEffect(() => {
-    if (win) {
-      setCurrentScore(parseInt(leftTimeWhenClick.toFixed(0), 10));
-    } else {
-      setCurrentScore(0);
-    }
-  }, [win]);
+  }, [btnClicked, win, leftTimeWhenClick]);
 
   const handleClick = () => {
     setBtnClicked(true);
@@ -152,4 +155,7 @@ QuizzCard.propTypes = {
   setCurrentScore: PropTypes.func.isRequired,
   difficulty: PropTypes.oneOfType([PropTypes.number]).isRequired,
   nbQuizz: PropTypes.number.isRequired,
+  btnClicked: PropTypes.bool.isRequired,
+  setBtnClicked: PropTypes.func.isRequired,
+  currentScore: PropTypes.number.isRequired,
 };
