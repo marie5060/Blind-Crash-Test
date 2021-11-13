@@ -11,6 +11,7 @@ const ResultatsPage = ({
   const [winners, setWinners] = useState([]);
 
   useEffect(() => {
+    // add incoming quizz if redirect from quizzPage in sessionStorage
     if (currentScore !== null) {
       const starsQte = [];
       if (difficulty) {
@@ -24,6 +25,7 @@ const ResultatsPage = ({
           ? []
           : JSON.parse(sessionStorage.resultArray);
       result.push({
+        id: result.length,
         currentScore,
         pseudo,
         chosenTheme,
@@ -31,6 +33,8 @@ const ResultatsPage = ({
       });
       sessionStorage.setItem('resultArray', JSON.stringify(result));
     }
+
+    // get array of all results stored
     const unorderedWinners = JSON.parse(sessionStorage.getItem('resultArray'));
     function bubulle(tab2) {
       const tab = tab2;
@@ -48,6 +52,8 @@ const ResultatsPage = ({
       } while (changed);
       return tab;
     }
+
+    // sort to render the strongest first ...
     setWinners(bubulle(unorderedWinners).reverse());
   }, []);
 
@@ -71,7 +77,7 @@ const ResultatsPage = ({
           </thead>
           <tbody>
             {winners.map((winner) => (
-              <tr>
+              <tr key={winner.id}>
                 <td>{winner.currentScore}</td>
                 <td>{winner.pseudo}</td>
                 <td>{winner.chosenTheme}</td>
