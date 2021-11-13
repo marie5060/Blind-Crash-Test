@@ -18,6 +18,8 @@ const QuizzCard = ({
   btnClicked,
   setBtnClicked,
   currentScore,
+  chosenTheme,
+  pseudo,
 }) => {
   // tableau de réponses
   const [answers, setAnswers] = useState([]);
@@ -96,7 +98,12 @@ const QuizzCard = ({
           <QuizzAlbumPicture url={coverImage} />
         </div>
         {nbQuizz > 9 ? (
-          <Link to="/Blind-Crash-Test/Resultats">
+          <Link
+            to={{
+              pathname: '/Blind-Crash-Test/Resultats',
+              state: { currentScore, chosenTheme, pseudo, difficulty },
+            }}
+          >
             <button
               type="button"
               onClick={handleClick}
@@ -150,4 +157,6 @@ QuizzCard.propTypes = {
   btnClicked: PropTypes.bool.isRequired,
   setBtnClicked: PropTypes.func.isRequired,
   currentScore: PropTypes.number.isRequired,
+  chosenTheme: PropTypes.string.isRequired,
+  pseudo: PropTypes.string.isRequired,
 };

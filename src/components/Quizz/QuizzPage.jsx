@@ -114,6 +114,8 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
           nbQuizz={nbQuizz}
           btnClicked={btnClicked}
           setBtnClicked={setBtnClicked}
+          chosenTheme={chosenTheme}
+          pseudo={pseudo}
         />
       )}
     </main>

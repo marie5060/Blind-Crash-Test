@@ -16,6 +16,7 @@
   border-radius: 20px;
   text-align: center;
   padding: 5vh;
+  font-size: 1.5vw;
 }
 
 .result-title {
@@ -27,7 +28,6 @@
   background-color: white;
   margin: auto;
   width: 90%;
-  font-size: 1.5vw;
 }
 
 .result-table,

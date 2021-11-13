@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useEffect } from 'react/cjs/react.development';
 import Stars from '../Themes/Difficulty';
 import './ResultatsPage.css';
 
@@ -7,6 +8,25 @@ const ResultatsPage = ({
     state: { currentScore, chosenTheme, pseudo, difficulty },
   },
 }) => {
+  console.log(currentScore);
+
+  useEffect(() => {
+    if (currentScore !== null) {
+      const result =
+        sessionStorage.getItem('resultArray') === null
+          ? []
+          : JSON.parse(sessionStorage.resultArray);
+      result.push({
+        currentScore,
+        pseudo,
+        chosenTheme,
+        difficulty,
+      });
+      sessionStorage.setItem('resultArray', JSON.stringify(result));
+      console.log(JSON.parse(sessionStorage.getItem('resultArray')));
+    }
+  }, []);
+
   const starsQte = [];
   if (difficulty) {
     for (let i = 0; i < difficulty; i += 1) {
