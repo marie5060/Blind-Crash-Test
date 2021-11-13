@@ -1,12 +1,10 @@
-/* eslint-disable */
 import PropTypes from 'prop-types';
 import LinkBtnGoQuizz from '../Bases/LinkBtnGoQuizz';
 import ThemeItem from './ThemeItem';
 import Stars from './Difficulty';
 import './ThemesPage.css';
 
-const ThemesPage = ({location: {state}, setChosenId}) => {
-  console.log(setChosenId)
+const ThemesPage = ({ setChosenTheme, setChosenId }) => {
   const themeArray = [
     { name: 'Rock', id: '9626980522', num: 1 },
     { name: 'Reggae ', id: '9626990642', num: 2 },
@@ -30,7 +28,6 @@ const ThemesPage = ({location: {state}, setChosenId}) => {
   ];
 
   const difficulties = [1, 2, 3, 4, 5];
-  // console.log(state.mytest)
 
   return (
     <div className="themes-page-container">
@@ -42,6 +39,7 @@ const ThemesPage = ({location: {state}, setChosenId}) => {
               themeName={item.name}
               themeId={item.id}
               setChosenId={setChosenId}
+              setChosenTheme={setChosenTheme}
               key={item.num}
             />
           </div>
@@ -55,6 +53,7 @@ const ThemesPage = ({location: {state}, setChosenId}) => {
               themeName={item.name}
               themeId={item.id}
               setChosenId={setChosenId}
+              setChosenTheme={setChosenTheme}
               key={item.num}
             />
           </div>
@@ -77,4 +76,5 @@ export default ThemesPage;
 
 ThemesPage.propTypes = {
   setChosenId: PropTypes.func.isRequired,
+  setChosenTheme: PropTypes.func.isRequired,
 };

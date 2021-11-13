@@ -19,8 +19,6 @@ const QuizzCard = ({
   setBtnClicked,
   currentScore,
 }) => {
-  // Le bouton a été cliqué
-  // const [btnClicked, setBtnClicked] = useState(false);
   // tableau de réponses
   const [answers, setAnswers] = useState([]);
   // Le joueur a gagné / perdu
@@ -69,9 +67,6 @@ const QuizzCard = ({
     if (!btnClicked) {
       creerTableauReponses();
     } else {
-      console.log(
-        `dans quizzCrad win: et leftTime: ${win} ${leftTimeWhenClick}`
-      );
       if (win) {
         setCurrentScore(
           currentScore + parseInt(leftTimeWhenClick.toFixed(0), 10)

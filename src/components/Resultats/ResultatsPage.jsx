@@ -4,21 +4,15 @@ import './ResultatsPage.css';
 
 const ResultatsPage = ({
   location: {
-    state: { currentScore },
+    state: { currentScore, chosenTheme, pseudo, difficulty },
   },
-  pseudo,
-  themeName,
-  difficulty,
 }) => {
   const starsQte = [];
-  for (let i = 0; i < difficulty; i += 1) {
-    starsQte.push(i);
+  if (difficulty) {
+    for (let i = 0; i < difficulty; i += 1) {
+      starsQte.push(i);
+    }
   }
-
-  console.log(currentScore);
-  console.log(pseudo);
-  console.log(themeName);
-  console.log(difficulty);
 
   return (
     <main>
@@ -42,7 +36,7 @@ const ResultatsPage = ({
             <tr>
               <td>{currentScore}</td>
               <td>{pseudo}</td>
-              <td>{themeName}</td>
+              <td>{chosenTheme}</td>
               <td className="result-stars-container">
                 {starsQte.map((elem) => (
                   <Stars key={elem} />
@@ -86,6 +80,6 @@ ResultatsPage.propTypes = {
   location: PropTypes.oneOfType([PropTypes.object]).isRequired,
   currentScore: PropTypes.number.isRequired,
   pseudo: PropTypes.string.isRequired,
-  themeName: PropTypes.string.isRequired,
+  chosenTheme: PropTypes.string.isRequired,
   difficulty: PropTypes.number.isRequired,
 };

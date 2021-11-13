@@ -2,7 +2,14 @@ import { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const QuizzScore = ({ currentScore, nbQuizz, btnClicked }) => {
+const QuizzScore = ({
+  currentScore,
+  nbQuizz,
+  btnClicked,
+  chosenTheme,
+  pseudo,
+  difficulty,
+}) => {
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
@@ -18,7 +25,7 @@ const QuizzScore = ({ currentScore, nbQuizz, btnClicked }) => {
       <Redirect
         to={{
           pathname: '/Blind-Crash-Test/Resultats',
-          state: { currentScore },
+          state: { currentScore, chosenTheme, pseudo, difficulty },
         }}
       />
     );
@@ -33,4 +40,7 @@ QuizzScore.propTypes = {
   currentScore: PropTypes.number.isRequired,
   nbQuizz: PropTypes.number.isRequired,
   btnClicked: PropTypes.bool.isRequired,
+  chosenTheme: PropTypes.string.isRequired,
+  pseudo: PropTypes.string.isRequired,
+  difficulty: PropTypes.number.isRequired,
 };

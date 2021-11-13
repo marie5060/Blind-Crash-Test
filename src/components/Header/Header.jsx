@@ -47,6 +47,9 @@ const Header = () => {
                   pathname: '/Blind-Crash-Test/Resultats',
                   state: {
                     currentScore: null,
+                    pseudo: null,
+                    chosenTheme: null,
+                    difficulty: null,
                   },
                 }}
               >

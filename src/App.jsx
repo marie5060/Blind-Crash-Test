@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useState } from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
@@ -11,8 +10,8 @@ import './App.css';
 
 function App() {
   const [chosenId, setChosenId] = useState('9626980522');
+  const [chosenTheme, setChosenTheme] = useState('Rock');
   const [pseudo, setPseudo] = useState('Anonyme');
-  const [themeName, setThemeName] = useState('Aucun thème');
   const [difficulty, setDifficulty] = useState(2);
 
   return (
@@ -23,12 +22,24 @@ function App() {
           <Route
             exact
             path="/Blind-Crash-Test/"
-            render={(routeProps) => <AccueilPage {...routeProps} />}
+            render={(routeProps) => (
+              <AccueilPage
+                {...routeProps}
+                setChosenId={setChosenId}
+                setChosenTheme={setChosenTheme}
+                setPseudo={setPseudo}
+              />
+            )}
           />
           <Route
             path="/Blind-Crash-Test/Themes"
             render={(routeProps) => (
-              <ThemesPage {...routeProps} setChosenId={setChosenId} />
+              <ThemesPage
+                {...routeProps}
+                setChosenId={setChosenId}
+                setChosenTheme={setChosenTheme}
+                setDifficulty={setDifficulty}
+              />
             )}
           />
           <Route
@@ -37,14 +48,23 @@ function App() {
               <ResultatsPage
                 {...routeProps}
                 pseudo={pseudo}
-                themeName={themeName}
                 difficulty={difficulty}
+                setChosenId={setChosenId}
+                setChosenTheme={setChosenTheme}
+                setDifficulty={setDifficulty}
               />
             )}
           />
           <Route
             path="/Blind-Crash-Test/Quizz"
-            component={() => <QuizzPage chosenId={chosenId} />}
+            component={() => (
+              <QuizzPage
+                chosenId={chosenId}
+                chosenTheme={chosenTheme}
+                pseudo={pseudo}
+                difficulty={difficulty}
+              />
+            )}
           />
         </Switch>
       </BrowserRouter>
