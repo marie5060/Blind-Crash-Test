@@ -12,6 +12,7 @@ const ResultatsPage = ({
 }) => {
   const [winners, setWinners] = useState([]);
   const [cursorPosition, setCursorPosition] = useState(0)
+  console.log("cursor pos: " + cursorPosition)
   const cursorStyle = {
     left: `${cursorPosition}%`,
   }
@@ -38,7 +39,7 @@ const ResultatsPage = ({
         difficulty: starsQte,
       });
       sessionStorage.setItem('resultArray', JSON.stringify(result));
-      setCursorPosition((currentScore - (currentScore / 10)) / 10)
+      setCursorPosition(((currentScore - (currentScore / 10)) / 10) / difficulty)
     }
 
     // get array of all results stored

@@ -21,7 +21,7 @@
 .gauge-current-score {
   position: absolute;
   color: black;
-  text-shadow: 3px 3px 3px white;
+  text-shadow: 3px 3px 3px rgb(223, 223, 223);
 }
 
 .gauge-text {
@@ -38,11 +38,10 @@
   right: 1vw;
 }
 
-
 svg.gauge-current-score {
   font-size: 20vh;
   top: -12vh;
-  stroke: white;
+  stroke: rgb(223, 223, 223);
   stroke-width: 15px;
   transform: scale(1, 1.5);
 }
