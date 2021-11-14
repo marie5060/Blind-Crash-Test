@@ -35,7 +35,8 @@ const ResultatsPage = ({
     }
 
     // get array of all results stored
-    const unorderedWinners = JSON.parse(sessionStorage.getItem('resultArray'));
+    const unorderedWinners =
+      JSON.parse(sessionStorage.getItem('resultArray')) || [];
     function bubulle(tab2) {
       const tab = tab2;
       let changed;
