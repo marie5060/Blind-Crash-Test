@@ -3,7 +3,7 @@ import LinkBtnFastGame from '../Bases/LinkBtnFastGame';
 import LinkBtnNewTheme from '../Bases/LinkBtnNewTheme';
 import './AccueilPage.css';
 
-const AccueilPage = ({ setChosenId }) => {
+const AccueilPage = ({ setChosenId, setChosenTheme }) => {
   return (
     <main>
       <div className="pseudo-container">
@@ -20,7 +20,10 @@ const AccueilPage = ({ setChosenId }) => {
             aléatoire !
           </p>
         </div>
-        <LinkBtnFastGame setChosenId={setChosenId} />
+        <LinkBtnFastGame
+          setChosenId={setChosenId}
+          setChosenTheme={setChosenTheme}
+        />
       </div>
       <div className="new-theme-container">
         <h1> Personnaliser une partie</h1>
@@ -35,4 +38,5 @@ export default AccueilPage;
 
 AccueilPage.propTypes = {
   setChosenId: PropTypes.func.isRequired,
+  setChosenTheme: PropTypes.func.isRequired,
 };

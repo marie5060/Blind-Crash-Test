@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import QuizzAlbumPicture from './QuizzAlbumPicture';
 import QuizzAudio from './QuizzAudio';
@@ -15,9 +15,12 @@ const QuizzCard = ({
   setCurrentScore,
   difficulty,
   nbQuizz,
+  btnClicked,
+  setBtnClicked,
+  currentScore,
+  chosenTheme,
+  pseudo,
 }) => {
-  // Le bouton a été cliqué
-  const [btnClicked, setBtnClicked] = useState(false);
   // tableau de réponses
   const [answers, setAnswers] = useState([]);
   // Le joueur a gagné / perdu
@@ -66,21 +69,18 @@ const QuizzCard = ({
     if (!btnClicked) {
       creerTableauReponses();
     } else {
+      if (win) {
+        setCurrentScore(
+          currentScore + parseInt(leftTimeWhenClick.toFixed(0), 10)
+        );
+      }
       setTimeout(() => {
         nextQuestion();
         setBtnClicked(false);
         setWin(false);
       }, 3000);
     }
-  }, [btnClicked]);
-
-  useEffect(() => {
-    if (win) {
-      setCurrentScore(parseInt(leftTimeWhenClick.toFixed(0), 10));
-    } else {
-      setCurrentScore(0);
-    }
-  }, [win]);
+  }, [btnClicked, win, leftTimeWhenClick]);
 
   const handleClick = () => {
     setBtnClicked(true);
@@ -91,9 +91,6 @@ const QuizzCard = ({
     coverImage = interrogation;
   }
 
-  if (nbQuizz === 11) {
-    return <Redirect to="/Blind-Crash-Test/Resultats" />;
-  }
   return (
     <div className="quizz-card">
       <div className="picture-container">
@@ -101,7 +98,12 @@ const QuizzCard = ({
           <QuizzAlbumPicture url={coverImage} />
         </div>
         {nbQuizz > 9 ? (
-          <Link to="/Blind-Crash-Test/Resultats">
+          <Link
+            to={{
+              pathname: '/Blind-Crash-Test/Resultats',
+              state: { currentScore, chosenTheme, pseudo, difficulty },
+            }}
+          >
             <button
               type="button"
               onClick={handleClick}
@@ -152,4 +154,9 @@ QuizzCard.propTypes = {
   setCurrentScore: PropTypes.func.isRequired,
   difficulty: PropTypes.oneOfType([PropTypes.number]).isRequired,
   nbQuizz: PropTypes.number.isRequired,
+  btnClicked: PropTypes.bool.isRequired,
+  setBtnClicked: PropTypes.func.isRequired,
+  currentScore: PropTypes.number.isRequired,
+  chosenTheme: PropTypes.string.isRequired,
+  pseudo: PropTypes.string.isRequired,
 };

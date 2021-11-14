@@ -1,14 +1,37 @@
 import { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const QuizzScore = ({ currentScore, nbQuizz }) => {
-  const [totalScore, setTotalScore] = useState(0);
+const QuizzScore = ({
+  currentScore,
+  nbQuizz,
+  btnClicked,
+  chosenTheme,
+  pseudo,
+  difficulty,
+}) => {
+  const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
-    setTotalScore(totalScore + currentScore);
-  }, [nbQuizz]);
+    if (nbQuizz === 10 && btnClicked) {
+      setTimeout(() => {
+        setRedirect(true);
+      }, 3000);
+    }
+  }, [btnClicked]);
 
-  return <span className="score">{totalScore}</span>;
+  if (redirect) {
+    return (
+      <Redirect
+        to={{
+          pathname: '/Blind-Crash-Test/Resultats',
+          state: { currentScore, chosenTheme, pseudo, difficulty },
+        }}
+      />
+    );
+  }
+
+  return <span className="score">{currentScore}</span>;
 };
 
 export default QuizzScore;
@@ -16,4 +39,8 @@ export default QuizzScore;
 QuizzScore.propTypes = {
   currentScore: PropTypes.number.isRequired,
   nbQuizz: PropTypes.number.isRequired,
+  btnClicked: PropTypes.bool.isRequired,
+  chosenTheme: PropTypes.string.isRequired,
+  pseudo: PropTypes.string.isRequired,
+  difficulty: PropTypes.number.isRequired,
 };

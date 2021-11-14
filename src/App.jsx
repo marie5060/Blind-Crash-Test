@@ -10,6 +10,9 @@ import './App.css';
 
 function App() {
   const [chosenId, setChosenId] = useState('9626980522');
+  const [chosenTheme, setChosenTheme] = useState('Rock');
+  const [pseudo, setPseudo] = useState('Anonyme');
+  const [difficulty, setDifficulty] = useState(2);
 
   return (
     <div>
@@ -19,19 +22,49 @@ function App() {
           <Route
             exact
             path="/Blind-Crash-Test/"
-            component={() => <AccueilPage setChosenId={setChosenId} />}
+            render={(routeProps) => (
+              <AccueilPage
+                {...routeProps}
+                setChosenId={setChosenId}
+                setChosenTheme={setChosenTheme}
+                setPseudo={setPseudo}
+              />
+            )}
           />
           <Route
             path="/Blind-Crash-Test/Themes"
-            component={() => <ThemesPage setChosenId={setChosenId} />}
+            render={(routeProps) => (
+              <ThemesPage
+                {...routeProps}
+                setChosenId={setChosenId}
+                setChosenTheme={setChosenTheme}
+                setDifficulty={setDifficulty}
+              />
+            )}
           />
           <Route
             path="/Blind-Crash-Test/Resultats"
-            component={() => <ResultatsPage setChosenId={setChosenId} />}
+            render={(routeProps) => (
+              <ResultatsPage
+                {...routeProps}
+                pseudo={pseudo}
+                difficulty={difficulty}
+                setChosenId={setChosenId}
+                setChosenTheme={setChosenTheme}
+                setDifficulty={setDifficulty}
+              />
+            )}
           />
           <Route
             path="/Blind-Crash-Test/Quizz"
-            component={() => <QuizzPage chosenId={chosenId} />}
+            component={() => (
+              <QuizzPage
+                chosenId={chosenId}
+                chosenTheme={chosenTheme}
+                pseudo={pseudo}
+                difficulty={difficulty}
+              />
+            )}
           />
         </Switch>
       </BrowserRouter>

@@ -6,19 +6,21 @@ import QuizzCard from './QuizzCard';
 import QuizzScore from './QuizzScore';
 import './QuizzPage.css';
 
-const QuizzPage = ({ chosenId }) => {
+const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
+  // Le bouton a été cliqué
+  const [btnClicked, setBtnClicked] = useState(false);
   // tableau de chansons
   const [tracks, setTracks] = useState(initialTracks);
   // Compteur de question
   const [nbQuizz, setNbQuizz] = useState(1);
   // Compteur de 3s avant de commancer le jeu
   const [waitingCount, setWaitingCount] = useState(3);
-  // Score de la question en cours
+  // Score du quizz qui se met à jour au fur et à mesure
   const [currentScore, setCurrentScore] = useState(0);
 
   const [random, setRandom] = useState(0);
   // difficulté choisie sur PageThème
-  const difficulty = 4;
+  // const difficulty = 4;
   // nombre de mauvaise réponses à récupérer selon le niveau de difficulté, initialisé à 3
   let numBadAnswerToGet = 3;
 
@@ -85,7 +87,15 @@ const QuizzPage = ({ chosenId }) => {
     <main>
       <div className="topQuizz">
         <div>
-          Score : <QuizzScore currentScore={currentScore} nbQuizz={nbQuizz} />
+          Score :{' '}
+          <QuizzScore
+            currentScore={currentScore}
+            chosenTheme={chosenTheme}
+            nbQuizz={nbQuizz}
+            btnClicked={btnClicked}
+            difficulty={difficulty}
+            pseudo={pseudo}
+          />
         </div>
         <div>{nbQuizz} / 10</div>
       </div>
@@ -98,9 +108,14 @@ const QuizzPage = ({ chosenId }) => {
           goodTrack={tracks[random]}
           badTrackArray={badTracksArray}
           nextQuestion={nextQuestion}
+          currentScore={currentScore}
           setCurrentScore={setCurrentScore}
           difficulty={difficulty}
           nbQuizz={nbQuizz}
+          btnClicked={btnClicked}
+          setBtnClicked={setBtnClicked}
+          chosenTheme={chosenTheme}
+          pseudo={pseudo}
         />
       )}
     </main>
@@ -111,4 +126,7 @@ export default QuizzPage;
 
 QuizzPage.propTypes = {
   chosenId: PropTypes.string.isRequired,
+  chosenTheme: PropTypes.string.isRequired,
+  pseudo: PropTypes.string.isRequired,
+  difficulty: PropTypes.number.isRequired,
 };
