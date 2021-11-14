@@ -1,12 +1,40 @@
+/* font-family: 'Englebert', sans-serif; */
+
 .result-gauge {
   background-color: black;
   color: white;
   margin: 10vh 20vh;
-  height: 10vh;
+  height: 6vh;
   font-size: 1.5vw;
   text-align: center;
-  line-height: 10vh;
   border-radius: 50px;
+  position: relative;
+}
+
+.gauge-text,
+.gauge-current-score {
+  position: absolute;
+  color: black;
+  text-shadow: 2px 2px 3px white;
+}
+
+.gauge-text {
+  font-family: 'Englebert', sans-serif;
+  font-size: 50px;
+}
+
+.gauge-text.left {
+  left: 0;
+}
+
+.gauge-text.right {
+  right: 0;
+}
+
+.gauge-current-score {
+  font-size: 100px;
+  top: -5vh;
+  text-shadow: 2px 2px 3px white;
 }
 
 .result-table-container {

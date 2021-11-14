@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react/cjs/react.development';
+import { useState, useEffect } from 'react';
+import { FaCaretDown } from 'react-icons/fa';
 import Stars from '../Themes/Difficulty';
 import './ResultatsPage.css';
 
@@ -35,7 +36,8 @@ const ResultatsPage = ({
     }
 
     // get array of all results stored
-    const unorderedWinners = JSON.parse(sessionStorage.getItem('resultArray'));
+    const unorderedWinners =
+      JSON.parse(sessionStorage.getItem('resultArray')) || [];
     function bubulle(tab2) {
       const tab = tab2;
       let changed;
@@ -60,9 +62,17 @@ const ResultatsPage = ({
   return (
     <main>
       <div className="result-gauge">
-        Méga
-        mauvais=============================|==================================Méga
-        Bon
+        <p className="gauge-text left">
+          Méga
+          <br />
+          Mauvais
+        </p>
+        <p className="gauge-text right">
+          Méga
+          <br />
+          Bon
+        </p>
+        <FaCaretDown className="gauge-current-score" />
       </div>
       <div className="result-table-container">
         <h1 className="result-title">Tableau des scores</h1>
