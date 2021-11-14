@@ -5,7 +5,7 @@ import ThemeItem from './ThemeItem';
 import Stars from './Difficulty';
 import './ThemesPage.css';
 
-const ThemesPage = ({ setChosenId }) => {
+const ThemesPage = ({ setChosenId, chosenId }) => {
   // const [resetTheme, setResetTheme] = useState(false);
 
   const themeArray = [
@@ -43,6 +43,7 @@ const ThemesPage = ({ setChosenId }) => {
               themeName={item.name}
               themeId={item.id}
               setChosenId={setChosenId}
+              chosenId={chosenId}
               key={item.num}
             />
           </div>
@@ -56,6 +57,7 @@ const ThemesPage = ({ setChosenId }) => {
               themeName={item.name}
               themeId={item.id}
               setChosenId={setChosenId}
+              chosenId={chosenId}
               key={item.num}
             />
           </div>
@@ -81,4 +83,5 @@ export default ThemesPage;
 
 ThemesPage.propTypes = {
   setChosenId: PropTypes.func.isRequired,
+  chosenId: PropTypes.string.isRequired,
 };

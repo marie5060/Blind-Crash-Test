@@ -9,7 +9,8 @@ import QuizzPage from './components/Quizz/QuizzPage';
 import './App.css';
 
 function App() {
-  const [chosenId, setChosenId] = useState('9626980522');
+  console.log('re-render app');
+  const [chosenId, setChosenId] = useState('');
 
   console.log(chosenId);
 
@@ -25,7 +26,9 @@ function App() {
           />
           <Route
             path="/Blind-Crash-Test/Themes"
-            component={() => <ThemesPage setChosenId={setChosenId} />}
+            component={() => (
+              <ThemesPage setChosenId={setChosenId} chosenId={chosenId} />
+            )}
           />
           <Route
             path="/Blind-Crash-Test/Resultats"

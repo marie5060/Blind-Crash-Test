@@ -1,20 +1,24 @@
+/* eslint-disable */
 import PropTypes from 'prop-types';
+import { useEffect } from 'react/cjs/react.development';
 import { useState } from 'react';
+// import { useEffect } from 'react/cjs/react.development';
 import './ThemeItem.css';
 
 const ThemeItem = ({
   themeName,
   themeId,
   setChosenId,
+  chosenId,
   // handleClickTheme,
   // resetTheme,
 }) => {
-  const [chosenTheme, setChosenTheme] = useState(false);
+  // const [chosenThemeName, setChosenThemeName] = useState(false);
 
-  console.log(chosenTheme);
   let themeButtonClass = 'glow-on-hover';
-
-  themeButtonClass = chosenTheme ? 'chosenthemeBtn' : 'glow-on-hover';
+  if (themeId === chosenId) {
+    themeButtonClass = 'chosenthemeNameBtn'
+  }
 
   return (
     <div>
@@ -22,7 +26,6 @@ const ThemeItem = ({
         type="button"
         className={themeButtonClass}
         onClick={() => {
-          setChosenTheme(true);
           setChosenId(themeId);
         }}
       >
@@ -38,4 +41,5 @@ ThemeItem.propTypes = {
   themeName: PropTypes.string.isRequired,
   themeId: PropTypes.string.isRequired,
   setChosenId: PropTypes.func.isRequired,
+  chosenId: PropTypes.string.isRequired,
 };
