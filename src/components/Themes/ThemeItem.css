@@ -15,7 +15,7 @@
 
 .glow-on-hover::before {
   content: '';
-  background: linear-gradient(45deg, white, #7a00ff, #ff00c8, #f00);
+  background: linear-gradient(45deg, white, #774CD3, #ae2aa9);
   position: absolute;
   top: -5px;
   left: -5px;
@@ -54,14 +54,14 @@
   opacity: 1;
 }
 
-.chosenthemeBtn {
+.theme-chosen-button {
   border: none;
   outline: none;
   color: white;
   cursor: pointer;
   font-size: 20px;
   font-style: bold;
-  background: linear-gradient(45deg, white, #7a00ff, #ff00c8, #f00);
+  background: linear-gradient(45deg, white, #774CD3, #ae2aa9);
   top: -5px;
   left: -5px;
   background-size: 400%;

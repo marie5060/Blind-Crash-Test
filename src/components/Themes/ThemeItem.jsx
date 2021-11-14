@@ -1,8 +1,4 @@
-/* eslint-disable */
 import PropTypes from 'prop-types';
-import { useEffect } from 'react/cjs/react.development';
-import { useState } from 'react';
-// import { useEffect } from 'react/cjs/react.development';
 import './ThemeItem.css';
 
 const ThemeItem = ({
@@ -17,7 +13,7 @@ const ThemeItem = ({
 
   let themeButtonClass = 'glow-on-hover';
   if (themeId === chosenId) {
-    themeButtonClass = 'chosenthemeNameBtn'
+    themeButtonClass = 'theme-chosen-button';
   }
 
   return (
