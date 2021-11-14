@@ -1,20 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-// import LinkBtn from '../Bases/LinkBtn';
 import initialTracks from '../../severalTracks';
 import QuizzCard from './QuizzCard';
-// import QuizzScore from './QuizzScore';
+import QuizzScore from './QuizzScore';
 import './QuizzPage.css';
 
-const QuizzPage = ({ chosenId }) => {
+const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
+  // Le bouton a été cliqué
+  const [btnClicked, setBtnClicked] = useState(false);
+  // tableau de chansons
   const [tracks, setTracks] = useState(initialTracks);
+  // Compteur de question
   const [nbQuizz, setNbQuizz] = useState(1);
+  // Compteur de 3s avant de commancer le jeu
   const [waitingCount, setWaitingCount] = useState(3);
+  // Score du quizz qui se met à jour au fur et à mesure
+  const [currentScore, setCurrentScore] = useState(0);
 
-  const random = Math.floor(Math.random() * tracks.length);
+  const [random, setRandom] = useState(0);
+  // difficulté choisie sur PageThème
+  // const difficulty = 4;
+  // nombre de mauvaise réponses à récupérer selon le niveau de difficulté, initialisé à 3
+  let numBadAnswerToGet = 3;
 
-  // Timer
+  const badTracksArray = [];
+
+  useEffect(() => {
+    setRandom(Math.floor(Math.random() * tracks.length));
+  }, [nbQuizz]);
+
+  // Timer 3 - 2 - 1 quizz start
   useEffect(() => {
     const timer =
       waitingCount > 0 &&
@@ -27,7 +43,7 @@ const QuizzPage = ({ chosenId }) => {
   useEffect(() => {
     axios
       .get(
-        `https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/${chosenId}?&limit=50`
+        `https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/${chosenId}`
       ) // https://cors-anywhere.herokuapp.com/ à ajouter au début
       .then((response) => response.data.tracks.data)
       .then((data) => {
@@ -45,9 +61,18 @@ const QuizzPage = ({ chosenId }) => {
     setNbQuizz(nbQuizz + 1);
   };
 
+  // change le nombre de mauvaise réponse à récupérer selon le niveau de difficulté
+  if (difficulty === 1) {
+    numBadAnswerToGet = 1;
+  } else if (difficulty === 4) {
+    numBadAnswerToGet = 5;
+  } else if (difficulty === 5) {
+    numBadAnswerToGet = 7;
+  }
+
   // récupére un tableau d'objet de mauvaises réponses
-  const badTracksArray = [];
-  for (let i = 0; i < 3; i += 1) {
+  /// modifie le nombre de réponse que je récupère ///
+  for (let i = 0; i < numBadAnswerToGet; i += 1) {
     let number = Math.floor(Math.random() * tracks.length);
     while (
       tracks[number].id === tracks[random].id ||
@@ -60,7 +85,20 @@ const QuizzPage = ({ chosenId }) => {
 
   return (
     <main>
-      <h1>Quizz</h1>
+      <div className="topQuizz">
+        <div>
+          Score :{' '}
+          <QuizzScore
+            currentScore={currentScore}
+            chosenTheme={chosenTheme}
+            nbQuizz={nbQuizz}
+            btnClicked={btnClicked}
+            difficulty={difficulty}
+            pseudo={pseudo}
+          />
+        </div>
+        <div>{nbQuizz} / 10</div>
+      </div>
       {waitingCount > 0 && nbQuizz === 1 ? (
         <div className="waiting-container">
           <div className="waiting-count">{waitingCount}</div>
@@ -70,15 +108,16 @@ const QuizzPage = ({ chosenId }) => {
           goodTrack={tracks[random]}
           badTrackArray={badTracksArray}
           nextQuestion={nextQuestion}
+          currentScore={currentScore}
+          setCurrentScore={setCurrentScore}
+          difficulty={difficulty}
+          nbQuizz={nbQuizz}
+          btnClicked={btnClicked}
+          setBtnClicked={setBtnClicked}
+          chosenTheme={chosenTheme}
+          pseudo={pseudo}
         />
       )}
-      <div className="quizz-bottom">
-        {/* <QuizzScore /> */}
-        <div className="link-btns-container">
-          {/* <LinkBtn />
-          <LinkBtn /> */}
-        </div>
-      </div>
     </main>
   );
 };
@@ -86,5 +125,8 @@ const QuizzPage = ({ chosenId }) => {
 export default QuizzPage;
 
 QuizzPage.propTypes = {
-  chosenId: PropTypes.oneOfType([PropTypes.number]).isRequired,
+  chosenId: PropTypes.string.isRequired,
+  chosenTheme: PropTypes.string.isRequired,
+  pseudo: PropTypes.string.isRequired,
+  difficulty: PropTypes.number.isRequired,
 };

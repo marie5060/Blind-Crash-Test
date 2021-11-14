@@ -1,6 +1,5 @@
-import React from 'react';
-import './linkBtnNewTheme.css';
 import { Link } from 'react-router-dom';
+import './linkBtnNewTheme.css';
 
 const LinkBtnNewTheme = () => {
   return (

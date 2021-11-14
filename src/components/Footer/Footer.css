@@ -1,0 +1,24 @@
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(143, 35, 197);
+  padding: 1.4%;
+}
+
+#email {
+  border-bottom: 2px solid black;
+  border-radius: 15px;
+  width: 25%;
+  margin-left: 1.2%;
+}
+
+button {
+  border-radius: 15px;
+  box-shadow: 10px 2px solid black;
+  margin-left: 1.2%;
+  width: 15%;
+}
+
+.social {
+  margin-left: 40%;
+}
