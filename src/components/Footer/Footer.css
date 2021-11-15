@@ -18,6 +18,8 @@
 
 button {
   border-radius: 15px;
+  background-color: black;
+  color: white;
   box-shadow: 10px 2px solid black;
   align-self: center;
   margin-left: 1.2%;

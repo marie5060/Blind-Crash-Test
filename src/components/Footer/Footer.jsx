@@ -5,6 +5,9 @@ import { FaFacebook, FaTwitter, FaInstagramSquare } from 'react-icons/fa';
 const Footer = () => {
   const [email, setEmail] = useState('');
   const handleEmailChange = (e) => setEmail(e.target.value);
+  const display = () => {
+    document.getElementById('email').value = '';
+  };
 
   return (
     <footer className="footer">
@@ -17,7 +20,9 @@ const Footer = () => {
           onChange={handleEmailChange}
           value={email}
         />
-        <button type="submit">Partager votre résultat</button>
+        <button type="submit" onClick={display}>
+          Partager votre résultat
+        </button>
         <div className="social">
           <a
             href="https://twitter.com/"
