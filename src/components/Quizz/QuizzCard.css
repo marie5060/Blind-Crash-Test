@@ -20,6 +20,8 @@
   position: absolute;
   right: 10vw;
   top: 15vh;
+  width: auto;
+  height: auto;
 }
 
 .next-track-bg:hover {
