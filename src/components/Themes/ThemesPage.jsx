@@ -4,7 +4,7 @@ import ThemeItem from './ThemeItem';
 import Stars from './Difficulty';
 import './ThemesPage.css';
 
-const ThemesPage = ({ setChosenTheme, setChosenId }) => {
+const ThemesPage = ({ setChosenTheme, setChosenId, setDifficulty }) => {
   const themeArray = [
     { name: 'Rock', id: '9626980522', num: 1 },
     { name: 'Reggae ', id: '9626990642', num: 2 },
@@ -62,7 +62,7 @@ const ThemesPage = ({ setChosenTheme, setChosenId }) => {
       <h2>Difficulté</h2>
       <div className="difficulty-container">
         {difficulties.map((star) => (
-          <Stars key={star} />
+          <Stars setDifficulty={setDifficulty} key={star} position={star} />
         ))}
       </div>
       <div className="go-quizz-container">
@@ -77,4 +77,5 @@ export default ThemesPage;
 ThemesPage.propTypes = {
   setChosenId: PropTypes.func.isRequired,
   setChosenTheme: PropTypes.func.isRequired,
+  setDifficulty: PropTypes.func.isRequired,
 };

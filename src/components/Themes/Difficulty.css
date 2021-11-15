@@ -6,6 +6,6 @@
   cursor: pointer;
 }
 
-.stars-container img {
-  width: 100%;
+.star-icon {
+  color: rgb(253, 240, 122);
 }

@@ -19,8 +19,7 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
   const [currentScore, setCurrentScore] = useState(0);
 
   const [random, setRandom] = useState(0);
-  // difficulté choisie sur PageThème
-  // const difficulty = 4;
+  // difficulté choisie sur PageThème dans la props "difficulty"
   // nombre de mauvaise réponses à récupérer selon le niveau de difficulté, initialisé à 3
   let numBadAnswerToGet = 3;
 
@@ -62,12 +61,25 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
   };
 
   // change le nombre de mauvaise réponse à récupérer selon le niveau de difficulté
-  if (difficulty === 1) {
-    numBadAnswerToGet = 1;
-  } else if (difficulty === 4) {
-    numBadAnswerToGet = 5;
-  } else if (difficulty === 5) {
-    numBadAnswerToGet = 7;
+  switch (difficulty) {
+    case 1:
+      numBadAnswerToGet = 1;
+      break;
+    case 2:
+      numBadAnswerToGet = 3;
+      break;
+    case 3:
+      numBadAnswerToGet = 3;
+      break;
+    case 4:
+      numBadAnswerToGet = 5;
+      break;
+    case 5:
+      numBadAnswerToGet = 7;
+      break;
+    default:
+      numBadAnswerToGet = 3;
+      break;
   }
 
   // récupére un tableau d'objet de mauvaises réponses
