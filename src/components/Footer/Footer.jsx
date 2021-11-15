@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import './Footer.css';
-import { FaFacebook } from 'react-icons/fa';
-import Twitter from './Logos/Twitter.png';
-import Instagram from './Logos/Instagram.jpg';
+import { FaFacebook, FaTwitter, FaInstagramSquare } from 'react-icons/fa';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -26,21 +24,21 @@ const Footer = () => {
             className="twitter-button"
             data-show-count="false"
           >
-            <img src={Twitter} alt="twitter" />
+            <FaTwitter />
           </a>
           <a
             href="https://facebook.com/"
             className="facebook-button"
             data-show-count="false"
           >
-            <img src={FaFacebook} alt="facebook" />
+            <FaFacebook />
           </a>
           <a
             href="https://instagram.com/"
             className="instagram-button"
             data-show-count="false"
           >
-            <img src={Instagram} alt="instagram" />
+            <FaInstagramSquare />
           </a>
         </div>
       </div>

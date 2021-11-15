@@ -1,7 +1,7 @@
 .footer-container {
   display: flex;
   flex-direction: row;
-  background-color: rgb(143, 35, 197);
+  background: linear-gradient(140deg, #774cd3, #ae2aa9);
   padding: 1%;
   margin-top: 5%;
 }
@@ -27,6 +27,5 @@ button {
 
 .social {
   margin-left: 40%;
+  font-size: 60px;
 }
-
-
