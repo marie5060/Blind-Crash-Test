@@ -118,8 +118,6 @@ export default ResultatsPage;
 
 ResultatsPage.propTypes = {
   location: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  currentScore: PropTypes.number.isRequired,
   pseudo: PropTypes.string.isRequired,
-  chosenTheme: PropTypes.string.isRequired,
   difficulty: PropTypes.number.isRequired,
 };
