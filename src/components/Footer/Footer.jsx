@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Footer.css';
+import { FaFacebook } from 'react-icons/fa';
 import Twitter from './Logos/Twitter.png';
-import Facebook from './Logos/Facebook.png';
 import Instagram from './Logos/Instagram.jpg';
 
 const Footer = () => {
@@ -33,7 +33,7 @@ const Footer = () => {
             className="facebook-button"
             data-show-count="false"
           >
-            <img src={Facebook} alt="facebook" />
+            <img src={FaFacebook} alt="facebook" />
           </a>
           <a
             href="https://instagram.com/"
