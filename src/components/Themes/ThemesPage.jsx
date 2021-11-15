@@ -62,7 +62,7 @@ const ThemesPage = ({ setChosenTheme, setChosenId, setDifficulty }) => {
       <h2>Difficulté</h2>
       <div className="difficulty-container">
         {difficulties.map((star) => (
-          <Stars setDifficulty={setDifficulty} key={star} position={star} />
+          <Stars setDifficulty={setDifficulty} position={star} key={star} />
         ))}
       </div>
       <div className="go-quizz-container">
