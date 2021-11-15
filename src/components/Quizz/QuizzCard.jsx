@@ -71,7 +71,7 @@ const QuizzCard = ({
     } else {
       if (win) {
         setCurrentScore(
-          currentScore + parseInt(leftTimeWhenClick.toFixed(0), 10)
+          currentScore + parseInt(leftTimeWhenClick.toFixed(0), 10) * difficulty
         );
       }
       setTimeout(() => {
