@@ -1,6 +1,6 @@
 .quizz-card {
   width: 70%;
-  height: 70vh;
+  height: auto;
   margin: auto;
   background-color: rgba(206, 203, 200, 0.493);
   border-radius: 20px;
