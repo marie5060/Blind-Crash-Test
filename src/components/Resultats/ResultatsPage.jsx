@@ -1,4 +1,3 @@
-/* eslint-disable */
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { FaCaretDown } from 'react-icons/fa';
@@ -11,13 +10,17 @@ const ResultatsPage = ({
   },
 }) => {
   const [winners, setWinners] = useState([]);
-  const [cursorPosition, setCursorPosition] = useState(0)
-  console.log("cursor pos: " + cursorPosition)
+  const [cursorPosition, setCursorPosition] = useState(0);
   const cursorStyle = {
     left: `${cursorPosition}%`,
-  }
+  };
 
   useEffect(() => {
+    const result =
+      sessionStorage.getItem('resultArray') === null
+        ? []
+        : JSON.parse(sessionStorage.resultArray);
+
     // add incoming quizz if redirect from quizzPage in sessionStorage
     if (currentScore !== null) {
       const starsQte = [];
@@ -27,10 +30,6 @@ const ResultatsPage = ({
         }
       }
 
-      const result =
-        sessionStorage.getItem('resultArray') === null
-          ? []
-          : JSON.parse(sessionStorage.resultArray);
       result.push({
         id: result.length,
         currentScore,
@@ -39,7 +38,7 @@ const ResultatsPage = ({
         difficulty: starsQte,
       });
       sessionStorage.setItem('resultArray', JSON.stringify(result));
-      setCursorPosition(((currentScore - (currentScore / 10)) / 10) / difficulty)
+      setCursorPosition((currentScore - currentScore / 10) / 10 / difficulty);
     }
 
     // get array of all results stored
@@ -83,7 +82,7 @@ const ResultatsPage = ({
           <FaCaretDown style={cursorStyle} className="gauge-current-score" />
         </div>
       </div>
-      
+
       <div className="result-table-container">
         <h1 className="result-title">Tableau des scores</h1>
         <table className="result-table">
