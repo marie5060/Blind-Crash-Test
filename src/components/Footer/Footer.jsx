@@ -16,7 +16,7 @@ const Footer = () => {
           type="email"
           name="email"
           id="email"
-          placeholder="email"
+          placeholder="Entre ton email"
           onChange={handleEmailChange}
           value={email}
         />
