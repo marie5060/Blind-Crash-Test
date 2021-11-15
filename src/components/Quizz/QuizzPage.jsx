@@ -28,7 +28,8 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
   let numBadAnswerToGet = 3;
 
   const badTracksArray = [];
-
+  
+  // Récupère la bonne track
   useEffect(() => {
     setRandom(Math.floor(Math.random() * tracks.length));
     setGoodTrack(tracks[random]);
