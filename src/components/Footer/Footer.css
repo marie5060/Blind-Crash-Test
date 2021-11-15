@@ -1,13 +1,14 @@
 .footer-container {
   display: flex;
   flex-direction: row;
-  background-color: rgb(143, 35, 197);
+  background: linear-gradient(140deg, #774cd3, #ae2aa9);
   padding: 1%;
   margin-top: 5%;
 }
 
 #email {
   border-bottom: 2px solid black;
+  align-self: center;
   border-radius: 15px;
   width: 22%;
   height: 24px;
@@ -17,7 +18,10 @@
 
 button {
   border-radius: 15px;
+  background-color: black;
+  color: white;
   box-shadow: 10px 2px solid black;
+  align-self: center;
   margin-left: 1.2%;
   width: 15%;
   margin-top: 1%;
@@ -27,4 +31,5 @@ button {
 
 .social {
   margin-left: 40%;
+  font-size: 60px;
 }
