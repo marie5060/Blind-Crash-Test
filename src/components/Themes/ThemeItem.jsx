@@ -1,16 +1,7 @@
 import PropTypes from 'prop-types';
 import './ThemeItem.css';
 
-const ThemeItem = ({
-  themeName,
-  themeId,
-  setChosenId,
-  chosenId,
-  // handleClickTheme,
-  // resetTheme,
-}) => {
-  // const [chosenThemeName, setChosenThemeName] = useState(false);
-
+const ThemeItem = ({ themeName, themeId, setChosenId, chosenId }) => {
   let themeButtonClass = 'glow-on-hover';
   if (themeId === chosenId) {
     themeButtonClass = 'theme-chosen-button';

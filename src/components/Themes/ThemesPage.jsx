@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 import PropTypes from 'prop-types';
 import LinkBtnGoQuizz from '../Bases/LinkBtnGoQuizz';
 import ThemeItem from './ThemeItem';
@@ -6,8 +5,6 @@ import Stars from './Difficulty';
 import './ThemesPage.css';
 
 const ThemesPage = ({ setChosenId, chosenId }) => {
-  // const [resetTheme, setResetTheme] = useState(false);
-
   const themeArray = [
     { name: 'Rock', id: '9626980522', num: 1 },
     { name: 'Reggae ', id: '9626990642', num: 2 },
@@ -31,7 +28,6 @@ const ThemesPage = ({ setChosenId, chosenId }) => {
   ];
 
   const numberStars = [1, 2, 3, 4, 5];
-  // const [difficulties, setDifficulties] = useState(false);
 
   return (
     <div className="themes-page-container">
