@@ -1,13 +1,13 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import LinkBtnGoQuizz from '../Bases/LinkBtnGoQuizz';
 import ThemeItem from './ThemeItem';
+import Stars from './Difficulty';
 import './ThemesPage.css';
 
-const ThemesPage = ({ setChosenId }) => {
+const ThemesPage = ({ setChosenTheme, setChosenId }) => {
   const themeArray = [
     { name: 'Rock', id: '9626980522', num: 1 },
-    { name: 'reggae ', id: '9626990642', num: 2 },
+    { name: 'Reggae ', id: '9626990642', num: 2 },
     { name: 'Métal', id: '9626971702', num: 3 },
     { name: 'Années 70/80', id: '9640482882', num: 4 },
     { name: 'Années 90/00', id: '9640491642', num: 5 },
@@ -27,6 +27,8 @@ const ThemesPage = ({ setChosenId }) => {
     { name: 'Michael Jackson', id: '9640536442', num: 8 },
   ];
 
+  const difficulties = [1, 2, 3, 4, 5];
+
   return (
     <div className="themes-page-container">
       <h2>Thèmes</h2>
@@ -37,6 +39,7 @@ const ThemesPage = ({ setChosenId }) => {
               themeName={item.name}
               themeId={item.id}
               setChosenId={setChosenId}
+              setChosenTheme={setChosenTheme}
               key={item.num}
             />
           </div>
@@ -50,12 +53,18 @@ const ThemesPage = ({ setChosenId }) => {
               themeName={item.name}
               themeId={item.id}
               setChosenId={setChosenId}
+              setChosenTheme={setChosenTheme}
               key={item.num}
             />
           </div>
         ))}
       </div>
       <h2>Difficulté</h2>
+      <div className="difficulty-container">
+        {difficulties.map((star) => (
+          <Stars key={star} />
+        ))}
+      </div>
       <div className="go-quizz-container">
         <LinkBtnGoQuizz />
       </div>
@@ -67,4 +76,5 @@ export default ThemesPage;
 
 ThemesPage.propTypes = {
   setChosenId: PropTypes.func.isRequired,
+  setChosenTheme: PropTypes.func.isRequired,
 };

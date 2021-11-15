@@ -1,4 +1,3 @@
-
 .loose {
   opacity: 0.3;
 }
@@ -7,7 +6,8 @@
   width: 40%;
   height: 3vw;
   color: wheat;
-  font-size: 1vw;
+  font-size: 1.1vw;
+  font-weight: bold;
   border-radius: 20px;
   margin: 3vh 30px;
   background: linear-gradient(121.83deg, #774cd3 31.32%, #ae2aa9 87.66%);
@@ -15,4 +15,33 @@
 
 .chosenBtn {
   border: 5px solid black;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-5px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(6px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+.hard-difficulty {
+  animation-name: shake;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
 }
