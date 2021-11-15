@@ -9,10 +9,7 @@ import QuizzPage from './components/Quizz/QuizzPage';
 import './App.css';
 
 function App() {
-  console.log('re-render app');
   const [chosenId, setChosenId] = useState('');
-
-  console.log(chosenId);
 
   return (
     <div>
