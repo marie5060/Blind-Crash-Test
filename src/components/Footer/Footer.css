@@ -2,14 +2,17 @@
   display: flex;
   flex-direction: row;
   background-color: rgb(143, 35, 197);
-  padding: 1.4%;
+  padding: 1%;
+  margin-top: 5%;
 }
 
 #email {
   border-bottom: 2px solid black;
   border-radius: 15px;
-  width: 25%;
+  width: 22%;
+  height: 24px;
   margin-left: 1.2%;
+  margin-top: 1%;
 }
 
 button {
@@ -17,6 +20,9 @@ button {
   box-shadow: 10px 2px solid black;
   margin-left: 1.2%;
   width: 15%;
+  margin-top: 1%;
+  width: 15%;
+  height: 28px;
 }
 
 .social {
