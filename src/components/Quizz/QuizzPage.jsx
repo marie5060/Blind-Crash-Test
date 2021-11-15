@@ -17,8 +17,12 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
   const [waitingCount, setWaitingCount] = useState(3);
   // Score du quizz qui se met à jour au fur et à mesure
   const [currentScore, setCurrentScore] = useState(0);
-
+  // numéro de la bonne réponse à récupérer
   const [random, setRandom] = useState(0);
+  // tableau des bonnes réponses
+  const [goodTracksArray, setGoodTracksArray] = useState([]);
+  // la bonne réponse
+  const [goodTrack, setGoodTrack] = useState();
   // difficulté choisie sur PageThème dans la props "difficulty"
   // nombre de mauvaise réponses à récupérer selon le niveau de difficulté, initialisé à 3
   let numBadAnswerToGet = 3;
@@ -27,6 +31,17 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
 
   useEffect(() => {
     setRandom(Math.floor(Math.random() * tracks.length));
+    setGoodTrack(tracks[random]);
+    setGoodTracksArray([...goodTracksArray, goodTrack]);
+  }, []);
+
+  useEffect(() => {
+    setRandom(Math.floor(Math.random() * tracks.length));
+    while (goodTracksArray.includes(tracks[random].id)) {
+      setRandom(Math.floor(Math.random() * tracks.length));
+    }
+    setGoodTrack(tracks[random]);
+    setGoodTracksArray([...goodTracksArray, goodTrack]);
   }, [nbQuizz]);
 
   // Timer 3 - 2 - 1 quizz start
@@ -94,7 +109,7 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
     }
     badTracksArray.push(tracks[number]);
   }
-
+  console.log(goodTracksArray);
   return (
     <main>
       <div className="topQuizz">
@@ -117,7 +132,7 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
         </div>
       ) : (
         <QuizzCard
-          goodTrack={tracks[random]}
+          goodTrack={goodTrack}
           badTrackArray={badTracksArray}
           nextQuestion={nextQuestion}
           currentScore={currentScore}
