@@ -3,7 +3,6 @@
   flex-direction: row;
   background: linear-gradient(140deg, #774cd3, #ae2aa9);
   padding: 1%;
-  margin-top: 5%;
 }
 
 #email {
@@ -46,15 +45,19 @@ button {
   }
 
   #email {
-    font-size: 1%;
+    font-size: 1.5%;
+    height: 18px;
+    width: 24%;
   }
 
   button {
-    font-size: 1%;
+    font-size: 1.1%;
+    height: 23px;
+    width: 20%;
   }
 
   .social {
     margin: auto;
     justify-content: center;
+    font-size: 30px;
   }
-}
