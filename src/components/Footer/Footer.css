@@ -44,15 +44,17 @@ button {
     flex-direction: column;
     flex-wrap: wrap;
   }
+
   #email {
     font-size: 1%;
   }
+
   button {
     font-size: 1%;
   }
-   .social {
-     margin: auto;
-     justify-content: center;
-   }
- 
+
+  .social {
+    margin: auto;
+    justify-content: center;
+  }
 }
