@@ -6,6 +6,7 @@ const ThemeItem = ({ themeName, themeId, setChosenId, chosenId }) => {
   if (themeId === chosenId) {
     themeButtonClass = 'theme-chosen-button';
   }
+  console.log(chosenId);
 
   return (
     <div>
