@@ -1,12 +1,23 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import LinkBtnGoQuizz from '../Bases/LinkBtnGoQuizz';
-import ThemeItem from './ThemeItem';
+import Stars from './Difficulty';
 import './ThemesPage.css';
+import ThemeItem from './ThemeItem';
 
-const ThemesPage = ({ setChosenId }) => {
+const ThemesPage = ({ chosenId, setChosenId, setDifficulty }) => {
+  const [newId, setnewId] = useState('');
+  const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+  const onlyNumbers = newId
+    .split('')
+    .filter((e) => numbers.includes(e))
+    .toString()
+    .replace(/,/gi, '');
+
   const themeArray = [
     { name: 'Rock', id: '9626980522', num: 1 },
-    { name: 'reggae ', id: '9626990642', num: 2 },
+    { name: 'Reggae ', id: '9626990642', num: 2 },
     { name: 'Métal', id: '9626971702', num: 3 },
     { name: 'Années 70/80', id: '9640482882', num: 4 },
     { name: 'Années 90/00', id: '9640491642', num: 5 },
@@ -26,35 +37,58 @@ const ThemesPage = ({ setChosenId }) => {
     { name: 'Michael Jackson', id: '9640536442', num: 8 },
   ];
 
+  const difficulties = [1, 2, 3, 4, 5];
+
   return (
     <div className="themes-page-container">
+      <div className="playlist-perso-container">
+        <h2>Jouer avec ma propre Playlist Deezer</h2>
+        <input
+          type="text"
+          value={newId}
+          id="playlistDeezer"
+          onChange={(e) => setnewId(e.target.value)}
+        />
+        <button type="submit" onClick={() => setChosenId(onlyNumbers)}>
+          Valider
+        </button>
+      </div>
       <h2>Thèmes</h2>
       <div className="theme-items">
         {themeArray.map((item) => (
-          <div className={`item${item.num} item`}>
-            <ThemeItem
-              themeName={item.name}
-              themeId={item.id}
-              setChosenId={setChosenId}
-              key={item.num}
-            />
+          <div className={`item${item.num} item`} key={item.num}>
+            <a href="#difficulty">
+              <ThemeItem
+                themeName={item.name}
+                themeId={item.id}
+                setChosenId={setChosenId}
+                chosenId={chosenId}
+              />
+            </a>
           </div>
         ))}
       </div>
       <h2>Artistes</h2>
       <div className="theme-items">
         {artisteArray.map((item) => (
-          <div className={`item${item.num} item`}>
-            <ThemeItem
-              themeName={item.name}
-              themeId={item.id}
-              setChosenId={setChosenId}
-              key={item.num}
-            />
+          <div className={`item${item.num} item`} key={item.num}>
+            <a href="#difficulty">
+              <ThemeItem
+                themeName={item.name}
+                themeId={item.id}
+                setChosenId={setChosenId}
+                chosenId={chosenId}
+              />
+            </a>
           </div>
         ))}
       </div>
-      <h2>Difficulté</h2>
+      <h2 id="difficulty">Difficulté</h2>
+      <div className="difficulty-container">
+        {difficulties.map((star) => (
+          <Stars setDifficulty={setDifficulty} position={star} key={star} />
+        ))}
+      </div>
       <div className="go-quizz-container">
         <LinkBtnGoQuizz />
       </div>
@@ -66,4 +100,6 @@ export default ThemesPage;
 
 ThemesPage.propTypes = {
   setChosenId: PropTypes.func.isRequired,
+  setDifficulty: PropTypes.func.isRequired,
+  chosenId: PropTypes.string.isRequired,
 };

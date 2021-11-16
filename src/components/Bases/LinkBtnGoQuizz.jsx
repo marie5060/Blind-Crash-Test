@@ -1,6 +1,5 @@
-import React from 'react';
-import './linkBtnGoQuizz.css';
 import { Link } from 'react-router-dom';
+import './linkBtnGoQuizz.css';
 
 const LinkBtnGoQuizz = () => {
   return (

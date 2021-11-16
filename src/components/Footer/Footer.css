@@ -1,0 +1,58 @@
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(140deg, #774cd3, #ae2aa9);
+  padding: 1%;
+  margin-top: 5%;
+}
+
+#email {
+  border-bottom: 2px solid black;
+  align-self: center;
+  border-radius: 15px;
+  width: 22%;
+  height: 24px;
+  margin-left: 1.2%;
+  margin-top: 1%;
+}
+
+button {
+  border-radius: 15px;
+  background-color: black;
+  color: white;
+  box-shadow: 10px 2px solid black;
+  align-self: center;
+  margin-left: 1.2%;
+  width: 15%;
+  height: 28px;
+  margin-top: 1%;
+}
+
+.social {
+  margin-left: 40%;
+  font-size: 60px;
+}
+
+/*       =============================
+				 Media queries
+		 =============================
+*/
+
+@media screen and  (max-width: 1014px) {
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  #email {
+    font-size: 1%;
+  }
+  button {
+    font-size: 1%;
+  }
+   .social {
+     margin: auto;
+     justify-content: center;
+   }
+ 
+}

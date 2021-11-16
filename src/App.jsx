@@ -1,41 +1,74 @@
-import React from 'react';
+import { useState } from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-import './App.css';
+import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import AccueilPage from './components/Accueil/AccueilPage';
 import ThemesPage from './components/Themes/ThemesPage';
 import ResultatsPage from './components/Resultats/ResultatsPage';
 import QuizzPage from './components/Quizz/QuizzPage';
+import './App.css';
 
 function App() {
-  const [chosenId, setChosenId] = React.useState('9626980522');
+  const [chosenTheme, setChosenTheme] = useState('Rock');
+  const [pseudo, setPseudo] = useState('Anonyme');
+  const [difficulty, setDifficulty] = useState(2);
+  const [chosenId, setChosenId] = useState('');
 
   return (
     <div>
-      {/* HEADER */}
       <BrowserRouter>
         <Header />
         <Switch>
-          {/* <Route exact path="/Blind-Crash-Test/" component={AccueilPage} /> */}
           <Route
             exact
             path="/Blind-Crash-Test/"
-            component={() => <AccueilPage setChosenId={setChosenId} />}
+            render={(routeProps) => (
+              <AccueilPage
+                {...routeProps}
+                setChosenId={setChosenId}
+                setChosenTheme={setChosenTheme}
+                setPseudo={setPseudo}
+              />
+            )}
           />
           <Route
             path="/Blind-Crash-Test/Themes"
-            component={() => <ThemesPage setChosenId={setChosenId} />}
+            render={(routeProps) => (
+              <ThemesPage
+                {...routeProps}
+                setChosenId={setChosenId}
+                setChosenTheme={setChosenTheme}
+                setDifficulty={setDifficulty}
+              />
+            )}
           />
           <Route
             path="/Blind-Crash-Test/Resultats"
-            component={() => <ResultatsPage setChosenId={setChosenId} />}
+            render={(routeProps) => (
+              <ResultatsPage
+                {...routeProps}
+                pseudo={pseudo}
+                difficulty={difficulty}
+                setChosenId={setChosenId}
+                setChosenTheme={setChosenTheme}
+                setDifficulty={setDifficulty}
+              />
+            )}
           />
           <Route
             path="/Blind-Crash-Test/Quizz"
-            component={() => <QuizzPage chosenId={chosenId} />}
+            component={() => (
+              <QuizzPage
+                chosenId={chosenId}
+                chosenTheme={chosenTheme}
+                pseudo={pseudo}
+                difficulty={difficulty}
+              />
+            )}
           />
         </Switch>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }
