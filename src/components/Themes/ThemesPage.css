@@ -79,3 +79,5 @@
   display: flex;
   justify-content: flex-end;
 }
+
+html { scroll-behavior: smooth; }

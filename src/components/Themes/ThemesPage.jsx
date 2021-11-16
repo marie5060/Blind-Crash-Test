@@ -48,6 +48,7 @@ const ThemesPage = ({ chosenId, setChosenId, setDifficulty, difficulty }) => {
           setnewId={setnewId}
           setChosenId={setChosenId}
           onlyNumbers={onlyNumbers}
+          chosenId={chosenId}
         />
       </div>
       <div>
