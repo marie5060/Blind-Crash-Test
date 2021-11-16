@@ -36,6 +36,7 @@ const QuizzAnswerButton = ({
     <button
       className={buttonClass}
       type="button"
+      disabled={btnClicked}
       onClick={() => {
         handleClick();
         setChosen(true);
