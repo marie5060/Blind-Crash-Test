@@ -109,7 +109,7 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
     }
     badTracksArray.push(tracks[number]);
   }
-  console.log(goodTracksArray);
+
   return (
     <main>
       <div className="topQuizz">

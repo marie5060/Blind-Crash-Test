@@ -1,0 +1,44 @@
+.playlist-perso-container {
+  margin: 50px 0 50px 0;
+  border: black;
+  background: linear-gradient(140deg, #774cd3, #ae2aa9);
+  width: 400px;
+  height: 200px;
+  border-radius: 15px;
+  padding-bottom: 20px;
+}
+
+.flex-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 90%;
+}
+
+.playlist-perso-container label {
+  margin-bottom: 50px;
+}
+
+.inter-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 2%;
+  padding-top: 2%;
+}
+
+#inter {
+  height: 20px;
+  width: auto;
+}
+
+#playlist-submit {
+  color: white;
+  width: 30%;
+  height: 20px;
+}
+
+#playlist-deezer {
+  border-radius: 5px;
+  width: 80%;
+}

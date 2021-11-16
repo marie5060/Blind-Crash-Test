@@ -4,6 +4,7 @@ import LinkBtnGoQuizz from '../Bases/LinkBtnGoQuizz';
 import Stars from './Difficulty';
 import './ThemesPage.css';
 import ThemeItem from './ThemeItem';
+import PersoCard from './PersoCard';
 
 const ThemesPage = ({ chosenId, setChosenId, setDifficulty }) => {
   const [newId, setnewId] = useState('');
@@ -41,47 +42,45 @@ const ThemesPage = ({ chosenId, setChosenId, setDifficulty }) => {
 
   return (
     <div className="themes-page-container">
-      <div className="playlist-perso-container">
-        <h2>Jouer avec ma propre Playlist Deezer</h2>
-        <input
-          type="text"
-          value={newId}
-          id="playlistDeezer"
-          onChange={(e) => setnewId(e.target.value)}
+      <div id="perso-card">
+        <PersoCard
+          newId={newId}
+          setnewId={setnewId}
+          setChosenId={setChosenId}
+          onlyNumbers={onlyNumbers}
         />
-        <button type="submit" onClick={() => setChosenId(onlyNumbers)}>
-          Valider
-        </button>
       </div>
-      <h2>Thèmes</h2>
-      <div className="theme-items">
-        {themeArray.map((item) => (
-          <div className={`item${item.num} item`} key={item.num}>
-            <a href="#difficulty">
-              <ThemeItem
-                themeName={item.name}
-                themeId={item.id}
-                setChosenId={setChosenId}
-                chosenId={chosenId}
-              />
-            </a>
-          </div>
-        ))}
-      </div>
-      <h2>Artistes</h2>
-      <div className="theme-items">
-        {artisteArray.map((item) => (
-          <div className={`item${item.num} item`} key={item.num}>
-            <a href="#difficulty">
-              <ThemeItem
-                themeName={item.name}
-                themeId={item.id}
-                setChosenId={setChosenId}
-                chosenId={chosenId}
-              />
-            </a>
-          </div>
-        ))}
+      <div>
+        <h2>Thèmes</h2>
+        <div className="theme-items">
+          {themeArray.map((item) => (
+            <div className={`item${item.num} item`} key={item.num}>
+              <a href="#difficulty">
+                <ThemeItem
+                  themeName={item.name}
+                  themeId={item.id}
+                  setChosenId={setChosenId}
+                  chosenId={chosenId}
+                />
+              </a>
+            </div>
+          ))}
+        </div>
+        <h2>Artistes</h2>
+        <div className="theme-items">
+          {artisteArray.map((item) => (
+            <div className={`item${item.num} item`} key={item.num}>
+              <a href="#difficulty">
+                <ThemeItem
+                  themeName={item.name}
+                  themeId={item.id}
+                  setChosenId={setChosenId}
+                  chosenId={chosenId}
+                />
+              </a>
+            </div>
+          ))}
+        </div>
       </div>
       <h2 id="difficulty">Difficulté</h2>
       <div className="difficulty-container">
