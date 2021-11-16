@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './PersoCard.css';
-import inter from './inter.png';
 import check from './check.png';
-import reduce from './window-minimize.png';
 
 const PersoCard = ({ newId, setnewId, setChosenId, onlyNumbers, chosenId }) => {
   const [showCard, setShowcard] = useState(false);
+  const [showTuto, setShowTuto] = useState(false);
 
-  console.log(showCard);
+  let tuto = 'displayNone';
   let displayCard = 'displayNone';
   let displayCardReduct = 'playlist-perso-card-reduct';
+
+  if (showTuto) {
+    tuto = 'tuto';
+  } else {
+    tuto = 'displayNone';
+  }
 
   if (showCard) {
     displayCard = 'playlist-perso-container';
@@ -19,54 +24,81 @@ const PersoCard = ({ newId, setnewId, setChosenId, onlyNumbers, chosenId }) => {
 
   let icone = 'displayNone';
 
-  if (onlyNumbers === chosenId) {
-    icone = 'icone-theme';
+  if (onlyNumbers === chosenId && onlyNumbers !== '') {
+    icone = 'check-class';
+  } else {
+    icone = 'displayNone';
   }
-
   return (
     <div>
       <div className={displayCardReduct}>
-        <h2>Jouer avec ma propre Playlist Deezer</h2>
-        <button type="button" onClick={() => setShowcard(!showCard)}>
-          go
+        <button
+          type="button"
+          className="playlist-submit"
+          onClick={() => setShowcard(!showCard)}
+        >
+          Jouer avec ma propre playlist Deezer
         </button>
       </div>
-      <div className={displayCard}>
-        <div className="inter-container">
-          <img
-            src={reduce}
-            alt="reduce the card"
-            className="icone-theme"
-            onClick={() => setShowcard(false)}
-          />
-          <img
-            src={inter}
-            className="icone-theme"
-            alt="point d'interrogation"
-          />
+      <div className="container-cards">
+        <div className={tuto}>
+          <h3>Jouer avec sa propre playlist Deezer</h3>
+          <p>
+            Vous pouvez jouer à ce Blindtest avec n`importe quelle playlist
+            présente sur le site Deezer ! Pas besoin d`être abonné, ni d`être
+            propriétaire de celle-ci. Il vous suffit d`aller sur la playlist de
+            votre choix, et de copier/coller l`URL de votre navigateur dans le
+            champ prévu à cet effet. Exemple :
+          </p>
+          <p>https://www.deezer.com/fr/playlist/8310277302</p>
+          <p>
+            Conseil : Privilégiez les playlists contenant au minimum 50
+            morceaux, et vérifiez qu`elles ne contiennent pas plusieurs fois le
+            même morceau.
+          </p>
         </div>
+        <div className={displayCard}>
+          <div className="inter-container">
+            <button
+              type="button"
+              alt="reduce the card"
+              className="icone-theme"
+              onClick={() => setShowcard(false)}
+            >
+              -
+            </button>
+            <button
+              type="button"
+              className="icone-theme"
+              alt="point d'interrogation"
+              onClick={() => setShowTuto(!showTuto)}
+            >
+              ?
+            </button>
+          </div>
 
-        <div className="flex-card-container">
-          <h2>Jouer avec ma propre Playlist Deezer</h2>
-          <input
-            type="text"
-            value={newId}
-            id="playlist-deezer"
-            onChange={(e) => setnewId(e.target.value)}
-          />
-          <button
-            id="playlist-submit"
-            type="submit"
-            onClick={() => setChosenId(onlyNumbers)}
-          >
-            Valider
-          </button>
-          <img
-            src={check}
-            alt="check vert"
-            className={icone}
-            id="check-playlist"
-          />
+          <div className="flex-card-container">
+            <h2>Jouer avec ma propre Playlist Deezer</h2>
+            <input
+              type="text"
+              value={newId}
+              id="playlist-deezer"
+              onChange={(e) => setnewId(e.target.value)}
+            />
+            <button
+              className="playlist-submit"
+              type="submit"
+              onClick={() => setChosenId(onlyNumbers)}
+            >
+              Valider
+            </button>
+            <img
+              src={check}
+              alt="check vert"
+              className={icone}
+              id="check-playlist"
+            />
+          </div>
         </div>
       </div>
     </div>

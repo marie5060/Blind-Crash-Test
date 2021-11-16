@@ -1,3 +1,9 @@
+.container-cards {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 h2 {
   color: white;
 }
@@ -17,13 +23,15 @@ h2 {
 }
 
 .playlist-perso-card-reduct {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 50px 0 50px 0;
   border: black;
   background: linear-gradient(140deg, #774cd3, #ae2aa9);
   width: 400px;
   height: 50px;
   border-radius: 15px;
-  padding-bottom: 20px;
 }
 
 .flex-card-container {
@@ -46,17 +54,48 @@ h2 {
 }
 
 .icone-theme {
-  height: 20px;
-  width: auto;
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
+  border-radius: 3px;
+  color: white;
+  background-color: rgb(32, 32, 32);
 }
 
-#playlist-submit {
-  color: white;
-  width: 30%;
+.playlist-submit {
+  width: 80%;
   height: 20px;
+  border: none;
+  outline: none;
+  color: white;
+  background: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  position: relative;
+  border-radius: 10px;
+  font-size: 15px;
+  font-style: bold;
 }
 
 #playlist-deezer {
   border-radius: 5px;
   width: 80%;
+}
+
+.tuto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: justify;
+  background-color: rgb(53, 53, 53, 0.9);
+  border-radius: 20px;
+  color: white;
+  width: 40%;
+  height: 200px;
+  padding: 15px 15px 15px 15px;
+}
+
+.check-class {
+  height: 40px;
+  width: auto;
 }
