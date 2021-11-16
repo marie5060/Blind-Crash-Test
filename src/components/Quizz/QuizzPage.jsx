@@ -112,7 +112,7 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
   };
 
   return (
-    <main>
+    <main className="quizz-page-main">
       <div className="topQuizz">
         <div>
           Score :{' '}

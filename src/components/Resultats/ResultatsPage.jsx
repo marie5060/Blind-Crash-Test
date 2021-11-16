@@ -69,7 +69,7 @@ const ResultatsPage = ({
   }, []);
 
   return (
-    <main>
+    <main className="result-page-main">
       <Podium winners={data} />
       <WinnersList winners={data} />
       <div className="gauge-container">
