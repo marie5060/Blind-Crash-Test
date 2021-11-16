@@ -1,8 +1,15 @@
 import React from 'react';
+import data from './data';
+import Podium from './Podium';
+import WinnersList from './WinnersList';
+import './ResultatsPage.css';
 
 const ResultatsPage = () => {
   return (
-    <div className="ResultatsPage-Container">Coucou je suis le resultats</div>
+    <main>
+      <Podium winners={data} />
+      <WinnersList winners={data} />
+    </main>
   );
 };
 
