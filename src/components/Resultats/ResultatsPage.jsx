@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import './ResultatsPage.css';
+import { FaCaretDown } from 'react-icons/fa';
+import Stars from '../Themes/Difficulty';
 import data from './data';
 import Podium from './Podium';
 import WinnersList from './WinnersList';
-import './ResultatsPage.css';
-import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
-import { FaCaretDown } from 'react-icons/fa';
-import Stars from '../Themes/Difficulty';
 
 const ResultatsPage = ({
   location: {

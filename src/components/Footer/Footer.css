@@ -53,8 +53,9 @@ button {
     font-size: 1%;
   }
 
-  .social {
-    margin: auto;
-    justify-content: center;
-  }
+   .social {
+     margin: auto;
+     justify-content: center;
+   }
+ 
 }
