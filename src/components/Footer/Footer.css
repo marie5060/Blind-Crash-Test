@@ -32,3 +32,27 @@ button {
   margin-left: 40%;
   font-size: 60px;
 }
+
+/*       =============================
+				 Media queries
+		 =============================
+*/
+
+@media screen and  (max-width: 1014px) {
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  #email {
+    font-size: 1%;
+  }
+  button {
+    font-size: 1%;
+  }
+   .social {
+     margin: auto;
+     justify-content: center;
+   }
+ 
+}
