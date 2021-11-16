@@ -3,7 +3,7 @@ import './ThemeItem.css';
 
 const ThemeItem = ({ themeName, themeId, setChosenId, chosenId }) => {
   let themeButtonClass = 'glow-on-hover';
-  if (themeId === chosenId) {
+  if (chosenId === themeId) {
     themeButtonClass = 'theme-chosen-button';
   }
 

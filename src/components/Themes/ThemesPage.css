@@ -75,13 +75,7 @@ h2 {
   margin-top: 3vh;
 }
 
-.playlist-perso-container {
+#perso-card {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 100px 0 100px 0;
-}
-
-.playlist-perso-container label {
-  margin-bottom: 50px;
+  justify-content: flex-end;
 }
