@@ -1,8 +1,11 @@
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
+import './ResultatsPage.css';
 import { FaCaretDown } from 'react-icons/fa';
 import Stars from '../Themes/Difficulty';
-import './ResultatsPage.css';
+import data from './data';
+import Podium from './Podium';
+import WinnersList from './WinnersList';
 
 const ResultatsPage = ({
   location: {
@@ -67,6 +70,8 @@ const ResultatsPage = ({
 
   return (
     <main>
+      <Podium winners={data} />
+      <WinnersList winners={data} />
       <div className="gauge-container">
         <div className="result-gauge">
           <p className="gauge-text left">
@@ -118,8 +123,6 @@ export default ResultatsPage;
 
 ResultatsPage.propTypes = {
   location: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  currentScore: PropTypes.number.isRequired,
   pseudo: PropTypes.string.isRequired,
-  chosenTheme: PropTypes.string.isRequired,
   difficulty: PropTypes.number.isRequired,
 };

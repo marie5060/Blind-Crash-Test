@@ -26,7 +26,6 @@ button {
   width: 15%;
   height: 28px;
   margin-top: 1%;
-  
 }
 
 .social {
@@ -45,6 +44,7 @@ button {
     flex-direction: column;
     flex-wrap: wrap;
   }
+  
   #email {
     font-size: 1%;
   }
