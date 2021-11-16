@@ -40,6 +40,7 @@ function App() {
                 setChosenId={setChosenId}
                 setChosenTheme={setChosenTheme}
                 setDifficulty={setDifficulty}
+                difficulty={difficulty}
               />
             )}
           />

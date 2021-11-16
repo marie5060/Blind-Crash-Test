@@ -6,6 +6,10 @@
   cursor: pointer;
 }
 
-.star-icon {
-  color: rgb(253, 240, 122);
+.stars-container-yellow {
+  width: 4vw;
+  margin-right: 1vw;
+  border: inherit;
+  cursor: pointer;
+  background-color: red;
 }

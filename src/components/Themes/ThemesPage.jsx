@@ -6,7 +6,7 @@ import './ThemesPage.css';
 import ThemeItem from './ThemeItem';
 import PersoCard from './PersoCard';
 
-const ThemesPage = ({ chosenId, setChosenId, setDifficulty }) => {
+const ThemesPage = ({ chosenId, setChosenId, setDifficulty, difficulty }) => {
   const [newId, setnewId] = useState('');
   const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
@@ -85,7 +85,12 @@ const ThemesPage = ({ chosenId, setChosenId, setDifficulty }) => {
       <h2 id="difficulty">Difficulté</h2>
       <div className="difficulty-container">
         {difficulties.map((star) => (
-          <Stars setDifficulty={setDifficulty} position={star} key={star} />
+          <Stars
+            setDifficulty={setDifficulty}
+            difficulty={difficulty}
+            position={star}
+            key={star}
+          />
         ))}
       </div>
       <div className="go-quizz-container">
@@ -101,4 +106,5 @@ ThemesPage.propTypes = {
   setChosenId: PropTypes.func.isRequired,
   setDifficulty: PropTypes.func.isRequired,
   chosenId: PropTypes.string.isRequired,
+  difficulty: PropTypes.func.isRequired,
 };
