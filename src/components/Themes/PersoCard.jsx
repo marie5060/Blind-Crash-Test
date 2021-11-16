@@ -63,7 +63,10 @@ const PersoCard = ({ newId, setnewId, setChosenId, onlyNumbers, chosenId }) => {
               type="button"
               alt="reduce the card"
               className="icone-theme"
-              onClick={() => setShowcard(false)}
+              onClick={() => {
+                setShowcard(false);
+                setShowTuto(false);
+              }}
             >
               -
             </button>
