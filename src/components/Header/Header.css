@@ -1,13 +1,13 @@
 .header-nav {
   display: flex;
   height: 8vw;
-  background: linear-gradient(140deg, #774cd3, #ae2aa9);
 }
 
 .header-nav-logo {
   display: flex;
+  justify-content: center;
+  background-color: #774cd3;
   width: 10%;
-  margin: 15px;
 }
 
 .header-navbar {
@@ -15,6 +15,7 @@
   justify-content: flex-end;
   align-items: flex-end;
   width: 90%;
+  background: linear-gradient(140deg, #774cd3, #ae2aa9);
 }
 
 .header-nav-links {
