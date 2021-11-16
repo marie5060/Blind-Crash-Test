@@ -1,8 +1,12 @@
+import React from 'react';
+import data from './data';
+import Podium from './Podium';
+import WinnersList from './WinnersList';
+import './ResultatsPage.css';
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { FaCaretDown } from 'react-icons/fa';
 import Stars from '../Themes/Difficulty';
-import './ResultatsPage.css';
 
 const ResultatsPage = ({
   location: {
@@ -67,6 +71,8 @@ const ResultatsPage = ({
 
   return (
     <main>
+      <Podium winners={data} />
+      <WinnersList winners={data} />
       <div className="gauge-container">
         <div className="result-gauge">
           <p className="gauge-text left">
