@@ -24,6 +24,7 @@ const AccueilPage = ({ setChosenId, setChosenTheme, setDifficulty }) => {
           <LinkBtnFastGame
             setChosenId={setChosenId}
             setChosenTheme={setChosenTheme}
+            setDifficulty={setDifficulty}
           />
         </div>
       </div>

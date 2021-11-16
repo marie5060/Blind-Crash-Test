@@ -108,5 +108,5 @@ ThemesPage.propTypes = {
   setChosenId: PropTypes.func.isRequired,
   setDifficulty: PropTypes.func.isRequired,
   chosenId: PropTypes.string.isRequired,
-  difficulty: PropTypes.func.isRequired,
+  difficulty: PropTypes.number.isRequired,
 };
