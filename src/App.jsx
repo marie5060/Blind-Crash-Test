@@ -28,6 +28,7 @@ function App() {
                 setChosenId={setChosenId}
                 setChosenTheme={setChosenTheme}
                 setPseudo={setPseudo}
+                setDifficulty={setDifficulty}
               />
             )}
           />

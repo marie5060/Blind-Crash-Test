@@ -20,7 +20,7 @@ const Footer = () => {
           onChange={handleEmailChange}
           value={email}
         />
-        <button type="submit" onClick={display}>
+        <button type="submit" className="button-class" onClick={display}>
           Partager votre résultat
         </button>
         <div className="social">

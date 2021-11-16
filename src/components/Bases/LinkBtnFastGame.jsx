@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './linkBtnFastGame.css';
 
-const LinkBtnFastGame = ({ setChosenId, setChosenTheme }) => {
+const LinkBtnFastGame = ({ setChosenId, setChosenTheme, setDifficulty }) => {
   const themeArray = [
     { name: 'Rock', id: '9626980522' },
     { name: 'Reggae ', id: '9626990642' },
@@ -26,6 +26,7 @@ const LinkBtnFastGame = ({ setChosenId, setChosenTheme }) => {
     const random = Math.floor(Math.random() * themeArray.length);
     setChosenId(themeArray[random].id);
     setChosenTheme(themeArray[random].name);
+    setDifficulty(2);
   };
 
   return (
@@ -44,4 +45,5 @@ export default LinkBtnFastGame;
 LinkBtnFastGame.propTypes = {
   setChosenId: PropTypes.func.isRequired,
   setChosenTheme: PropTypes.func.isRequired,
+  setDifficulty: PropTypes.func.isRequired,
 };

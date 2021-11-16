@@ -3,7 +3,7 @@ import LinkBtnFastGame from '../Bases/LinkBtnFastGame';
 import LinkBtnNewTheme from '../Bases/LinkBtnNewTheme';
 import './AccueilPage.css';
 
-const AccueilPage = ({ setChosenId, setChosenTheme }) => {
+const AccueilPage = ({ setChosenId, setChosenTheme, setDifficulty }) => {
   return (
     <main>
       <div className="pseudo-container">
@@ -41,4 +41,5 @@ export default AccueilPage;
 AccueilPage.propTypes = {
   setChosenId: PropTypes.func.isRequired,
   setChosenTheme: PropTypes.func.isRequired,
+  setDifficulty: PropTypes.func.isRequired,
 };

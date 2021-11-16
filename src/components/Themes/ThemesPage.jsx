@@ -51,7 +51,7 @@ const ThemesPage = ({ chosenId, setChosenId, setDifficulty, difficulty }) => {
         />
       </div>
       <div>
-        <h2>Thèmes</h2>
+        <h2 className="theme-title">Thèmes</h2>
         <div className="theme-items">
           {themeArray.map((item) => (
             <div className={`item${item.num} item`} key={item.num}>
@@ -66,7 +66,7 @@ const ThemesPage = ({ chosenId, setChosenId, setDifficulty, difficulty }) => {
             </div>
           ))}
         </div>
-        <h2>Artistes</h2>
+        <h2 className="theme-title">Artistes</h2>
         <div className="theme-items">
           {artisteArray.map((item) => (
             <div className={`item${item.num} item`} key={item.num}>
@@ -82,7 +82,9 @@ const ThemesPage = ({ chosenId, setChosenId, setDifficulty, difficulty }) => {
           ))}
         </div>
       </div>
-      <h2 id="difficulty">Difficulté</h2>
+      <h2 className="theme-title" id="difficulty">
+        Difficulté
+      </h2>
       <div className="difficulty-container">
         {difficulties.map((star) => (
           <Stars
