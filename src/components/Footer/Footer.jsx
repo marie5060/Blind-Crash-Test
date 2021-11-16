@@ -29,21 +29,21 @@ const Footer = () => {
             className="twitter-button"
             data-show-count="false"
           >
-            <FaTwitter />
+            <FaTwitter color="black" />
           </a>
           <a
             href="https://facebook.com/"
             className="facebook-button"
             data-show-count="false"
           >
-            <FaFacebook />
+            <FaFacebook color="black" />
           </a>
           <a
             href="https://instagram.com/"
             className="instagram-button"
             data-show-count="false"
           >
-            <FaInstagramSquare />
+            <FaInstagramSquare color="black" />
           </a>
         </div>
       </div>
