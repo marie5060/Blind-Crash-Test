@@ -17,44 +17,54 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
   const [waitingCount, setWaitingCount] = useState(3);
   // Score du quizz qui se met à jour au fur et à mesure
   const [currentScore, setCurrentScore] = useState(0);
-  // numéro de la bonne réponse à récupérer
-  const [random, setRandom] = useState(0);
   // tableau des bonnes réponses
   const [goodTracksArray, setGoodTracksArray] = useState([]);
   // la bonne réponse
   const [goodTrack, setGoodTrack] = useState();
-  // difficulté choisie sur PageThème dans la props "difficulty"
-  // nombre de mauvaise réponses à récupérer selon le niveau de difficulté, initialisé à 3
-  let numBadAnswerToGet = 3;
+  // tableau des mauvaises réponses
+  const [badTracksArray, setBadTracksArray] = useState([]);
 
-  const badTracksArray = [];
-  
-  // Récupère la bonne track
-  useEffect(() => {
-    setRandom(Math.floor(Math.random() * tracks.length));
-    setGoodTrack(tracks[random]);
-    setGoodTracksArray([...goodTracksArray, goodTrack]);
-  }, []);
-
-  useEffect(() => {
-    setRandom(Math.floor(Math.random() * tracks.length));
-    while (goodTracksArray.includes(tracks[random].id)) {
-      setRandom(Math.floor(Math.random() * tracks.length));
+  /// modifie le nombre de réponse que je récupère ///
+  const getBadTracks = (randomTrack, tracksAtStart = tracks) => {
+    // nombre de mauvaise réponses à récupérer selon le niveau de difficulté, initialisé à 3
+    let numBadAnswerToGet = 3;
+    // change le nombre de mauvaise réponse à récupérer selon le niveau de difficulté
+    switch (difficulty) {
+      case 1:
+        numBadAnswerToGet = 1;
+        break;
+      case 2:
+        numBadAnswerToGet = 3;
+        break;
+      case 3:
+        numBadAnswerToGet = 3;
+        break;
+      case 4:
+        numBadAnswerToGet = 5;
+        break;
+      case 5:
+        numBadAnswerToGet = 7;
+        break;
+      default:
+        numBadAnswerToGet = 3;
+        break;
     }
-    setGoodTrack(tracks[random]);
-    setGoodTracksArray([...goodTracksArray, goodTrack]);
-  }, [nbQuizz]);
 
-  // Timer 3 - 2 - 1 quizz start
-  useEffect(() => {
-    const timer =
-      waitingCount > 0 &&
-      setInterval(() => setWaitingCount(waitingCount - 1), 1000);
-    return () => {
-      clearInterval(timer);
-    };
-  }, [waitingCount]);
+    let badTracks = [];
+    for (let i = 0; i < numBadAnswerToGet; i += 1) {
+      let number = Math.floor(Math.random() * tracksAtStart.length);
+      while (
+        tracksAtStart[number].id === tracksAtStart[randomTrack].id ||
+        badTracksArray.includes(tracksAtStart[number])
+      ) {
+        number = Math.floor(Math.random() * tracksAtStart.length);
+      }
+      badTracks = [...badTracks, tracksAtStart[number]];
+    }
+    setBadTracksArray(badTracks);
+  };
 
+  // Récupère toutes les tracks du theme choisi
   useEffect(() => {
     axios
       .get(
@@ -69,48 +79,38 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
             !track.title_short.includes('(')
         );
         setTracks(okData);
+        // choisit la première chanson
+        const random = Math.floor(Math.random() * okData.length);
+        setGoodTrack(okData[random]);
+        setGoodTracksArray([goodTrack]);
+        getBadTracks(random, okData);
       });
-  }, [chosenId]);
+  }, []);
+
+  useEffect(() => {
+    let random = Math.floor(Math.random() * tracks.length);
+    while (goodTracksArray.includes(tracks[random].id)) {
+      random = Math.floor(Math.random() * tracks.length);
+    }
+    setGoodTrack(tracks[random]);
+    setGoodTracksArray([...goodTracksArray, tracks[random].id]);
+    getBadTracks(random);
+  }, [nbQuizz]);
+
+  // Timer 3 - 2 - 1 quizz start
+  useEffect(() => {
+    const timer =
+      waitingCount > 0 &&
+      setInterval(() => setWaitingCount(waitingCount - 1), 1000);
+    return () => {
+      clearInterval(timer);
+    };
+  }, [waitingCount]);
 
   const nextQuestion = () => {
     setNbQuizz(nbQuizz + 1);
   };
 
-  // change le nombre de mauvaise réponse à récupérer selon le niveau de difficulté
-  switch (difficulty) {
-    case 1:
-      numBadAnswerToGet = 1;
-      break;
-    case 2:
-      numBadAnswerToGet = 3;
-      break;
-    case 3:
-      numBadAnswerToGet = 3;
-      break;
-    case 4:
-      numBadAnswerToGet = 5;
-      break;
-    case 5:
-      numBadAnswerToGet = 7;
-      break;
-    default:
-      numBadAnswerToGet = 3;
-      break;
-  }
-
-  // récupére un tableau d'objet de mauvaises réponses
-  /// modifie le nombre de réponse que je récupère ///
-  for (let i = 0; i < numBadAnswerToGet; i += 1) {
-    let number = Math.floor(Math.random() * tracks.length);
-    while (
-      tracks[number].id === tracks[random].id ||
-      badTracksArray.includes(tracks[number])
-    ) {
-      number = Math.floor(Math.random() * tracks.length);
-    }
-    badTracksArray.push(tracks[number]);
-  }
-  console.log(goodTracksArray);
   return (
     <main>
       <div className="topQuizz">
