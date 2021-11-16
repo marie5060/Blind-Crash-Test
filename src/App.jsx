@@ -12,7 +12,7 @@ function App() {
   const [chosenTheme, setChosenTheme] = useState('Rock');
   const [pseudo, setPseudo] = useState('Anonyme');
   const [difficulty, setDifficulty] = useState(2);
-  const [chosenId, setChosenId] = useState('');
+  const [chosenId, setChosenId] = useState('9626980522');
 
   return (
     <div>
@@ -36,6 +36,7 @@ function App() {
             render={(routeProps) => (
               <ThemesPage
                 {...routeProps}
+                chosenId={chosenId}
                 setChosenId={setChosenId}
                 setChosenTheme={setChosenTheme}
                 setDifficulty={setDifficulty}

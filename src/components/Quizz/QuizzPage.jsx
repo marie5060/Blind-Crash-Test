@@ -111,8 +111,43 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
     setNbQuizz(nbQuizz + 1);
   };
 
+  // change le nombre de mauvaise réponse à récupérer selon le niveau de difficulté
+  switch (difficulty) {
+    case 1:
+      numBadAnswerToGet = 1;
+      break;
+    case 2:
+      numBadAnswerToGet = 3;
+      break;
+    case 3:
+      numBadAnswerToGet = 3;
+      break;
+    case 4:
+      numBadAnswerToGet = 5;
+      break;
+    case 5:
+      numBadAnswerToGet = 7;
+      break;
+    default:
+      numBadAnswerToGet = 3;
+      break;
+  }
+
+  // récupére un tableau d'objet de mauvaises réponses
+  /// modifie le nombre de réponse que je récupère ///
+  for (let i = 0; i < numBadAnswerToGet; i += 1) {
+    let number = Math.floor(Math.random() * tracks.length);
+    while (
+      tracks[number].id === tracks[random].id ||
+      badTracksArray.includes(tracks[number])
+    ) {
+      number = Math.floor(Math.random() * tracks.length);
+    }
+    badTracksArray.push(tracks[number]);
+  }
+  
   return (
-    <main>
+    <main className="quizz-page-main">
       <div className="topQuizz">
         <div>
           Score :{' '}
