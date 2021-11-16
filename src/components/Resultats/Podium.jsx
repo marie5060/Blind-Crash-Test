@@ -12,7 +12,7 @@ const Podium = ({ winners }) => {
         display: 'grid',
         gridAutoFlow: 'column dense',
         gap: '.5rem',
-        marginTop: '2rem',
+        paddingTop: '2rem',
         justifyContent: 'center',
         justifyItems: 'center',
         alignContent: 'flex-end',
