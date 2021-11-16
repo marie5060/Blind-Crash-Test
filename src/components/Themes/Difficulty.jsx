@@ -24,5 +24,5 @@ export default Stars;
 Stars.propTypes = {
   setDifficulty: PropTypes.func.isRequired,
   position: PropTypes.number.isRequired,
-  difficulty: PropTypes.func.isRequired,
+  difficulty: PropTypes.number.isRequired,
 };

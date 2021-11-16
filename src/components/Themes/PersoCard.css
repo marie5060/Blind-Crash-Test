@@ -1,9 +1,27 @@
+h2 {
+  color: white;
+}
+
+.displayNone {
+  display: none;
+}
+
 .playlist-perso-container {
   margin: 50px 0 50px 0;
   border: black;
   background: linear-gradient(140deg, #774cd3, #ae2aa9);
   width: 400px;
   height: 200px;
+  border-radius: 15px;
+  padding-bottom: 20px;
+}
+
+.playlist-perso-card-reduct {
+  margin: 50px 0 50px 0;
+  border: black;
+  background: linear-gradient(140deg, #774cd3, #ae2aa9);
+  width: 400px;
+  height: 50px;
   border-radius: 15px;
   padding-bottom: 20px;
 }
@@ -27,7 +45,7 @@
   padding-top: 2%;
 }
 
-#inter {
+.icone-theme {
   height: 20px;
   width: auto;
 }
