@@ -9,7 +9,7 @@ const ThemeItem = ({ themeName, themeId, setChosenId, chosenId }) => {
 
   return (
     <div>
-      <a href="#difficulty">
+      <a href="#difficulty" className="center-item">
         <button
           type="button"
           className={themeButtonClass}

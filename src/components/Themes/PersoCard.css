@@ -35,7 +35,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 50px 0 50px 0;
+  margin: 50px 20px 50px 0;
   border: black;
   background: linear-gradient(140deg, #774cd3, #ae2aa9);
   width: 40%;
@@ -125,9 +125,32 @@ h2 {
 }
 
 /*       =============================
+				 Media queries TABLETTE
+		 =============================
+*/
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+  .tuto {
+    height: auto;
+    font-size: 12px;
+  }
+
+  .tuto h3 {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1024px) {
+  .tuto {
+    font-size: 15px;
+  }
+}
+
+
+/*       =============================
 				 Media queries MOBILE
 		 =============================
 */
-@media screen and (max-width: 600px) {
 
-}
+/* @media screen and (max-width: 600px) {
+
+} */

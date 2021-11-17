@@ -55,7 +55,7 @@ const ThemesPage = ({ chosenId, setChosenId, setDifficulty, difficulty }) => {
           chosenId={chosenId}
         />
       </div>
-      <div>
+      <div className="items-container">
         <h2 className="theme-title">Thèmes</h2>
         <div className="theme-items">
           {themeArray.map((item) => (
