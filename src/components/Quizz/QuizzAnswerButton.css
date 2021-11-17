@@ -49,3 +49,22 @@
   animation-duration: 15s;
   animation-iteration-count: infinite;
 }
+
+/*   =============================
+				 Media queries
+		 =============================
+*/
+
+@media screen and (max-width: 1000px) {
+  .answer-button {
+    width: 80%;
+    font-size: 1.5vw;
+    margin: 3vh auto;
+  }
+}
+@media screen and (max-width: 730px) {
+  .answer-button {
+    height: 6vw;
+    font-size: 2vw;
+  }
+}
