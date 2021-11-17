@@ -1,6 +1,6 @@
 Welcome to Blind Crash Test
 
-visit https://marie5060.github.io/Blind-Crash-Test/ to play music quizz
+visit https://marie5060.github.io/Blind-Crash-Test/ to play our music quizz
 
 if you want to see, modify and do whatever you want with the code:
 *clone the repo 

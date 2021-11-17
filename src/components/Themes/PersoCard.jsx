@@ -63,7 +63,10 @@ const PersoCard = ({ newId, setnewId, setChosenId, onlyNumbers, chosenId }) => {
               type="button"
               alt="reduce the card"
               className="icone-theme"
-              onClick={() => setShowcard(false)}
+              onClick={() => {
+                setShowcard(false);
+                setShowTuto(false);
+              }}
             >
               -
             </button>
@@ -85,13 +88,15 @@ const PersoCard = ({ newId, setnewId, setChosenId, onlyNumbers, chosenId }) => {
               id="playlist-deezer"
               onChange={(e) => setnewId(e.target.value)}
             />
-            <button
-              className="playlist-submit"
-              type="submit"
-              onClick={() => setChosenId(onlyNumbers)}
-            >
-              Valider
-            </button>
+            <a href="#difficulty">
+              <button
+                className="playlist-submit"
+                type="submit"
+                onClick={() => setChosenId(onlyNumbers)}
+              >
+                Valider
+              </button>
+            </a>
             <img
               src={check}
               alt="check vert"
