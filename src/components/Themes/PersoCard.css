@@ -1,3 +1,11 @@
+.perso-card-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20%;
+}
+
 .container-cards {
   display: flex;
   justify-content: space-around;
@@ -16,7 +24,7 @@ h2 {
   margin: 50px 0 50px 0;
   border: black;
   background: linear-gradient(140deg, #774cd3, #ae2aa9);
-  width: 400px;
+  width: 40%;
   height: 200px;
   border-radius: 15px;
   padding-bottom: 20px;
@@ -29,8 +37,8 @@ h2 {
   margin: 50px 0 50px 0;
   border: black;
   background: linear-gradient(140deg, #774cd3, #ae2aa9);
-  width: 400px;
-  height: 50px;
+  width: 40%;
+  height: 70px;
   border-radius: 15px;
 }
 
@@ -98,4 +106,26 @@ h2 {
 .check-class {
   height: 40px;
   width: auto;
+}
+
+/*       =============================
+				 Media queries TABLETTE
+		 =============================
+*/
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+  .perso-card-container {
+    width: 100%;
+  }
+
+  .playlist-perso-card-reduct {
+    width: 40%;
+  }
+}
+
+/*       =============================
+				 Media queries MOBILE
+		 =============================
+*/
+@media screen and (max-width: 600px) {
+
 }

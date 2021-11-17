@@ -31,14 +31,16 @@ const PersoCard = ({ newId, setnewId, setChosenId, onlyNumbers, chosenId }) => {
   }
   return (
     <div>
-      <div className={displayCardReduct}>
-        <button
-          type="button"
-          className="playlist-submit"
-          onClick={() => setShowcard(!showCard)}
-        >
-          Jouer avec ma propre playlist Deezer
-        </button>
+      <div className="perso-card-container">
+        <div className={displayCardReduct}>
+          <button
+            type="button"
+            className="playlist-submit"
+            onClick={() => setShowcard(!showCard)}
+          >
+            Jouer avec ma propre playlist Deezer
+          </button>
+        </div>
       </div>
       <div className="container-cards">
         <div className={tuto}>

@@ -1,3 +1,6 @@
+
+html { scroll-behavior: smooth; }
+
 .theme-title {
   font-size: 30px;
   color: white;
@@ -7,7 +10,16 @@
   display: flex;
   flex-direction: column;
   padding: 50px 100px 50px 100px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./background-theme.jpg");
+
+  /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./background-theme.jpg"); */
+}
+
+#perso-card {
+  width: 100%;
+}
+
+.a-container {
+  width: 100%;
 }
 
 .theme-items {
@@ -64,20 +76,31 @@
   grid-row: 2/3;
 }
 
-.go-quizz-container {
-  display: flex;
-  justify-content: center;
-  margin: 100px 0 100px 0;
-}
-
 .difficulty-container {
   display: flex;
   margin-top: 3vh;
 }
 
-#perso-card {
+.go-quiz-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  margin: 100px 0 100px 0;
 }
 
-html { scroll-behavior: smooth; }
+
+/*       =============================
+				 Media queries TABLETTE
+		 =============================
+*/
+@media screen and (min-width: 600px) and (max-width: 1024px){
+
+
+}
+
+/*       =============================
+				 Media queries MOBILE
+		 =============================
+*/
+@media screen and (max-width: 600px) {
+
+}
