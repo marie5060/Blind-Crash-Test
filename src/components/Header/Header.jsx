@@ -22,9 +22,9 @@ const Header = () => {
   return (
     <div className="header">
       <header className="header-nav">
-        <div className="header-nav-logo">
+        <a href="/Blind-Crash-Test/" className="header-nav-logo">
           <img src={logo} alt="logo" />
-        </div>
+        </a>
         <nav className="header-navbar">
           <ul className="header-nav-links">
             <li>
