@@ -21,7 +21,7 @@ const Footer = () => {
           value={email}
         />
         <button type="submit" className="button-class" onClick={display}>
-          Partager votre résultat
+          Partage ton résultat
         </button>
         <div className="social">
           <a
