@@ -1,13 +1,9 @@
-# Template for Frontend project
+Welcome to Blind Crash Test
 
-## First steps
+visit https://marie5060.github.io/Blind-Crash-Test/ to play music quizz
 
-### Install these extensions
-
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- [StyleLint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
-
-### Install `husky`, which will check your code everytime you commit files
-
-- `npm run prepare`
+if you want to see, modify and do whatever you want with the code:
+*clone the repo 
+(if developpement is not ended, git checkout dev. else stay on main)(dev ends on 19/11/2021)
+*npm install
+*npm start
