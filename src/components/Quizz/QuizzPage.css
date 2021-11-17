@@ -11,7 +11,7 @@
 }
 
 .topQuizz > * {
-  padding: 2vh 5vw;
+  padding: 2vh 5vw; 
 }
 
 .waiting-container {
@@ -29,4 +29,15 @@
 
 .waiting-count {
   font-size: 100px;
+}
+
+/*   =============================
+				 Media queries
+		 =============================
+*/
+
+@media screen and (max-width: 730px) {
+  .topQuizz {
+    font-size: 5vw;
+  }
 }

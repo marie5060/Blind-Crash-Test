@@ -6,3 +6,22 @@
 .picture img {
   height: 100%;
 }
+
+/*   =============================
+				 Media queries
+		 =============================
+*/
+
+@media screen and (max-width: 1000px) {
+  .picture {
+    text-align: left;
+    margin-left: 10vw;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .picture {
+    text-align: center;
+    margin-left: auto;
+  }
+}
