@@ -1,4 +1,3 @@
-/* eslint-disable*/
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './TimerButton.css';
@@ -15,14 +14,14 @@ const TimerButton = ({ btnClicked, setLeftTimeWhenClick, setBtnClicked }) => {
     setLeftTime(100);
   };
 
-  // useEffect(() => {
-  //   const timer =
-  //     leftTime > 0 && setInterval(() => setLeftTime(leftTime - step), 15);
-  //   if (leftTime < 1) {
-  //     setBtnClicked(true);
-  //   }
-  //   return () => clearInterval(timer);
-  // }, [leftTime]);
+  useEffect(() => {
+    const timer =
+      leftTime > 0 && setInterval(() => setLeftTime(leftTime - step), 15);
+    if (leftTime < 1) {
+      setBtnClicked(true);
+    }
+    return () => clearInterval(timer);
+  }, [leftTime]);
 
   useEffect(() => {
     if (btnClicked) {
