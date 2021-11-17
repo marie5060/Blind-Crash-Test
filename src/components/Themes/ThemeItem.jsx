@@ -9,15 +9,17 @@ const ThemeItem = ({ themeName, themeId, setChosenId, chosenId }) => {
 
   return (
     <div>
-      <button
-        type="button"
-        className={themeButtonClass}
-        onClick={() => {
-          setChosenId(themeId);
-        }}
-      >
-        {themeName}
-      </button>
+      <a href="#difficulty">
+        <button
+          type="button"
+          className={themeButtonClass}
+          onClick={() => {
+            setChosenId(themeId);
+          }}
+        >
+          {themeName}
+        </button>
+      </a>
     </div>
   );
 };
