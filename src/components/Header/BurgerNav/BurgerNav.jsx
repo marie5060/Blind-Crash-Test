@@ -15,25 +15,42 @@ const BurgerNav = ({ showLink }) => {
     <nav className={hideLink}>
       <ul className="header-navbar-burger-links">
         <li>
-          <Link className="header-navbar-burger-links-a" to="/">
+          <Link
+            className="header-navbar-burger-links-a"
+            to="/Blind-Crash-Test/"
+          >
             Accueil
           </Link>
         </li>
         <li>
-          <Link className="header-navbar-burger-links-a" to="/Themes">
+          <Link
+            className="header-navbar-burger-links-a"
+            to="/Blind-Crash-Test/Themes"
+          >
             Thèmes
           </Link>
         </li>
         <li>
-          <Link className="header-navbar-burger-links-a" to="/Resultats">
+          <Link
+            className="header-nav-links-a"
+            to={{
+              pathname: '/Blind-Crash-Test/Resultats',
+              state: {
+                currentScore: null,
+                pseudo: null,
+                chosenTheme: null,
+                difficulty: null,
+              },
+            }}
+          >
             Résultats
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link className="header-navbar-burger-links-a" to="/Quizz">
             Quizz
           </Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

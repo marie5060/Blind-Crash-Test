@@ -43,13 +43,13 @@
 @media screen and (min-width: 600px) {
   .navbar-burger {
     display: none;
-    background: linear-gradient(140deg, #774cd3, #ae2aa9);
   }
 }
 
 @media screen and (max-width: 600px) {
   .header-nav {
     height: 12vw;
+    background: linear-gradient(90deg, #774cd3, #ae2aa9);
   }
 
   .header-navbar {
