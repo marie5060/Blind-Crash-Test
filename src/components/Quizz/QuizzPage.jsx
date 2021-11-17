@@ -23,7 +23,6 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
   const [goodTrack, setGoodTrack] = useState();
   // tableau des mauvaises réponses
   const [badTracksArray, setBadTracksArray] = useState([]);
-
   /// modifie le nombre de réponse que je récupère ///
   const getBadTracks = (randomTrack, tracksAtStart = tracks) => {
     // nombre de mauvaise réponses à récupérer selon le niveau de difficulté, initialisé à 3
@@ -63,6 +62,10 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
     }
     setBadTracksArray(badTracks);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // Récupère toutes les tracks du theme choisi
   useEffect(() => {

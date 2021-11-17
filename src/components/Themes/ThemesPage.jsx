@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import LinkBtnGoQuizz from '../Bases/LinkBtnGoQuizz';
 import Stars from './Difficulty';
@@ -9,6 +9,10 @@ import PersoCard from './PersoCard';
 const ThemesPage = ({ chosenId, setChosenId, setDifficulty, difficulty }) => {
   const [newId, setnewId] = useState('');
   const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const onlyNumbers = newId
     .split('')

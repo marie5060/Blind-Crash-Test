@@ -1,9 +1,13 @@
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import LinkBtnFastGame from '../Bases/LinkBtnFastGame';
 import LinkBtnNewTheme from '../Bases/LinkBtnNewTheme';
 import './AccueilPage.css';
 
 const AccueilPage = ({ setChosenId, setChosenTheme, setDifficulty }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <main>
       <div className="pseudo-container">
@@ -30,7 +34,7 @@ const AccueilPage = ({ setChosenId, setChosenTheme, setDifficulty }) => {
       </div>
       <div className="new-theme-container">
         <h1> Personnaliser une partie</h1>
-        <p>Pour choisir ta partie c est par ici !!</p>
+        <p>Pour choisir ta partie, c est par ici</p>
         <LinkBtnNewTheme />
       </div>
     </main>
