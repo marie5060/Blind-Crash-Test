@@ -6,7 +6,7 @@ const LinkBtnGoQuizz = () => {
     <div>
       <Link to="/Blind-Crash-Test/Quizz">
         <button type="button" className="go-quiz">
-          Lancer le Quizz !
+          Lancer le Quiz !
         </button>
       </Link>
     </div>

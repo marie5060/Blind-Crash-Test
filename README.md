@@ -1,9 +1,8 @@
-Welcome to Blind Crash Test
+Bienvenue sur Blind Crash Test
 
-visit https://marie5060.github.io/Blind-Crash-Test/ to play our music quizz
+Tu veux tester tes connaissances musicales? Visites https://marie5060.github.io/Blind-Crash-Test/
 
-if you want to see, modify and do whatever you want with the code:
-*clone the repo 
-(if developpement is not ended, git checkout dev. else stay on main)(dev ends on 19/11/2021)
+Si tu veux voir, modifier ou tester le code:
+*clones le repo 
 *npm install
 *npm start
