@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable */
 import PropTypes from 'prop-types';
-import './ResultatsPage.css';
+import React, { useState, useEffect } from 'react';
 import { FaCaretDown } from 'react-icons/fa';
-import Stars from '../Themes/Difficulty';
-import data from './data';
+import winnerList from './data';
 import Podium from './Podium';
 import WinnersList from './WinnersList';
+import './ResultatsPage.css';
+// import Stars from '../Themes/Difficulty';
 
 const ResultatsPage = ({
   location: {
@@ -13,12 +14,14 @@ const ResultatsPage = ({
   },
 }) => {
   const [winners, setWinners] = useState([]);
+
   const [cursorPosition, setCursorPosition] = useState(0);
   const cursorStyle = {
     left: `${cursorPosition}%`,
   };
-
+  
   useEffect(() => {
+    console.log(winnerList);
     const result =
       sessionStorage.getItem('resultArray') === null
         ? []
@@ -43,35 +46,39 @@ const ResultatsPage = ({
       sessionStorage.setItem('resultArray', JSON.stringify(result));
       setCursorPosition((currentScore - currentScore / 10) / 10 / difficulty);
     }
+    let winnerIntregre = false;
+    let currentRank = 4;
 
-    // get array of all results stored
-    const unorderedWinners =
-      JSON.parse(sessionStorage.getItem('resultArray')) || [];
-    function bubulle(tab2) {
-      const tab = tab2;
-      let changed;
-      do {
-        changed = false;
-        for (let i = 0; i < tab.length - 1; i += 1) {
-          if (tab[i].currentScore > tab[i + 1].currentScore) {
-            const tmp = tab[i];
-            tab[i] = tab[i + 1];
-            tab[i + 1] = tmp;
-            changed = true;
-          }
-        }
-      } while (changed);
-      return tab;
-    }
+  
+    winnerList.map((winner) => {
+      winner.score *= difficulty;
 
-    // sort to render the strongest first ...
-    setWinners(bubulle(unorderedWinners).reverse());
+      return winner;
+    });
+    
+    winnerList.map((winner) => {
+      if (winner.score < currentScore) {
+        currentRank = winner.rank;
+        winnerIntregre = true;
+      }
+      if (winnerIntregre === true) {
+        winner.rank += 1;
+      }
+      return winner;
+    });
+
+    
+    const winnerARajouter = {
+      id: 5,
+      name: 'Curry',
+      score: currentScore,
+      rank: currentRank,
+    };
+    setWinners([...winnerList, winnerARajouter]);
   }, []);
 
   return (
-    <main className="result-page-main">
-      <Podium winners={data} />
-      <WinnersList winners={data} />
+    <main className="main-container">
       <div className="gauge-container">
         <div className="result-gauge">
           <p className="gauge-text left">
@@ -87,42 +94,15 @@ const ResultatsPage = ({
           <FaCaretDown style={cursorStyle} className="gauge-current-score" />
         </div>
       </div>
-
-      <div className="result-table-container">
-        <h1 className="result-title">Tableau des scores</h1>
-        <table className="result-table">
-          <thead>
-            <tr>
-              <th>Score</th>
-              <th>Pseudo</th>
-              <th>Thème</th>
-              <th>Difficulté</th>
-            </tr>
-          </thead>
-          <tbody>
-            {winners.map((winner) => (
-              <tr key={winner.id}>
-                <td>{winner.currentScore}</td>
-                <td>{winner.pseudo}</td>
-                <td>{winner.chosenTheme}</td>
-                <td className="result-stars-container">
-                  {winner.difficulty.map((elem) => (
-                    <Stars key={elem} />
-                  ))}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <Podium winners={winners} />
+      <WinnersList winners={winners} />
     </main>
   );
 };
-
-export default ResultatsPage;
 
 ResultatsPage.propTypes = {
   location: PropTypes.oneOfType([PropTypes.object]).isRequired,
   pseudo: PropTypes.string.isRequired,
   difficulty: PropTypes.number.isRequired,
 };
+export default ResultatsPage;
