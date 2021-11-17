@@ -94,6 +94,12 @@ html { scroll-behavior: smooth; }
 */
 @media screen and (min-width: 600px) and (max-width: 1024px){
 
+  .themes-page-container {
+ 
+    padding: 40px 40px 40px 40px;
+  
+    /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./background-theme.jpg"); */
+  }
 
 }
 

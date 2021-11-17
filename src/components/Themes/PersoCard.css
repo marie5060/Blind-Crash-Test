@@ -10,6 +10,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  width: 100%;
 }
 
 h2 {
@@ -112,13 +113,14 @@ h2 {
 				 Media queries TABLETTE
 		 =============================
 */
-@media screen and (min-width: 600px) and (max-width: 1024px) {
+@media screen and (min-width: 600px) and (max-width: 1200px) {
   .perso-card-container {
     width: 100%;
   }
 
   .playlist-perso-card-reduct {
-    width: 40%;
+    width: 350px;
+    font-size: 8px;
   }
 }
 
