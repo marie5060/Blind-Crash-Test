@@ -23,8 +23,13 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
   const [goodTrack, setGoodTrack] = useState();
   // tableau des mauvaises réponses
   const [badTracksArray, setBadTracksArray] = useState([]);
+  console.log(goodTracksArray);
+  console.log(goodTrack);
+  console.log(badTracksArray);
   /// modifie le nombre de réponse que je récupère ///
   const getBadTracks = (randomTrack, tracksAtStart = tracks) => {
+    console.log(tracks);
+    console.log(tracksAtStart);
     // nombre de mauvaise réponses à récupérer selon le niveau de difficulté, initialisé à 3
     let numBadAnswerToGet = 3;
     // change le nombre de mauvaise réponse à récupérer selon le niveau de difficulté
@@ -50,14 +55,22 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
     }
 
     let badTracks = [];
+    const randomsArray = [randomTrack];
     for (let i = 0; i < numBadAnswerToGet; i += 1) {
       let number = Math.floor(Math.random() * tracksAtStart.length);
-      while (
-        tracksAtStart[number].id === tracksAtStart[randomTrack].id ||
-        badTracksArray.includes(tracksAtStart[number])
-      ) {
+
+      while (number === randomTrack || randomsArray.includes(number)) {
         number = Math.floor(Math.random() * tracksAtStart.length);
       }
+      randomsArray.push(number);
+
+      // while (
+      //   tracksAtStart[number].id === tracksAtStart[randomTrack].id ||
+      //   badTracksArray.includes(tracksAtStart[number])
+      // ) {
+      //   number = Math.floor(Math.random() * tracksAtStart.length);
+      // }
+
       badTracks = [...badTracks, tracksAtStart[number]];
     }
     setBadTracksArray(badTracks);
@@ -85,7 +98,7 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
         // choisit la première chanson
         const random = Math.floor(Math.random() * okData.length);
         setGoodTrack(okData[random]);
-        setGoodTracksArray([goodTrack]);
+        setGoodTracksArray([okData[random]]);
         getBadTracks(random, okData);
       });
   }, []);
@@ -97,7 +110,7 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
     }
     setGoodTrack(tracks[random]);
     setGoodTracksArray([...goodTracksArray, tracks[random].id]);
-    getBadTracks(random);
+    getBadTracks(random, tracks);
   }, [nbQuizz]);
 
   // Timer 3 - 2 - 1 quizz start
