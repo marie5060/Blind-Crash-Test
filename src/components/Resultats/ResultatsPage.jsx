@@ -19,6 +19,16 @@ const ResultatsPage = ({
     left: `${cursorPosition}%`,
   };
 
+  const compare = (player1, player2) => {
+    if (player1.rank < player2.rank) {
+      return -1;
+    }
+    if (player1.rank > player2.rank) {
+      return 1;
+    }
+    return 0;
+  };
+
   useEffect(() => {
     // add incoming quizz if redirect from quizzPage in sessionStorage
     if (currentScore !== null) {
@@ -43,6 +53,7 @@ const ResultatsPage = ({
         if (winnerIntegre) {
           winner.rank += 1;
         }
+        console.log(winnerIntegre);
         return winner;
       });
 
@@ -53,7 +64,8 @@ const ResultatsPage = ({
         score: currentScore,
         rank: currentRank,
       };
-      setWinners([...winnerList, winnerARajouter]);
+      const winnerSorted = [...winnerList, winnerARajouter].sort(compare);
+      setWinners(winnerSorted);
     }
   }, []);
 

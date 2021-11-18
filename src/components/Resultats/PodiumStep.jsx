@@ -72,6 +72,6 @@ const PodiumStep = ({ podiumLength, winner }) => {
 export default PodiumStep;
 
 PodiumStep.propTypes = {
-  winner: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  winner: PropTypes.oneOfType([PropTypes.array]).isRequired,
   podiumLength: PropTypes.number.isRequired,
 };
