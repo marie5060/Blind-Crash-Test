@@ -58,6 +58,11 @@ const PersoCard = ({ newId, setnewId, setChosenId, onlyNumbers, chosenId }) => {
             morceaux, et vérifiez qu`elles ne contiennent pas plusieurs fois le
             même morceau.
           </p>
+          <p>
+            Attention : Seul le lien obtenu dans l`url d`un navigateur
+            fonctionne ! Ne pas copier le lien de partage de playlist obtenu
+            depuis l`application mobile Deezer
+          </p>
         </div>
         <div className={displayCard}>
           <div className="inter-container">

@@ -19,7 +19,7 @@
 		 =============================
 */
 @media screen and (min-width: 600px) and (max-width: 1024px) {
-  .stars-container{
+  .stars-container {
     margin-right: 25px;
   }
 }
@@ -29,7 +29,7 @@
 		 =============================
 */
 @media screen and (max-width: 600px) {
-  .stars-container{
+  .stars-container {
     margin-right: 25px;
   }
 }
