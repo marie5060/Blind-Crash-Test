@@ -17,29 +17,58 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
   const [waitingCount, setWaitingCount] = useState(3);
   // Score du quizz qui se met à jour au fur et à mesure
   const [currentScore, setCurrentScore] = useState(0);
+  // tableau des bonnes réponses
+  const [goodTracksArray, setGoodTracksArray] = useState([]);
+  // la bonne réponse
+  const [goodTrack, setGoodTrack] = useState();
+  // tableau des mauvaises réponses
+  const [badTracksArray, setBadTracksArray] = useState([]);
+  /// modifie le nombre de réponse que je récupère ///
+  const getBadTracks = (randomTrack, tracksAtStart = tracks) => {
+    // nombre de mauvaise réponses à récupérer selon le niveau de difficulté, initialisé à 3
+    let numBadAnswerToGet = 3;
+    // change le nombre de mauvaise réponse à récupérer selon le niveau de difficulté
+    switch (difficulty) {
+      case 1:
+        numBadAnswerToGet = 1;
+        break;
+      case 2:
+        numBadAnswerToGet = 3;
+        break;
+      case 3:
+        numBadAnswerToGet = 3;
+        break;
+      case 4:
+        numBadAnswerToGet = 5;
+        break;
+      case 5:
+        numBadAnswerToGet = 7;
+        break;
+      default:
+        numBadAnswerToGet = 3;
+        break;
+    }
 
-  const [random, setRandom] = useState(0);
-  // difficulté choisie sur PageThème
-  // const difficulty = 4;
-  // nombre de mauvaise réponses à récupérer selon le niveau de difficulté, initialisé à 3
-  let numBadAnswerToGet = 3;
+    let badTracks = [];
+    const randomsArray = [randomTrack];
+    for (let i = 0; i < numBadAnswerToGet; i += 1) {
+      let number = Math.floor(Math.random() * tracksAtStart.length);
 
-  const badTracksArray = [];
+      while (number === randomTrack || randomsArray.includes(number)) {
+        number = Math.floor(Math.random() * tracksAtStart.length);
+      }
+      randomsArray.push(number);
+
+      badTracks = [...badTracks, tracksAtStart[number]];
+    }
+    setBadTracksArray(badTracks);
+  };
 
   useEffect(() => {
-    setRandom(Math.floor(Math.random() * tracks.length));
-  }, [nbQuizz]);
+    window.scrollTo(0, 0);
+  }, []);
 
-  // Timer 3 - 2 - 1 quizz start
-  useEffect(() => {
-    const timer =
-      waitingCount > 0 &&
-      setInterval(() => setWaitingCount(waitingCount - 1), 1000);
-    return () => {
-      clearInterval(timer);
-    };
-  }, [waitingCount]);
-
+  // Récupère toutes les tracks du theme choisi
   useEffect(() => {
     axios
       .get(
@@ -54,37 +83,40 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
             !track.title_short.includes('(')
         );
         setTracks(okData);
+        // choisit la première chanson
+        const random = Math.floor(Math.random() * okData.length);
+        setGoodTrack(okData[random]);
+        setGoodTracksArray([okData[random]]);
+        getBadTracks(random, okData);
       });
-  }, [chosenId]);
+  }, []);
+
+  useEffect(() => {
+    let random = Math.floor(Math.random() * tracks.length);
+    while (goodTracksArray.includes(tracks[random].id)) {
+      random = Math.floor(Math.random() * tracks.length);
+    }
+    setGoodTrack(tracks[random]);
+    setGoodTracksArray([...goodTracksArray, tracks[random].id]);
+    getBadTracks(random, tracks);
+  }, [nbQuizz]);
+
+  // Timer 3 - 2 - 1 quizz start
+  useEffect(() => {
+    const timer =
+      waitingCount > 0 &&
+      setInterval(() => setWaitingCount(waitingCount - 1), 1000);
+    return () => {
+      clearInterval(timer);
+    };
+  }, [waitingCount]);
 
   const nextQuestion = () => {
     setNbQuizz(nbQuizz + 1);
   };
 
-  // change le nombre de mauvaise réponse à récupérer selon le niveau de difficulté
-  if (difficulty === 1) {
-    numBadAnswerToGet = 1;
-  } else if (difficulty === 4) {
-    numBadAnswerToGet = 5;
-  } else if (difficulty === 5) {
-    numBadAnswerToGet = 7;
-  }
-
-  // récupére un tableau d'objet de mauvaises réponses
-  /// modifie le nombre de réponse que je récupère ///
-  for (let i = 0; i < numBadAnswerToGet; i += 1) {
-    let number = Math.floor(Math.random() * tracks.length);
-    while (
-      tracks[number].id === tracks[random].id ||
-      badTracksArray.includes(tracks[number])
-    ) {
-      number = Math.floor(Math.random() * tracks.length);
-    }
-    badTracksArray.push(tracks[number]);
-  }
-
   return (
-    <main>
+    <main className="quizz-page-main">
       <div className="topQuizz">
         <div>
           Score :{' '}
@@ -105,7 +137,7 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
         </div>
       ) : (
         <QuizzCard
-          goodTrack={tracks[random]}
+          goodTrack={goodTrack}
           badTrackArray={badTracksArray}
           nextQuestion={nextQuestion}
           currentScore={currentScore}

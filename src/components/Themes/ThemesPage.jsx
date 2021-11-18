@@ -1,10 +1,25 @@
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import LinkBtnGoQuizz from '../Bases/LinkBtnGoQuizz';
-import ThemeItem from './ThemeItem';
 import Stars from './Difficulty';
 import './ThemesPage.css';
+import ThemeItem from './ThemeItem';
+import PersoCard from './PersoCard';
 
-const ThemesPage = ({ setChosenTheme, setChosenId }) => {
+const ThemesPage = ({ chosenId, setChosenId, setDifficulty, difficulty }) => {
+  const [newId, setnewId] = useState('');
+  const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const onlyNumbers = newId
+    .split('')
+    .filter((e) => numbers.includes(e))
+    .toString()
+    .replace(/,/gi, '');
+
   const themeArray = [
     { name: 'Rock', id: '9626980522', num: 1 },
     { name: 'Reggae ', id: '9626990642', num: 2 },
@@ -31,41 +46,61 @@ const ThemesPage = ({ setChosenTheme, setChosenId }) => {
 
   return (
     <div className="themes-page-container">
-      <h2>Thèmes</h2>
-      <div className="theme-items">
-        {themeArray.map((item) => (
-          <div className={`item${item.num} item`}>
-            <ThemeItem
-              themeName={item.name}
-              themeId={item.id}
-              setChosenId={setChosenId}
-              setChosenTheme={setChosenTheme}
-              key={item.num}
-            />
-          </div>
-        ))}
+      <div id="perso-card">
+        <PersoCard
+          newId={newId}
+          setnewId={setnewId}
+          setChosenId={setChosenId}
+          onlyNumbers={onlyNumbers}
+          chosenId={chosenId}
+        />
       </div>
-      <h2>Artistes</h2>
-      <div className="theme-items">
-        {artisteArray.map((item) => (
-          <div className={`item${item.num} item`}>
-            <ThemeItem
-              themeName={item.name}
-              themeId={item.id}
-              setChosenId={setChosenId}
-              setChosenTheme={setChosenTheme}
-              key={item.num}
-            />
-          </div>
-        ))}
+      <div className="items-container">
+        <h2 className="theme-title">Thèmes</h2>
+        <div className="theme-items">
+          {themeArray.map((item) => (
+            <div className={`item${item.num} item`} key={item.num}>
+              <a href="#difficulty" className="a-container">
+                <ThemeItem
+                  themeName={item.name}
+                  themeId={item.id}
+                  setChosenId={setChosenId}
+                  chosenId={chosenId}
+                />
+              </a>
+            </div>
+          ))}
+        </div>
+        <h2 className="theme-title">Artistes</h2>
+        <div className="theme-items">
+          {artisteArray.map((item) => (
+            <div className={`item${item.num} item`} key={item.num}>
+              <a href="#difficulty" className="a-container">
+                <ThemeItem
+                  themeName={item.name}
+                  themeId={item.id}
+                  setChosenId={setChosenId}
+                  chosenId={chosenId}
+                />
+              </a>
+            </div>
+          ))}
+        </div>
       </div>
-      <h2>Difficulté</h2>
+      <h2 className="theme-title" id="difficulty">
+        Difficulté
+      </h2>
       <div className="difficulty-container">
         {difficulties.map((star) => (
-          <Stars key={star} />
+          <Stars
+            setDifficulty={setDifficulty}
+            difficulty={difficulty}
+            position={star}
+            key={star}
+          />
         ))}
       </div>
-      <div className="go-quizz-container">
+      <div className="go-quiz-container">
         <LinkBtnGoQuizz />
       </div>
     </div>
@@ -76,5 +111,7 @@ export default ThemesPage;
 
 ThemesPage.propTypes = {
   setChosenId: PropTypes.func.isRequired,
-  setChosenTheme: PropTypes.func.isRequired,
+  setDifficulty: PropTypes.func.isRequired,
+  chosenId: PropTypes.string.isRequired,
+  difficulty: PropTypes.number.isRequired,
 };

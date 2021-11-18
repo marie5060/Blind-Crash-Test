@@ -22,9 +22,9 @@ const Header = () => {
   return (
     <div className="header">
       <header className="header-nav">
-        <div className="header-nav-logo">
+        <a href="/Blind-Crash-Test/" className="header-nav-logo">
           <img src={logo} alt="logo" />
-        </div>
+        </a>
         <nav className="header-navbar">
           <ul className="header-nav-links">
             <li>
@@ -56,11 +56,11 @@ const Header = () => {
                 Résultats
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link className="header-nav-links-a" to="/Blind-Crash-Test/Quizz">
                 Quizz
               </Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
         <button type="button" className={active} onClick={handleShowLinks}>

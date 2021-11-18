@@ -1,6 +1,6 @@
 .quizz-card {
   width: 70%;
-  height: 70vh;
+  height: auto;
   margin: auto;
   background-color: rgba(206, 203, 200, 0.493);
   border-radius: 20px;
@@ -20,6 +20,8 @@
   position: absolute;
   right: 10vw;
   top: 15vh;
+  width: auto;
+  height: auto;
 }
 
 .next-track-bg:hover {
@@ -67,4 +69,36 @@
   display: flex;
   justify-content: center;
   margin-top: -5vh;
+}
+
+/*   =============================
+				 Media queries
+		 =============================
+*/
+
+@media screen and (max-width: 1000px) {
+  .answer-btn-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .answer-btn-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .next-track-text {
+    font-size: 2vw;
+    padding: 5px 10px;
+  }
+  .next-track-bg {
+    right: 50%;
+    transform: translate(50%);
+    top: auto;
+    bottom: -15px;
+  }
 }

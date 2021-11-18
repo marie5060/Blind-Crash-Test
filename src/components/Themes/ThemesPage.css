@@ -1,4 +1,8 @@
-h2 {
+html {
+  scroll-behavior: smooth;
+}
+
+.theme-title {
   font-size: 30px;
   color: white;
 }
@@ -7,13 +11,23 @@ h2 {
   display: flex;
   flex-direction: column;
   padding: 50px 100px 50px 100px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./background-theme.jpg");
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../Accueil/home-img.jpg");
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+#perso-card {
+  width: 100%;
+}
+
+.a-container {
+  width: 100%;
 }
 
 .theme-items {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 150px 150px;
+  grid-template-rows: 170px 170px;
   margin-top: 50px;
   margin-bottom: 50px;
 }
@@ -64,13 +78,57 @@ h2 {
   grid-row: 2/3;
 }
 
-.go-quizz-container {
+.difficulty-container {
+  display: flex;
+  margin-top: 3vh;
+}
+
+.go-quiz-container {
   display: flex;
   justify-content: center;
   margin: 100px 0 100px 0;
 }
 
-.difficulty-container {
-  display: flex;
-  margin-top: 3vh;
+
+/*       =============================
+				 Media queries TABLETTE
+		 =============================
+*/
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+  .themes-page-container {
+    padding: 0 0 0 0;
+  }
+
+  .theme-title {
+    margin-left: 50px;
+  }
+
+  .playlist-perso-container {
+    min-width: 280px;
+  }
+}
+
+/*       =============================
+				 Media queries MOBILE
+		 =============================
+*/
+
+@media screen and (max-width: 600px) {
+  .theme-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 80px 80px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .themes-page-container {
+    padding: 5px 0 5px 0;
+  }
+
+  .theme-title {
+    font-size: 18px;
+    color: white;
+    margin-left: 7vw;
+  }
 }

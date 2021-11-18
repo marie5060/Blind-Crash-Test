@@ -13,6 +13,10 @@
   background: linear-gradient(121.83deg, #774cd3 31.32%, #ae2aa9 87.66%);
 }
 
+.answer-button:hover {
+  cursor: pointer;
+}
+
 .chosenBtn {
   border: 5px solid black;
 }
@@ -20,28 +24,47 @@
 @keyframes shake {
   10%,
   90% {
-    transform: translate3d(-5px, 0, 0);
+    transform: translate3d(-500px, 200px, 0) rotate(180deg);
   }
 
   20%,
   80% {
-    transform: translate3d(6px, 0, 0);
+    transform: translate3d(600px, -150px, 0) rotate(80deg);
   }
 
   30%,
   50%,
   70% {
-    transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-100px, -150px, 0) rotate(260deg);
   }
 
   40%,
   60% {
-    transform: translate3d(10px, 0, 0);
+    transform: translate3d(100px, 200px, 0) rotate(180deg);
   }
 }
 
 .hard-difficulty {
   animation-name: shake;
-  animation-duration: 1s;
+  animation-duration: 15s;
   animation-iteration-count: infinite;
+}
+
+/*   =============================
+				 Media queries
+		 =============================
+*/
+
+@media screen and (max-width: 1000px) {
+  .answer-button {
+    width: 80%;
+    font-size: 1.5vw;
+    margin: 3vh auto;
+  }
+}
+@media screen and (max-width: 730px) {
+  .answer-button {
+    height: 6vw;
+    font-size: 2vw;
+  }
 }

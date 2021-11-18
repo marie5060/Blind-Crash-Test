@@ -9,10 +9,10 @@ import QuizzPage from './components/Quizz/QuizzPage';
 import './App.css';
 
 function App() {
-  const [chosenId, setChosenId] = useState('9626980522');
   const [chosenTheme, setChosenTheme] = useState('Rock');
   const [pseudo, setPseudo] = useState('Anonyme');
   const [difficulty, setDifficulty] = useState(2);
+  const [chosenId, setChosenId] = useState('9626980522');
 
   return (
     <div>
@@ -28,6 +28,7 @@ function App() {
                 setChosenId={setChosenId}
                 setChosenTheme={setChosenTheme}
                 setPseudo={setPseudo}
+                setDifficulty={setDifficulty}
               />
             )}
           />
@@ -36,9 +37,11 @@ function App() {
             render={(routeProps) => (
               <ThemesPage
                 {...routeProps}
+                chosenId={chosenId}
                 setChosenId={setChosenId}
                 setChosenTheme={setChosenTheme}
                 setDifficulty={setDifficulty}
+                difficulty={difficulty}
               />
             )}
           />

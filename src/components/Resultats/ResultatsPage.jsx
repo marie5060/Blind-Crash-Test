@@ -1,7 +1,11 @@
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react/cjs/react.development';
-import Stars from '../Themes/Difficulty';
 import './ResultatsPage.css';
+import { FaCaretDown } from 'react-icons/fa';
+import Stars from '../Themes/Difficulty';
+import data from './data';
+import Podium from './Podium';
+import WinnersList from './WinnersList';
 
 const ResultatsPage = ({
   location: {
@@ -9,8 +13,17 @@ const ResultatsPage = ({
   },
 }) => {
   const [winners, setWinners] = useState([]);
+  const [cursorPosition, setCursorPosition] = useState(0);
+  const cursorStyle = {
+    left: `${cursorPosition}%`,
+  };
 
   useEffect(() => {
+    const result =
+      sessionStorage.getItem('resultArray') === null
+        ? []
+        : JSON.parse(sessionStorage.resultArray);
+
     // add incoming quizz if redirect from quizzPage in sessionStorage
     if (currentScore !== null) {
       const starsQte = [];
@@ -20,10 +33,6 @@ const ResultatsPage = ({
         }
       }
 
-      const result =
-        sessionStorage.getItem('resultArray') === null
-          ? []
-          : JSON.parse(sessionStorage.resultArray);
       result.push({
         id: result.length,
         currentScore,
@@ -32,6 +41,7 @@ const ResultatsPage = ({
         difficulty: starsQte,
       });
       sessionStorage.setItem('resultArray', JSON.stringify(result));
+      setCursorPosition((currentScore - currentScore / 10) / 10 / difficulty);
     }
 
     // get array of all results stored
@@ -59,12 +69,25 @@ const ResultatsPage = ({
   }, []);
 
   return (
-    <main>
-      <div className="result-gauge">
-        Méga
-        mauvais=============================|==================================Méga
-        Bon
+    <main className="result-page-main">
+      <Podium winners={data} />
+      <WinnersList winners={data} />
+      <div className="gauge-container">
+        <div className="result-gauge">
+          <p className="gauge-text left">
+            Méga
+            <br />
+            Mauvais
+          </p>
+          <p className="gauge-text right">
+            Méga
+            <br />
+            Bon
+          </p>
+          <FaCaretDown style={cursorStyle} className="gauge-current-score" />
+        </div>
       </div>
+
       <div className="result-table-container">
         <h1 className="result-title">Tableau des scores</h1>
         <table className="result-table">
@@ -100,8 +123,6 @@ export default ResultatsPage;
 
 ResultatsPage.propTypes = {
   location: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  currentScore: PropTypes.number.isRequired,
   pseudo: PropTypes.string.isRequired,
-  chosenTheme: PropTypes.string.isRequired,
   difficulty: PropTypes.number.isRequired,
 };

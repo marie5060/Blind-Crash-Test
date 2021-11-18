@@ -1,19 +1,25 @@
 import PropTypes from 'prop-types';
 import './ThemeItem.css';
 
-const ThemeItem = ({ themeName, themeId, setChosenId, setChosenTheme }) => {
+const ThemeItem = ({ themeName, themeId, setChosenId, chosenId }) => {
+  let themeButtonClass = 'glow-on-hover';
+  if (chosenId === themeId) {
+    themeButtonClass = 'theme-chosen-button';
+  }
+
   return (
     <div>
-      <button
-        type="button"
-        className="glow-on-hover"
-        onClick={() => {
-          setChosenId(themeId);
-          setChosenTheme(themeName);
-        }}
-      >
-        {themeName}
-      </button>
+      <a href="#difficulty" className="center-item">
+        <button
+          type="button"
+          className={themeButtonClass}
+          onClick={() => {
+            setChosenId(themeId);
+          }}
+        >
+          {themeName}
+        </button>
+      </a>
     </div>
   );
 };
@@ -24,5 +30,5 @@ ThemeItem.propTypes = {
   themeName: PropTypes.string.isRequired,
   themeId: PropTypes.string.isRequired,
   setChosenId: PropTypes.func.isRequired,
-  setChosenTheme: PropTypes.func.isRequired,
+  chosenId: PropTypes.string.isRequired,
 };
