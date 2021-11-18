@@ -1,31 +1,10 @@
-import { useState } from 'react';
 import './Footer.css';
 import { FaFacebook, FaTwitter, FaInstagramSquare } from 'react-icons/fa';
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
-  const handleEmailChange = (e) => setEmail(e.target.value);
-  const display = () => {
-    document.getElementById('email').value = '';
-  };
-
   return (
     <footer className="footer">
       <div className="footer-container">
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Entre ton email"
-          onChange={handleEmailChange}
-          value={email}
-        />
-
-        <button type="submit" className="button-class" onClick={display}>
-          <a target="_blank" href={`mailto:${email}`} rel="noreferrer">
-            Partage ton résultat
-          </a>
-        </button>
         <div className="social">
           <a
             target="_blank"
