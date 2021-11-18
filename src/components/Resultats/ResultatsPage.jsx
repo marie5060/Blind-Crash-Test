@@ -53,7 +53,7 @@ const ResultatsPage = ({
         if (winnerIntegre) {
           winner.rank += 1;
         }
-        console.log(winnerIntegre);
+        
         return winner;
       });
 
