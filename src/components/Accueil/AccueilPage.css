@@ -102,3 +102,109 @@ main {
   font-size: 1rem;
   font-family: 'Roboto', sans-serif;
 }
+
+@media screen and (max-width: 1023px) {
+  .pseudo-container h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.7rem;
+    font-family: 'Roboto', sans-serif;
+    padding: 2%;
+  }
+  .pseudo-input {
+    border: none;
+    border-bottom: 2px solid black;
+    width: 40%;
+    height: 1.5vh;
+    border-radius: 20px;
+    padding: 0.5rem;
+  }
+  .fast-game-container-text {
+    display: flex;
+  }
+  .fast-game-container-text h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    font-family: 'Roboto', sans-serif;
+  }
+  .fast-game-container-text p {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+    font-family: 'Roboto', sans-serif;
+    padding: 2%;
+  }
+  .fast-game  { 
+    font-size: 0.8rem;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    height: 5vw;
+  }
+  .new-theme-container p {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+    padding: 2%;
+  }
+  .new-theme {
+    display: flex;   
+    font-size: 0.8rem;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    height: 5vw;
+  }
+}
+@media screen and (min-width:750px) and (max-width:1023px) {
+  .pseudo-container h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    font-family: 'Roboto', sans-serif;
+  }  
+  .fast-game-container-text {
+    display: flex;
+  }
+  .fast-game-container-text h1 {
+    text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.4rem;
+  font-family: 'Roboto', sans-serif;
+  }
+  .fast-game-container-text p {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+  }
+  .fast-game  { 
+    font-size: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    height: 5vw;
+  }
+  .new-theme {
+    display: flex;   
+    font-size: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    height: 5vw;
+  }
+  .new-theme-container h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    font-family: 'Roboto', sans-serif;
+  }
+  new-theme-container p {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+  }
+}
