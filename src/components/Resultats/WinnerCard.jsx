@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import './WinnerCard.css';
 
 const WinnerCard = ({ winners, winner, index }) => {
-  console.log(winners[4]);
-
   return (
     <motion.div
       custom={index}
@@ -15,7 +13,7 @@ const WinnerCard = ({ winners, winner, index }) => {
           opacity: 1,
           y: 0,
           transition: {
-            delay: 1 + (winners.length - winner.rank + 1),
+            delay: 1 + (winners.length - winner.rank),
             duration: 0.75,
             ease: 'backInOut',
           },
@@ -25,7 +23,7 @@ const WinnerCard = ({ winners, winner, index }) => {
       key={winner.id}
     >
       <div className="list-container">
-        <div className="text-rank">{winner.rank + 1}</div>
+        <div className="text-rank">{winner.rank}</div>
 
         <div className="text-container">
           <p className="text-name">{winner.name || 'No name'}</p>
