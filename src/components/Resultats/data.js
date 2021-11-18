@@ -1,4 +1,4 @@
-const winnerList = [
+const data = [
   {
     id: 1,
     name: 'Chuck N.',
@@ -8,21 +8,23 @@ const winnerList = [
   {
     id: 2,
     name: 'Garou',
-    score: 651,
+    score: 650,
     rank: 1,
   },
   {
     id: 3,
     name: 'Larusso',
-    score: 389,
+    score: 300,
     rank: 2,
   },
   {
     id: 4,
     name: 'Homer S.',
-    score: 15,
+    score: 30,
     rank: 3,
   },
 ];
-
-export default winnerList;
+// .map((winner, position) => ({ ...winner, position }))
+// console.log(data);
+// a tester apres
+export default data;
