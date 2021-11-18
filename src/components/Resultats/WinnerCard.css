@@ -24,11 +24,10 @@
   display: flex;
   align-items: center;
   margin: 0.75rem;
-  background-color: rgb(77, 27, 90);
+  background: linear-gradient(140deg, #774cd3, #ae2aa9);
   border-radius: 0.5rem;
   padding: 0.75rem;
   border: solid 3px rgb(156, 51, 204);
-  cursor: pointer;
 }
 
 .list-container:hover {

@@ -118,7 +118,6 @@ html {
 
 .display-modal-star {
   display: flex;
-  flex-direction: row;
 }
 
 .display-modal p {

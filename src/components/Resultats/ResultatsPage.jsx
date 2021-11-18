@@ -4,7 +4,6 @@ import { FaCaretDown } from 'react-icons/fa';
 import Podium from './Podium';
 import WinnersList from './WinnersList';
 import './ResultatsPage.css';
-// import Stars from '../Themes/Difficulty';
 
 const ResultatsPage = ({
   location: {
@@ -33,7 +32,7 @@ const ResultatsPage = ({
     {
       id: 4,
       name: 'Homer S.',
-      score: 30,
+      score: 80,
       rank: 4,
     },
   ];
@@ -60,7 +59,6 @@ const ResultatsPage = ({
     if (currentScore !== null) {
       setCursorPosition((currentScore - currentScore / 10) / 10 / difficulty);
 
-      // const winnerIntegre = false;
       let currentRank = 5;
 
       /* eslint-disable no-param-reassign */
@@ -75,7 +73,7 @@ const ResultatsPage = ({
       /* eslint-enable no-param-reassign */
       const winnerARajouter = {
         id: 5,
-        name: 'Curry',
+        name: 'Toi',
         score: currentScore,
         rank: currentRank,
       };

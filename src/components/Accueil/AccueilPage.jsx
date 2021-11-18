@@ -11,10 +11,7 @@ const AccueilPage = ({ setChosenId, setChosenTheme, setDifficulty }) => {
   return (
     <main>
       <div className="pseudo-container">
-        <h1>Choisis ton pseudo avant de lancer ta partie</h1>
-        <form className="form-container">
-          <input className="pseudo-input" type="text" placeholder="Pseudo" />
-        </form>
+        <h1>Bienvenue sur le Blind Crash Test!</h1>
       </div>
       <div className="fast-game-container">
         <div className="fast-game-container-text">

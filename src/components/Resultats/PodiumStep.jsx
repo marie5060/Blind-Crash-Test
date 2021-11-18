@@ -42,7 +42,7 @@ const PodiumStep = ({ podiumLength, winner }) => {
           borderTopLeftRadius: '.5rem',
           borderTopRightRadius: '.5rem',
           borderColor: 'rgba(190,24,93,1)',
-          backgroundColor: 'rgba(219,39,119,1)',
+          backgroundColor: 'white',
           marginBottom: -1,
           filter: `opacity(${0.1 + offset / podiumLength})`,
         }}
