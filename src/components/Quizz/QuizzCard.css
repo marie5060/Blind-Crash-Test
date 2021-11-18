@@ -68,7 +68,6 @@
 .timer-container {
   display: flex;
   justify-content: center;
-  margin-top: -5vh;
 }
 
 /*   =============================
@@ -95,6 +94,7 @@
     font-size: 2vw;
     padding: 5px 10px;
   }
+
   .next-track-bg {
     right: 50%;
     transform: translate(50%);

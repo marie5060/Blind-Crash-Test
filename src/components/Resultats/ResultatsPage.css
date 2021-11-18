@@ -1,24 +1,24 @@
-
-.result-page-main {
+.main-container {
   background-color: black;
-  padding-bottom: 10vh;
 }
 
+/* font-family: 'Englebert', sans-serif; */
+
 .gauge-container {
-  background-color: rgb(223, 223, 223);
-  padding: 20vh 0;
-  margin-bottom: 10vh;
+  padding: 10vh 0;
+
+  /* margin-bottom: 10vh; */
 }
 
 .result-gauge {
-  background-color: black;
   color: white;
   margin: 1vh 20vh;
-  height: 8vh;
+  height: 4vh;
   font-size: 1.5vw;
   text-align: center;
   border-radius: 50px;
   position: relative;
+  background-color: white;
 }
 
 .gauge-text,
@@ -29,8 +29,8 @@
 }
 
 .gauge-text {
-  font-family: 'Englebert', sans-serif;
-  font-size: 50px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 30px;
   top: 6vh;
 }
 
@@ -43,9 +43,9 @@
 }
 
 svg.gauge-current-score {
-  font-size: 20vh;
-  top: -12vh;
-  stroke: rgb(223, 223, 223);
+  font-size: 10vh;
+  top: -7vh;
+  stroke: rgb(156 51 204);
   stroke-width: 15px;
   transform: scale(1, 1.5);
 }

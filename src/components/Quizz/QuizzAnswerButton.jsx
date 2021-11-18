@@ -26,6 +26,9 @@ const QuizzAnswerButton = ({
     } else if (answer !== rightAnswer) {
       buttonClass += ' loose';
     }
+    setTimeout(() => {
+      setChosen(false);
+    }, 3000);
   }
 
   if (difficulty === 5) {

@@ -3,7 +3,7 @@ html {
 }
 
 .theme-title {
-  font-size: 30px;
+  font-size: 3.5vw;
   color: white;
 }
 
@@ -78,6 +78,55 @@ html {
   grid-row: 2/3;
 }
 
+.go-quizz-container {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0 100px 0;
+}
+
+.last-section {
+  display: flex;
+  flex-direction: row;
+}
+
+.difficulty-explain-modal {
+  display: none;
+}
+
+.close-button {
+  background-color: inherit;
+  border: inherit;
+  font-size: 1rem;
+  font-weight: bolder;
+  cursor: pointer;
+  text-align: right;
+  font-family: 'Roboto', sans-serif;
+}
+
+.display-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  text-align: center;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 15px;
+  margin-right: 19vw;
+  z-index: 2;
+}
+
+.display-modal-star {
+  display: flex;
+  flex-direction: row;
+}
+
+.display-modal p {
+  line-height: 2rem;
+  font-family: 'Roboto', sans-serif;
+  text-align: left;
+}
+
 .difficulty-container {
   display: flex;
   margin-top: 3vh;
@@ -108,10 +157,26 @@ html {
   }
 }
 
+@media screen and (max-width: 1010px) {
+  .theme-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100px 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
 /*       =============================
 				 Media queries MOBILE
 		 =============================
 */
+
+@media screen and (max-width: 850px) {
+  .display-modal {
+    font-size: 12px;
+  }
+}
 
 @media screen and (max-width: 600px) {
   .theme-items {
@@ -130,5 +195,23 @@ html {
     font-size: 18px;
     color: white;
     margin-left: 7vw;
+  }
+
+  .display-modal {
+    left: 50%;
+    transform: translate(-50%);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .theme-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .theme-items > * {
+    width: 40%;
+    margin: 2vh auto;
   }
 }
