@@ -19,5 +19,10 @@
   }
 }
 
-
-
+@media screen and (max-width: 730px) {
+  .picture {
+    text-align: center;
+    margin-left: auto;
+    height: 15vh;
+  }
+}
