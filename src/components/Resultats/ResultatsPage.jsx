@@ -1,4 +1,3 @@
-/* eslint-disable */
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import { FaCaretDown } from 'react-icons/fa';
@@ -10,7 +9,7 @@ import './ResultatsPage.css';
 
 const ResultatsPage = ({
   location: {
-    state: { currentScore, chosenTheme, pseudo, difficulty },
+    state: { currentScore, difficulty },
   },
 }) => {
   const [winners, setWinners] = useState([]);
@@ -19,62 +18,43 @@ const ResultatsPage = ({
   const cursorStyle = {
     left: `${cursorPosition}%`,
   };
-  
-  useEffect(() => {
-    console.log(winnerList);
-    const result =
-      sessionStorage.getItem('resultArray') === null
-        ? []
-        : JSON.parse(sessionStorage.resultArray);
 
+  useEffect(() => {
     // add incoming quizz if redirect from quizzPage in sessionStorage
     if (currentScore !== null) {
-      const starsQte = [];
-      if (difficulty) {
-        for (let i = 0; i < difficulty; i += 1) {
-          starsQte.push(i);
-        }
-      }
-
-      result.push({
-        id: result.length,
-        currentScore,
-        pseudo,
-        chosenTheme,
-        difficulty: starsQte,
-      });
-      sessionStorage.setItem('resultArray', JSON.stringify(result));
       setCursorPosition((currentScore - currentScore / 10) / 10 / difficulty);
+
+      let winnerIntegre = false;
+      let currentRank = 4;
+
+      /* eslint-disable no-param-reassign */
+      winnerList.map((winner) => {
+        winner.score *= difficulty;
+
+        return winner;
+      });
+
+      winnerList.map((winner) => {
+        if (winner.score < currentScore && !winnerIntegre) {
+          currentRank = winner.rank;
+
+          winnerIntegre = true;
+        }
+        if (winnerIntegre) {
+          winner.rank += 1;
+        }
+        return winner;
+      });
+
+      /* eslint-enable no-param-reassign */
+      const winnerARajouter = {
+        id: 5,
+        name: 'Curry',
+        score: currentScore,
+        rank: currentRank,
+      };
+      setWinners([...winnerList, winnerARajouter]);
     }
-    let winnerIntregre = false;
-    let currentRank = 4;
-
-  
-    winnerList.map((winner) => {
-      winner.score *= difficulty;
-
-      return winner;
-    });
-    
-    winnerList.map((winner) => {
-      if (winner.score < currentScore) {
-        currentRank = winner.rank;
-        winnerIntregre = true;
-      }
-      if (winnerIntregre === true) {
-        winner.rank += 1;
-      }
-      return winner;
-    });
-
-    
-    const winnerARajouter = {
-      id: 5,
-      name: 'Curry',
-      score: currentScore,
-      rank: currentRank,
-    };
-    setWinners([...winnerList, winnerARajouter]);
   }, []);
 
   return (
@@ -102,7 +82,6 @@ const ResultatsPage = ({
 
 ResultatsPage.propTypes = {
   location: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  pseudo: PropTypes.string.isRequired,
   difficulty: PropTypes.number.isRequired,
 };
 export default ResultatsPage;
