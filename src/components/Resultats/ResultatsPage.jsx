@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import { FaCaretDown } from 'react-icons/fa';
-import winnerList from './data';
 import Podium from './Podium';
 import WinnersList from './WinnersList';
 import './ResultatsPage.css';
@@ -12,6 +11,33 @@ const ResultatsPage = ({
     state: { currentScore, difficulty },
   },
 }) => {
+  const data = [
+    {
+      id: 1,
+      name: 'Chuck N.',
+      score: 999,
+      rank: 1,
+    },
+    {
+      id: 2,
+      name: 'Garou',
+      score: 650,
+      rank: 2,
+    },
+    {
+      id: 3,
+      name: 'Larusso',
+      score: 300,
+      rank: 3,
+    },
+    {
+      id: 4,
+      name: 'Homer S.',
+      score: 30,
+      rank: 4,
+    },
+  ];
+
   const [winners, setWinners] = useState([]);
 
   const [cursorPosition, setCursorPosition] = useState(0);
@@ -19,33 +45,33 @@ const ResultatsPage = ({
     left: `${cursorPosition}%`,
   };
 
+  const compare = (player1, player2) => {
+    if (player1.rank < player2.rank) {
+      return -1;
+    }
+    if (player1.rank > player2.rank) {
+      return 1;
+    }
+    return 0;
+  };
+
   useEffect(() => {
     // add incoming quizz if redirect from quizzPage in sessionStorage
     if (currentScore !== null) {
       setCursorPosition((currentScore - currentScore / 10) / 10 / difficulty);
 
-      let winnerIntegre = false;
-      let currentRank = 4;
+      // const winnerIntegre = false;
+      let currentRank = 5;
 
       /* eslint-disable no-param-reassign */
-      winnerList.map((winner) => {
+      data.map((winner) => {
         winner.score *= difficulty;
-
-        return winner;
-      });
-
-      winnerList.map((winner) => {
-        if (winner.score < currentScore && !winnerIntegre) {
-          currentRank = winner.rank;
-
-          winnerIntegre = true;
-        }
-        if (winnerIntegre) {
+        if (winner.score < currentScore) {
+          currentRank -= 1;
           winner.rank += 1;
         }
         return winner;
       });
-
       /* eslint-enable no-param-reassign */
       const winnerARajouter = {
         id: 5,
@@ -53,7 +79,9 @@ const ResultatsPage = ({
         score: currentScore,
         rank: currentRank,
       };
-      setWinners([...winnerList, winnerARajouter]);
+
+      const winnerSorted = [...data, winnerARajouter].sort(compare);
+      setWinners(winnerSorted);
     }
   }, []);
 

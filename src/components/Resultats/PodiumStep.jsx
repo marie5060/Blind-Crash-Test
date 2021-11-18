@@ -62,7 +62,7 @@ const PodiumStep = ({ podiumLength, winner }) => {
         }}
       >
         <span style={{ color: 'white', alignSelf: 'flex-end' }}>
-          {winner.rank + 1}
+          {winner.rank}
         </span>
       </motion.div>
     </div>
@@ -72,6 +72,6 @@ const PodiumStep = ({ podiumLength, winner }) => {
 export default PodiumStep;
 
 PodiumStep.propTypes = {
-  winner: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  winner: PropTypes.oneOfType([PropTypes.array]).isRequired,
   podiumLength: PropTypes.number.isRequired,
 };
