@@ -12,7 +12,6 @@ const AccueilPage = ({ setChosenId, setChosenTheme, setDifficulty }) => {
     <main>
       <div className="pseudo-container">
         <h1>Bienvenue sur le Blind Crash Test!</h1>
-        <p>Active ton son gros con!</p>
       </div>
       <div className="fast-game-container">
         <div className="fast-game-container-text">
