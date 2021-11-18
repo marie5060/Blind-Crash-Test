@@ -68,3 +68,9 @@
     font-size: 30px;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .go-quiz {
+    font-size: 20px;
+  }
+}
