@@ -44,7 +44,7 @@ const ThemesPage = ({ chosenId, setChosenId, setDifficulty, difficulty }) => {
 
   const artisteArray = [
     { name: 'Céline Dion', id: '9609091082', num: 1 },
-    { name: 'Johnny Halliday ', id: '9640519902', num: 2 },
+    { name: 'Johnny Hallyday ', id: '9640519902', num: 2 },
     { name: 'Francis Cabrel', id: '9626952802', num: 3 },
     { name: 'Queen', id: '9640525022', num: 4 },
     { name: 'Beatles', id: '9631202962', num: 5 },
