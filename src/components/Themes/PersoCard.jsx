@@ -31,14 +31,16 @@ const PersoCard = ({ newId, setnewId, setChosenId, onlyNumbers, chosenId }) => {
   }
   return (
     <div>
-      <div className={displayCardReduct}>
-        <button
-          type="button"
-          className="playlist-submit"
-          onClick={() => setShowcard(!showCard)}
-        >
-          Jouer avec ma propre playlist Deezer
-        </button>
+      <div className="perso-card-container">
+        <div className={displayCardReduct}>
+          <button
+            type="button"
+            className="playlist-submit"
+            onClick={() => setShowcard(!showCard)}
+          >
+            Jouer avec ma propre playlist Deezer
+          </button>
+        </div>
       </div>
       <div className="container-cards">
         <div className={tuto}>
@@ -55,6 +57,11 @@ const PersoCard = ({ newId, setnewId, setChosenId, onlyNumbers, chosenId }) => {
             Conseil : Privilégiez les playlists contenant au minimum 50
             morceaux, et vérifiez qu`elles ne contiennent pas plusieurs fois le
             même morceau.
+          </p>
+          <p>
+            Attention : Seul le lien obtenu dans l`url d`un navigateur
+            fonctionne ! Ne pas copier le lien de partage de playlist obtenu
+            depuis l`application mobile Deezer
           </p>
         </div>
         <div className={displayCard}>

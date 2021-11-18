@@ -55,12 +55,12 @@ const ThemesPage = ({ chosenId, setChosenId, setDifficulty, difficulty }) => {
           chosenId={chosenId}
         />
       </div>
-      <div>
+      <div className="items-container">
         <h2 className="theme-title">Thèmes</h2>
         <div className="theme-items">
           {themeArray.map((item) => (
             <div className={`item${item.num} item`} key={item.num}>
-              <a href="#difficulty">
+              <a href="#difficulty" className="a-container">
                 <ThemeItem
                   themeName={item.name}
                   themeId={item.id}
@@ -75,7 +75,7 @@ const ThemesPage = ({ chosenId, setChosenId, setDifficulty, difficulty }) => {
         <div className="theme-items">
           {artisteArray.map((item) => (
             <div className={`item${item.num} item`} key={item.num}>
-              <a href="#difficulty">
+              <a href="#difficulty" className="a-container">
                 <ThemeItem
                   themeName={item.name}
                   themeId={item.id}
@@ -100,7 +100,7 @@ const ThemesPage = ({ chosenId, setChosenId, setDifficulty, difficulty }) => {
           />
         ))}
       </div>
-      <div className="go-quizz-container">
+      <div className="go-quiz-container">
         <LinkBtnGoQuizz />
       </div>
     </div>
