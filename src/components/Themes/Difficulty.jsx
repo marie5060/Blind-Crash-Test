@@ -13,7 +13,7 @@ const Stars = ({ setDifficulty, position, difficulty }) => {
     >
       <AiFillStar
         size="4em"
-        color={position <= difficulty ? 'yellow' : 'white'}
+        color={position <= difficulty ? 'yellow' : 'rgb(230, 230, 230)'}
       />
     </button>
   );

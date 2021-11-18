@@ -1,0 +1,17 @@
+
+.difficulty-explain-button {
+  background-color: inherit;
+  border: inherit;
+}
+
+.info-icon {
+  width: 4vw;
+  color: rgba(255, 255, 255, 0.377);
+  transform: rotate(25deg);
+}
+
+.info-icon:hover {
+  color: rgba(255, 255, 255, 0.555);
+  transform: rotate(0deg);
+  cursor: pointer;
+}
