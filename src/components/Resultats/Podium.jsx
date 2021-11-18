@@ -34,5 +34,5 @@ const Podium = ({ winners }) => {
 
 export default Podium;
 Podium.propTypes = {
-  winners: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  winners: PropTypes.oneOfType([PropTypes.array]).isRequired,
 };

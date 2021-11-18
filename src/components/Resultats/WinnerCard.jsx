@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import './WinnerCard.css';
 
 const WinnerCard = ({ winners, winner, index }) => {
+  console.log(winners[4]);
+
   return (
     <motion.div
       custom={index}
