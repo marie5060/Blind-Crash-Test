@@ -20,11 +20,16 @@ const Footer = () => {
           onChange={handleEmailChange}
           value={email}
         />
+
         <button type="submit" className="button-class" onClick={display}>
-          Partage ton résultat
+          <a target="_blank" href={`mailto:${email}`} rel="noreferrer">
+            Partage ton résultat
+          </a>
         </button>
         <div className="social">
           <a
+            target="_blank"
+            rel="noreferrer"
             href="https://twitter.com/"
             className="twitter-button"
             data-show-count="false"
@@ -32,6 +37,8 @@ const Footer = () => {
             <FaTwitter color="black" />
           </a>
           <a
+            target="_blank"
+            rel="noreferrer"
             href="https://facebook.com/"
             className="facebook-button"
             data-show-count="false"
@@ -39,6 +46,8 @@ const Footer = () => {
             <FaFacebook color="black" />
           </a>
           <a
+            target="_blank"
+            rel="noreferrer"
             href="https://instagram.com/"
             className="instagram-button"
             data-show-count="false"

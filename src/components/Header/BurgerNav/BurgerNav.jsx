@@ -46,11 +46,6 @@ const BurgerNav = ({ showLink }) => {
             Résultats
           </Link>
         </li>
-        {/* <li>
-          <Link className="header-navbar-burger-links-a" to="/Quizz">
-            Quizz
-          </Link>
-        </li> */}
       </ul>
     </nav>
   );

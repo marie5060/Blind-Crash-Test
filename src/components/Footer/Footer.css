@@ -27,6 +27,10 @@
   margin-top: 1%;
 }
 
+.button-class a {
+  color: inherit;
+}
+
 .social {
   margin-left: 40%;
   font-size: 60px;
@@ -41,24 +45,37 @@
   .footer-container {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     flex-wrap: wrap;
   }
 
   #email {
-    font-size: 1.5%;
+    font-size: 0.8rem;
     height: 18px;
     width: 24%;
+    margin-left: 0;
   }
 
   .button-class {
-    font-size: 1.1%;
+    font-size: 0.8rem;
     height: 23px;
     width: 20%;
+    margin: 2vh auto;
   }
 
   .social {
     margin: auto;
     justify-content: center;
     font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .button-class {
+    width: 40%;
+  }
+
+  #email {
+    width: 40%;
   }
 }

@@ -11,7 +11,7 @@
   height: 100%;
   text-align: right;
   padding: 0 10px;
-  line-height: 22px; /* same as #progressBar height if we want text middle aligned */
+  line-height: 22px;
   background-color: #ea00c3;
   box-sizing: border-box;
   border-radius: 20px;
