@@ -5,14 +5,25 @@ import Stars from './Difficulty';
 import './ThemesPage.css';
 import ThemeItem from './ThemeItem';
 import PersoCard from './PersoCard';
+import DifficultyExplain from './DifficultyExplain';
 
 const ThemesPage = ({ chosenId, setChosenId, setDifficulty, difficulty }) => {
   const [newId, setnewId] = useState('');
+  const [modal, setModal] = useState(false);
+  const [modalClass, setModalClass] = useState('difficulty-explain-modal');
   const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    if (modal === true) {
+      setModalClass('display-modal');
+    } else {
+      setModalClass('difficulty-explain-modal');
+    }
+  }, [modal]);
 
   const onlyNumbers = newId
     .split('')
@@ -43,6 +54,10 @@ const ThemesPage = ({ chosenId, setChosenId, setDifficulty, difficulty }) => {
   ];
 
   const difficulties = [1, 2, 3, 4, 5];
+
+  const getModal = () => {
+    setModal(!modal);
+  };
 
   return (
     <div className="themes-page-container">
@@ -87,9 +102,34 @@ const ThemesPage = ({ chosenId, setChosenId, setDifficulty, difficulty }) => {
           ))}
         </div>
       </div>
-      <h2 className="theme-title" id="difficulty">
-        Difficulté
-      </h2>
+      <div className="last-section">
+        <h2 className="theme-title" id="difficulty">
+          Difficulté
+        </h2>
+        <div className="difficulty-explain-div">
+          <DifficultyExplain getModal={getModal} />
+          <div className={modalClass}>
+            <button type="button" onClick={getModal} className="close-button">
+              X
+            </button>
+            <div className="display-modal-star">
+              {difficulties.map((star) => (
+                <Stars
+                  difficulty={difficulty}
+                  setDifficulty={setDifficulty}
+                  position={star}
+                  key={star}
+                />
+              ))}
+            </div>
+            <p>* : Une pochette d&apos;album et deux réponses au choix</p>
+            <p>** : Une pochette d&apos;album et quatres réponses au choix</p>
+            <p>*** : Quatres réponses au choix, sans pochette d&apos;album</p>
+            <p>**** : Six réponses au choix, sans pochette d&apos;album</p>
+            <p>***** : Pour les plus audacieux! À vous de le décrouvrir... </p>
+          </div>
+        </div>
+      </div>
       <div className="difficulty-container">
         {difficulties.map((star) => (
           <Stars
