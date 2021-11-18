@@ -90,14 +90,14 @@ const ThemesPage = ({ chosenId, setChosenId, setDifficulty, difficulty }) => {
         <div className="theme-items">
           {artisteArray.map((item) => (
             <div className={`item${item.num} item`} key={item.num}>
-              {/* <a href="#difficulty" className="a-container"> */}
-              <ThemeItem
-                themeName={item.name}
-                themeId={item.id}
-                setChosenId={setChosenId}
-                chosenId={chosenId}
-              />
-              {/* </a> */}
+              <a href="#difficulty" className="a-container">
+                <ThemeItem
+                  themeName={item.name}
+                  themeId={item.id}
+                  setChosenId={setChosenId}
+                  chosenId={chosenId}
+                />
+              </a>
             </div>
           ))}
         </div>

@@ -56,11 +56,6 @@ const Header = () => {
                 Résultats
               </Link>
             </li>
-            {/* <li>
-              <Link className="header-nav-links-a" to="/Blind-Crash-Test/Quizz">
-                Quizz
-              </Link>
-            </li> */}
           </ul>
         </nav>
         <button type="button" className={active} onClick={handleShowLinks}>

@@ -73,7 +73,7 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
     axios
       .get(
         `https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist/${chosenId}`
-      ) // https://cors-anywhere.herokuapp.com/ à ajouter au début
+      )
       .then((response) => response.data.tracks.data)
       .then((data) => {
         const okData = data.filter(
@@ -86,7 +86,7 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
         // choisit la première chanson
         const random = Math.floor(Math.random() * okData.length);
         setGoodTrack(okData[random]);
-        setGoodTracksArray([okData[random]]);
+        setGoodTracksArray([okData[random].id]);
         getBadTracks(random, okData);
       });
   }, []);

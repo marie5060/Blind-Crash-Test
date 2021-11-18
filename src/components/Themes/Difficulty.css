@@ -1,9 +1,9 @@
 .stars-container {
   width: 4vw;
-  margin-right: 1vw;
   background-color: inherit;
   border: inherit;
   cursor: pointer;
+  margin-right: 40px;
 }
 
 .stars-container-yellow {
@@ -12,24 +12,4 @@
   border: inherit;
   cursor: pointer;
   background-color: red;
-}
-
-/*       =============================
-				 Media queries TABLETTE
-		 =============================
-*/
-@media screen and (min-width: 600px) and (max-width: 1024px) {
-  .stars-container {
-    margin-right: 25px;
-  }
-}
-
-/*       =============================
-				 Media queries MOBILE
-		 =============================
-*/
-@media screen and (max-width: 600px) {
-  .stars-container {
-    margin-right: 25px;
-  }
 }
