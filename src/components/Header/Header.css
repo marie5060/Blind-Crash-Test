@@ -47,6 +47,10 @@
 }
 
 @media screen and (max-width: 600px) {
+  .header-nav-logo {
+    padding-left: 3vw;
+  }
+
   .header-nav {
     height: 12vw;
     background: linear-gradient(90deg, #774cd3, #ae2aa9);
