@@ -62,7 +62,7 @@ const PodiumStep = ({ podiumLength, winner }) => {
         }}
       >
         <span style={{ color: 'white', alignSelf: 'flex-end' }}>
-          {winner.rank + 1}
+          {winner.rank}
         </span>
       </motion.div>
     </div>
