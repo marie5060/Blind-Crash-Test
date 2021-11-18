@@ -86,7 +86,7 @@ const QuizzPage = ({ chosenId, chosenTheme, pseudo, difficulty }) => {
         // choisit la première chanson
         const random = Math.floor(Math.random() * okData.length);
         setGoodTrack(okData[random]);
-        setGoodTracksArray([okData[random]]);
+        setGoodTracksArray([okData[random].id]);
         getBadTracks(random, okData);
       });
   }, []);
