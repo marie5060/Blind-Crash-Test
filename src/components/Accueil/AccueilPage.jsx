@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import LinkBtnFastGame from '../Bases/LinkBtnFastGame';
 import LinkBtnNewTheme from '../Bases/LinkBtnNewTheme';
 import './AccueilPage.css';
+import request from './request.png';
 
 /*eslint-disable*/
 
@@ -24,6 +25,7 @@ const AccueilPage = ({ setChosenId, setChosenTheme, setDifficulty }) => {
             indiqué ci-dessous. Vous pouvez ensuite revenir sur cette fenêtre et
             lancer la partie de votre choix.
           </p>
+          <img src={request} alt="request deezer" />
         </div>
       </div>
       <div className="fast-game-container">
