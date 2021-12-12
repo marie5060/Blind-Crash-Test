@@ -4,6 +4,8 @@ import LinkBtnFastGame from '../Bases/LinkBtnFastGame';
 import LinkBtnNewTheme from '../Bases/LinkBtnNewTheme';
 import './AccueilPage.css';
 
+/*eslint-disable*/
+
 const AccueilPage = ({ setChosenId, setChosenTheme, setDifficulty }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -12,6 +14,17 @@ const AccueilPage = ({ setChosenId, setChosenTheme, setDifficulty }) => {
     <main>
       <div className="pseudo-container">
         <h1>Bienvenue sur le Blind Crash Test!</h1>
+        <div className='heroku_container'>
+          <h2>Avant de jouer !</h2>
+          <p>Pour activer l'accès à la bibliothèque de musique, veuillez cliquer sur</p>
+          <a target="blank" href="https://cors-anywhere.herokuapp.com/corsdemo">
+          ce lien
+          </a>
+           <p>puis sur le bouton "Request temporary access to the demo server" comme
+            indiqué ci-dessous. Vous pouvez ensuite revenir sur cette fenêtre et
+            lancer la partie de votre choix.
+          </p>
+        </div>
       </div>
       <div className="fast-game-container">
         <div className="fast-game-container-text">
